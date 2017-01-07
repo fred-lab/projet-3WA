@@ -14,7 +14,8 @@ class CreateMakeUpArtistsTable extends Migration
     public function up()
     {
         Schema::create('make_up_artists', function (Blueprint $table) {
-            $table->increments('id');$table->string('first_name', 20);
+            $table->increments('id');
+            $table->string('first_name', 20);
             $table->string('last_name', 20);
             $table->string('slug', 50)->unique()->comment('nom du MUA slugifié pour son url');
             $table->json('phones');
