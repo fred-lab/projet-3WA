@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class MakeUpArtist extends Model
 {
     /**
      * Optionnal : The table associated with the model
      */
-    protected $table = "categories";
+    protected $table = "make_up_artists";
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Picture extends Model
+class Hairdresser extends Model
 {
     /**
      * Optionnal : The table associated with the model
      */
-    protected $table = "pictures";
+    protected $table = "hairdressers";
 }
