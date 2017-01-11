@@ -15,4 +15,19 @@ class Picture extends Model
      * Specify witch attributes are not mass assignable
      */
     protected $guarded = ['id', 'path', 'created_at', 'updated_at'];
+
+    /**
+     * Relationship Many To One with Gallery
+     * pictures belongs to gallery
+     */
+    public function gallery(){
+        return $this->belongsTo('App\Models\Gallery');
+    }
+
+    /**
+     * Relationship Many To Many with User
+     */
+    public function users(){
+        return $this->belongsToMany('App\Models\User');
+    }
 }

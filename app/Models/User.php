@@ -26,4 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Relationship Many To Many with Picture
+     */
+    public function pictures(){
+        return $this->belongsToMany('App\Models\Picture');
+    }
 }
