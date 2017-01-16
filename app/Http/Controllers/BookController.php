@@ -49,9 +49,9 @@ class BookController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if (Request::isJson()){
-            return $user;
-        }
+//        if (Request::isJson()){
+//            return $user;
+//        }
         return view('book.show', compact('user'));
     }
 

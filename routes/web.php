@@ -11,15 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 /**
  * Route group for the book section
  */
 Route::group(['prefix' => 'book'], function (){
-    Route::get('{$id}', 'BookController@show')->name('book.show');
+    dump(Route::get('{$id}', 'BookController@show')->name('book.show'));
 });
 
 /**
@@ -27,4 +25,8 @@ Route::group(['prefix' => 'book'], function (){
  */
 Route::group(['prefix' => 'studio'], function (){
     Route::get('/', 'StudioController@index')->name('studio.show');
+});
+
+Route::get('/', function () {
+    return view('welcome');
 });
