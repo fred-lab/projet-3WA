@@ -17,7 +17,7 @@
  * Route group for the book section
  */
 Route::group(['prefix' => 'book'], function (){
-    dump(Route::get('{$id}', 'BookController@show')->name('book.show'));
+    Route::get('{$id}', 'BookController@show')->name('book.show');
 });
 
 /**
@@ -25,8 +25,8 @@ Route::group(['prefix' => 'book'], function (){
  */
 Route::group(['prefix' => 'studio'], function (){
     Route::get('/', 'StudioController@index')->name('studio.show');
+    Route::resource('gallery', 'GalleryController');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'HomeController@index')->name('home.index');
