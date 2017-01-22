@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
+
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
+    /**
+     * GalleryController constructor.
+     */
+    public function __construct()
+    {
+        //ajouter le middleware auth pour restreindre l'accès
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +24,9 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        $galleries = Gallery::All();
+
+        return view('gallery.index', compact('galleries'));
     }
 
     /**
@@ -23,7 +36,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+        return view('gallery.create');
     }
 
     /**
@@ -34,7 +47,7 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
