@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 
+use App\Services\FilesManager;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
@@ -47,7 +48,15 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $data = $request->all();
+        // create a gallery
+        $gallery = new Gallery();
+        $gallery->title = $data['title'];
+        $gallery->description = $data['description'];
+        $gallery->category_id = 1; // trouver un moyen de récupérer l'id de la gallerie
+        $gallery->save();
+
+        return redirect(action('GalleryController@show', $gallery));
     }
 
     /**
@@ -58,30 +67,41 @@ class GalleryController extends Controller
      */
     public function show($id)
     {
-        //
+        $gallery = Gallery::findOrFail($id);
+
+        $pictures = $gallery->pictures()->get();
+
+        return view('gallery.show', compact('gallery', 'pictures'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Gallery $gallery
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Gallery $gallery)
     {
-        //
+        return view('gallery.edit', compact('gallery'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Gallery $gallery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Gallery $gallery)
     {
-        //
+//        dd($request->hasFile('pictures'));
+
+        $data = $request->all();
+        $gallery->title = $data['title'];
+        $gallery->description = $data['description'];
+        $gallery->category_id = 1; // trouver un moyen de récupérer l'id de la gallerie
+        $gallery->save();
+        return redirect(action('GalleryController@show', $gallery));
     }
 
     /**
@@ -92,6 +112,9 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gallery = Gallery::findOrFail($id);
+        $gallery->delete();
+
+        return redirect(action('GalleryController@index'));
     }
 }

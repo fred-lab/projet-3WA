@@ -14,7 +14,7 @@ class Picture extends Model
     /**
      * Specify witch attributes are not mass assignable
      */
-    protected $guarded = ['id', 'path', 'created_at', 'updated_at'];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     /**
      * Relationship Many To One with Gallery

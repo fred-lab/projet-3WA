@@ -6,7 +6,7 @@
 
 {!! Form::textarea('description') !!}
 
-{!! Form::file('image', ['multiple']) !!}
+{!! Form::file('pictures[]', ['multiple']) !!}
 
 {!! Form::submit('Créer') !!}
 
