@@ -1,0 +1,76 @@
+/**
+* The module's rules : all the rules for the module
+**/
+
+/** Menu **/
+.logo {
+  margin-left: 2rem;
+
+  text-align: center;
+  font-family: $title-font;
+  font-size: 2em;
+  line-height: 1.1em;
+  color: #000000;
+
+
+  span {
+    font-family: $handwrite-font;
+    color: $secondary-text-color;
+    font-weight: bold;
+  }
+}
+
+nav a {
+  display: inline-block;
+
+  width: 5rem;
+  height: 2rem;
+
+  margin: 0 1.5rem;
+
+  text-align: center;
+  line-height: 2rem;
+  font-size: 1.2em;
+  color: $secondary-text-color;
+
+  transition: all .5s ease;
+
+  &:hover{
+    font-size: 1.1em;
+    text-shadow: 1px 1px 2px grey;
+    transition: all .3s ease;
+  }
+}
+
+/** Footer **/
+footer {
+    p{
+      font-size: 0.6rem;
+      text-shadow: none;
+    }
+    a {
+      display: inline-block;
+
+      height: 2rem;
+      width: 100%;
+
+      line-height: 2rem;
+      text-align: center;
+      text-shadow: none;
+      font-size: 1em;
+      transition: all .5s ease;
+
+      &:hover {
+        color: $secondary-text-color;
+        font-size: 0.95em;
+        transition: all .3s ease;
+      }
+
+      .fa{
+        font-size: 2em;
+      }
+    }
+  div a {
+    width: 3rem;
+  }
+}

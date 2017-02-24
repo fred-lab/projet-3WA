@@ -1,38 +1,57 @@
+/**
+* List of variables
+**/
 
-// Body
-$body-bg: #f5f8fa;
+/** Colors **/
+$primary-text-color : #FFFFFF; //White
+$secondary-text-color : #FF0C64; //Pink
 
-// Borders
-$laravel-border-color: darken($body-bg, 10%);
-$list-group-border: $laravel-border-color;
-$navbar-default-border: $laravel-border-color;
-$panel-default-border: $laravel-border-color;
-$panel-inner-border: $laravel-border-color;
 
-// Brands
-$brand-primary: #3097D1;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
+/** Fonts **/
+$regular-font : 'Lato', sans-serif;
+$handwrite-font : 'Caveat', cursive;
+$title-font :  'Roboto Slab', serif;
 
-// Typography
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 14px;
-$line-height-base: 1.6;
-$text-color: #636b6f;
 
-// Navbar
-$navbar-default-bg: #fff;
 
-// Buttons
-$btn-default-color: $text-color;
+/**
+* List of mixins
+**/
 
-// Inputs
-$input-border: lighten($text-color, 40%);
-$input-border-focus: lighten($brand-primary, 25%);
-$input-color-placeholder: lighten($text-color, 30%);
+/** Material Shadow for block, depth between 0 and 5 **/
+@mixin material-shadow($depth) {
+  @if $depth < 1 {
+    box-shadow: none;
+  } @else if $depth > 5 {
+    @warn "Invalid $depth `#{$depth}` for mixin `card`.";
+  } @else {
+    box-shadow: bottom-shadow($depth), top-shadow($depth);
+  }
+}
 
-// Panels
-$panel-default-heading-bg: #fff;
+/** Effects **/
+@mixin shadow-text {
+  text-shadow: 2px 2px 5px grey;
+}
+
+
+/**
+* List of function
+**/
+
+/** shadow function **/
+@function top-shadow($depth) {
+  $primary-offset: nth(1.5 3 10 14 19, $depth) * 1px;
+  $blur: nth(1.5 3 10 14 19, $depth) * 4px;
+  $color: rgba(black, nth(.12 .16 .19 .25 .30, $depth));
+
+  @return 0 $primary-offset $blur $color;
+}
+
+@function bottom-shadow($depth) {
+  $primary-offset: nth(1.5 3 6 10 15, $depth) * 1px;
+  $blur: nth(1 3 3 5 6, $depth) * 4px;
+  $color: rgba(black, nth(.24 .23 .23 .22 .22, $depth));
+
+  @return 0 $primary-offset $blur $color;
+}

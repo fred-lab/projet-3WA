@@ -26,5 +26,14 @@ Route::group(['prefix' => 'studio'], function (){
     Route::resource('gallery', 'GalleryController');
 });
 
+/**
+ * Routes for the Homepage
+ */
+Route::get('preview', function (){
+    return App\Models\Gallery::with('pictures')
+        ->orderBy('created_at', 'desc')
+        ->limit(5)
+        ->get()->toJson();
+});
 
-Route::get('/', 'HomeController@index')->name('home.index');
+Route::resource('/', 'HomeController');

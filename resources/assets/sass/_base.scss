@@ -1,0 +1,38 @@
+/**
+* Smacss
+* The Base rules : all rules that are applied to an element selector.
+* It doesn't include any class or Id selector
+**/
+
+/** Global **/
+* {
+  box-sizing: border-box;
+}
+
+img {
+  @include material-shadow(3);
+}
+
+/** Police **/
+a {
+  text-decoration: none;
+  font-family: $regular-font;
+}
+
+a, p {
+  color: $primary-text-color;
+  @include shadow-text;
+}
+
+/** Header **/
+header {
+  @include material-shadow(1);
+}
+
+
+/** BackGround **/
+
+footer {
+  background-image: url("/assets/img/desktop/bck_footer_desktop.png");
+  background-color: black;
+}

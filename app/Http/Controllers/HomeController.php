@@ -8,15 +8,25 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Display a listing of the galleries.
+     * Display the homepage.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $galleries = Gallery::All();
 
-        return view('home.index', compact('galleries'));
+        return view('home.index');
+    }
+
+    /**
+     * Display a preview of the last 5 galleries
+     */
+    public function getPreview ()
+    {
+        return Gallery::with('pictures')
+            ->orderBy('created_at', 'desc')
+            ->limit(5)
+            ->get();
     }
 
     /**

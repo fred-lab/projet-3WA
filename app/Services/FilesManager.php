@@ -10,6 +10,7 @@ namespace App\Services;
 
 
 use App\Models\Gallery;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class FilesManager
 {
@@ -45,7 +46,7 @@ class FilesManager
      */
     public static function getPictureDir(Gallery $gallery)
     {
-        return public_path() . '/portrait/' . $gallery->slug;
+        return '/portrait/' . $gallery->slug;
     }
 
     /**
@@ -56,6 +57,7 @@ class FilesManager
      */
     public static function storePicture(Gallery $gallery, array $pictures, string $dir)
     {
+        Image::configure(array('driver' => 'imagick'));
         //if dir is not empty, count the number of pictures
         $count = count($gallery->pictures()->get());
 
@@ -73,11 +75,13 @@ class FilesManager
                 $savePicture = $gallery->pictures()->create([
                     'title'         => $filename,
                     'path'          => $dir,
-                    'original_name' => $originalName
+                    'original_name' => $originalName,
+                    'ratio' =>0
                 ]);
 
                 if ($savePicture) {
-                    $picture->move($dir, $filename );
+                    $picture->move(public_path() . $dir, $filename );
+                    PicturesManager::setLargePicture(public_path() . $dir. '/' .$filename);
                 }
                 else {
                     return false;

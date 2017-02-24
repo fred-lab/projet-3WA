@@ -1,9 +1,35 @@
+// Import all the font
+@font-face {
+  font-family: Quentin;
+  src: url('/assets/fonts/Quentin.otf');
+}
 
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@font-face {
+  font-family: hooked;
+  src: url('/assets/fonts/hooked.otf');
+}
 
-// Variables
-@import "variables";
+//font-family: 'Caveat', cursive;
+@import url('https://fonts.googleapis.com/css?family=Caveat:400,700');
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//font-family: 'Roboto Slab', serif;
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
+
+//font-family: 'Lato', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
+
+/*******
+**
+*******/
+
+//The Variables and mixins file
+@import "_variables";
+
+//The Base rules
+@import "_base";
+
+// The Layout structure
+@import "_layout";
+
+//The Module rules
+@import "_module";

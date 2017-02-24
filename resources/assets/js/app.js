@@ -13,8 +13,12 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('gallery-preview', require('./components/GalleryPreview.vue'));
+Vue.component('main-preview', require('./components/MainPreview.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    mounted : function () {
+        console.log('App is ready to rock !')
+    }
 });
