@@ -20,9 +20,11 @@
     {!! Form::close() !!}
 </div>
 
+<a href="{{ route('gallery.edit', $gallery->id) }}"><button>Editer la galerie</button></a>
+
 <div>
     @foreach($pictures as $picture)
-        <img src="{{ asset('portrait/'. $gallery->slug . '/' . $picture->title) }}" alt=" photo ">
+        <img src="{{ asset($picture->path . '/' . $picture->title) }}" alt=" photo ">
     @endforeach
 </div>
 

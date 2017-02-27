@@ -12412,9 +12412,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
-    props: ['path', 'title', 'route', 'galleryTitle']
+    props: ['path', 'title', 'route', 'galleryTitle'],
+    data: function data() {
+        return {
+            width: 0,
+            height: 0,
+            ratio: 0
+        };
+    },
+    mounted: function mounted() {
+        console.log(this.$refs.picture);
+        this.width = this.$refs.picture.naturalWidth;
+        this.height = this.$refs.picture.naturalHeight;
+        this.ratio = Math.round(this.height / this.width * 10000) / 100;
+    }
 };
 
 /***/ }),
@@ -29790,10 +29804,14 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     staticClass: "gallery-wrapper",
+    style: ({
+      height: _vm.ratio + 'vw'
+    }),
     attrs: {
       "href": _vm.route
     }
   }, [_c('img', {
+    ref: "picture",
     staticClass: "gallery-picture",
     attrs: {
       "src": _vm.path + '/' + _vm.title,
@@ -29801,7 +29819,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "gallery-title"
-  }, [_vm._v(_vm._s(_vm.galleryTitle))])])
+  }, [_vm._v(_vm._s(_vm.galleryTitle))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.ratio))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

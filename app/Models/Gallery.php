@@ -36,19 +36,16 @@ class Gallery extends Model
             $gallery->slug = str_slug($gallery->title);
         });
 
-        static ::saved(function ($gallery)
+        static::saved(function ($gallery)
         {
             FilesManager::upload(request()->pictures, $gallery);
+            FilesManager::isPreview($gallery);
         });
 
         static::updating(function ($gallery){
             $oldSlug = $gallery->slug;
             $gallery->slug = str_slug($gallery->title);
             FilesManager::updateGallery($gallery, $oldSlug);
-        });
-
-        static::updated(function ($gallery){
-//            FilesManager::updateGallery($gallery);
         });
 
         static::deleted(function ($gallery)

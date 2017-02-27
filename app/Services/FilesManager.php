@@ -10,7 +10,9 @@ namespace App\Services;
 
 
 use App\Models\Gallery;
+use App\Models\Category;
 use Intervention\Image\ImageManagerStatic as Image;
+use Mockery\CountValidator\Exception;
 
 class FilesManager
 {
@@ -31,9 +33,11 @@ class FilesManager
 
             if (!$storePictures){
                 $gallery->delete();
+
+                throw new Exception('An unexpected error has occurred while saving the pictures. The gallery was deleted ');
             }
         }
-        //to do : gestion des erreurs
+
         return $gallery;
     }
 
@@ -46,7 +50,8 @@ class FilesManager
      */
     public static function getPictureDir(Gallery $gallery)
     {
-        return '/portrait/' . $gallery->slug;
+        $category = Category::findOrFail($gallery->category_id);
+        return '/galeries/'. $category->title . '/' . $gallery->slug;
     }
 
     /**
@@ -66,8 +71,10 @@ class FilesManager
 
             if($picture->isValid()){
 
-                $filename = $gallery->slug . '-' . $rank. '.' . $picture->getClientOriginalExtension();
-                $originalName = $picture->getClientOriginalName();
+                $focus          = ($index == 0 && !request()->has('has_focus')) ? true : false ;
+                $thumbName      = ($focus) ? $gallery->slug . '-preview.' . $picture->getClientOriginalExtension() : null;
+                $filename       = $gallery->slug . '-' . $rank. '.' . $picture->getClientOriginalExtension();
+                $originalName   = $picture->getClientOriginalName();
 
                 // check for duplicate picture
                 self::checkPicture($gallery, 'original_name', $originalName);
@@ -76,12 +83,21 @@ class FilesManager
                     'title'         => $filename,
                     'path'          => $dir,
                     'original_name' => $originalName,
-                    'ratio' =>0
+                    'has_focus'     => $focus,
+                    'thumb_name'    => $thumbName
                 ]);
 
                 if ($savePicture) {
                     $picture->move(public_path() . $dir, $filename );
+                    ($focus) ? PicturesManager::setThumbsPicture(public_path() . $dir. '/' .$filename, public_path() . $dir. '/' .$thumbName) : null;
                     PicturesManager::setLargePicture(public_path() . $dir. '/' .$filename);
+                    $dimension = PicturesManager::getDimension(public_path() . $dir . '/' . $filename);
+
+                    $gallery->pictures()->update([
+                        'width'     => $dimension['width'],
+                        'height'    => $dimension['height'],
+                        'ratio'     => $dimension['ratio']
+                    ]);
                 }
                 else {
                     return false;
@@ -99,27 +115,38 @@ class FilesManager
      */
     public static function updateGallery(Gallery $gallery, $oldSlug)
     {
-        $dirPath = public_path() . '/portrait/' . $oldSlug;
+        $category   = Category::findOrFail($gallery->category_id);
+        $dirPath    = public_path() . '/galeries/'. $category->title . '/' . $oldSlug;
 
         if ($gallery->slug !== $oldSlug){
             if(is_dir($dirPath)){
                 $files = scandir($dirPath);
+//                dd($files);
                 foreach ($files as $index => $file){
                     if($file != '.' && $file != '..'){
 
                         $fileName = $gallery->slug . '-' . ($index - 1) . '.jpg';
+                        $thumbName = $gallery->slug.'-preview.jpg';
                         $filePath = self::getPictureDir($gallery);
 
-                        $query = $gallery->pictures()->where('title', $file)->update([
+                        $update = $gallery->pictures()->where('title', $file)->update([
                             'title' => $fileName,
-                            'path' => $filePath
+                            'path'  => $filePath
                         ]);
-                        if($query){
+                        $thumbUpdate = $gallery->pictures()->where('has_focus', 1)->update([
+                            'thumb_name' => $thumbName
+                        ]);
+
+                        if($update){
                             rename($dirPath . '/' . $file , $dirPath . '/' . $fileName);
+                        }
+                        //rename the old picture preview if the file exist and the update is true
+                        if($thumbUpdate && is_file($dirPath . '/' . $oldSlug . '-preview.jpg')){
+                            rename($dirPath . '/' . $oldSlug . '-preview.jpg', $dirPath. '/' .$thumbName);
                         }
                     }
                 }
-                rename($dirPath, public_path() . '/portrait/' . $gallery->slug);
+                rename($dirPath, public_path() . '/galeries/'. $category->title . '/' . $gallery->slug);
             }
         }
     }
@@ -133,7 +160,7 @@ class FilesManager
      */
     public static function destroyGallery(Gallery $gallery)
     {
-        $dirPath = self::getPictureDir($gallery);
+        $dirPath = public_path().self::getPictureDir($gallery);
 
         if(is_dir($dirPath)){
             $files = scandir($dirPath);
@@ -143,7 +170,9 @@ class FilesManager
             }
             rmdir($dirPath);
         }
-        // to do : gestion de l'erreur si il y a pas de dossier
+        else{
+            throw new Exception('An unexpected error has occurred while deleting the directory. No Directory was found. The gallery and its pictures have not been deleted ');
+        }
     }
 
     /**
@@ -171,12 +200,54 @@ class FilesManager
 
         if(!$query->isEmpty()){
             foreach ($query as $picture){
-                $pathDir = $picture->path;
-                $pictureName = $picture->title;
+                $pathDir        = $picture->path;
+                $pictureName    = $picture->title;
                 self::destroyPicture($pathDir . '/' . $pictureName);
             }
         }
         return true;
+    }
+
+
+
+    /**
+     * check if the request has a key 'has_focus' and if, update the gallery with
+     * a new picture's preview
+     *
+     * @param \App\Models\Gallery $gallery
+     * @return void
+     */
+    public static function isPreview(Gallery $gallery)
+    {
+        if(request()->has('has_focus')){
+
+            $oldPreview = $gallery->pictures()->where('has_focus', 1)->get();
+
+            dump($oldPreview);
+
+            if (!empty($oldPreview) && request()->has_focus != $oldPreview[0]->id){
+
+                // destroy the old preview's picture and update the database
+                self::destroyPicture($oldPreview[0]->path. '/' .$oldPreview[0]->thumb_name);
+                $oldPreview[0]->update([
+                    'has_focus'     => false,
+                    'thumb_name'    => null
+                ]);
+
+                // save the new preview's picture and create a jpeg
+                $picture = $gallery->pictures()->where('id', request()->has_focus)->get();
+
+                $picture[0]->update([
+                    'has_focus'     => true,
+                    'thumb_name'    => $gallery->slug. '/-preview.jpg'
+                ]);
+
+                PicturesManager::setThumbsPicture(
+                    public_path() . self::getPictureDir($gallery). '/' .$picture[0]->title,
+                    public_path() . self::getPictureDir($gallery). '/' .$gallery->slug. '-preview.jpg'
+                );
+            }
+        }
     }
 
 }

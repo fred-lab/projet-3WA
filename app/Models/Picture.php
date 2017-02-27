@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Intervention\Image\ImageManagerStatic as Image;
+use App\Services\PicturesManager;
 use Illuminate\Database\Eloquent\Model;
 
 class Picture extends Model
@@ -17,6 +19,20 @@ class Picture extends Model
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     /**
+     * the "boot" function
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saved(function ($picture)
+        {
+           
+        });
+    }
+
+    /**
      * Relationship Many To One with Gallery
      * pictures belongs to gallery
      */
@@ -30,4 +46,5 @@ class Picture extends Model
     public function users(){
         return $this->belongsToMany('App\Models\User');
     }
+    
 }

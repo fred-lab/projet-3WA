@@ -53,7 +53,7 @@ class GalleryController extends Controller
         $gallery = new Gallery();
         $gallery->title = $data['title'];
         $gallery->description = $data['description'];
-        $gallery->category_id = 1; // trouver un moyen de récupérer l'id de la gallerie
+        $gallery->category_id = $data['category']; // trouver un moyen de récupérer l'id de la gallerie
         $gallery->save();
 
         return redirect(action('GalleryController@show', $gallery));
@@ -71,6 +71,8 @@ class GalleryController extends Controller
 
         $pictures = $gallery->pictures()->get();
 
+        // eadger loading !!
+
         return view('gallery.show', compact('gallery', 'pictures'));
     }
 
@@ -82,7 +84,8 @@ class GalleryController extends Controller
      */
     public function edit(Gallery $gallery)
     {
-        return view('gallery.edit', compact('gallery'));
+        $pictures = $gallery->pictures()->get();
+        return view('gallery.edit', compact('gallery', 'pictures'));
     }
 
     /**
@@ -94,13 +97,13 @@ class GalleryController extends Controller
      */
     public function update(Request $request, Gallery $gallery)
     {
-//        dd($request->hasFile('pictures'));
-
+//        dd($request->all());
         $data = $request->all();
         $gallery->title = $data['title'];
         $gallery->description = $data['description'];
-        $gallery->category_id = 1; // trouver un moyen de récupérer l'id de la gallerie
+        $gallery->category_id = $data['category'];
         $gallery->save();
+
         return redirect(action('GalleryController@show', $gallery));
     }
 

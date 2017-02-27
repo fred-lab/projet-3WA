@@ -1,13 +1,27 @@
 <template>
-    <a :href="route" class="gallery-wrapper">
-        <img :src="path + '/' + title" :alt="title" class="gallery-picture">
+    <a :href="route" class="gallery-wrapper" :style="{ height : ratio + 'vw'}">
+        <img :src="path + '/' + title" :alt="title" class="gallery-picture" ref="picture">
         <span class="gallery-title">{{ galleryTitle }}</span>
+        <p>{{ratio}}</p>
     </a>
 </template>
 
 <script type="text/babel">
     export default {
-        props: ['path', 'title', 'route', 'galleryTitle']
+        props: ['path', 'title', 'route', 'galleryTitle'],
+        data(){
+            return {
+                width: 0,
+                height: 0,
+                ratio: 0
+            }
+        },
+        mounted(){
+            console.log(this.$refs.picture)
+            this.width = this.$refs.picture.naturalWidth
+            this.height = this.$refs.picture.naturalHeight
+            this.ratio = Math.round((this.height / this.width) * 10000)/100
+        }
     }
 </script>
 
