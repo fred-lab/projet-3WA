@@ -13,6 +13,9 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('picture-form', require('./components/PictureForm.vue'));
+Vue.component('gallery-form', require('./components/GalleryForm.vue'));
+Vue.component('admin-galleries', require('./components/AdminGalleries.vue'));
 Vue.component('gallery-preview', require('./components/GalleryPreview.vue'));
 Vue.component('main-preview', require('./components/MainPreview.vue'));
 

@@ -84,7 +84,8 @@ class FilesManager
                     'path'          => $dir,
                     'original_name' => $originalName,
                     'has_focus'     => $focus,
-                    'thumb_name'    => $thumbName
+                    'thumb_name'    => $thumbName,
+                    'ratio'         => 1
                 ]);
 
                 if ($savePicture) {

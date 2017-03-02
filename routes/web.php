@@ -25,12 +25,20 @@ Route::group(['prefix' => 'studio'], function (){
     Route::get('/', 'StudioController@index')->name('studio.show');
     Route::resource('gallery', 'GalleryController');
 });
+Route::get('preview-all', function (){
+    return App\Models\Gallery::with(['pictures' => function($query){
+        $query->where('has_focus', '=', '1');
+    }])
+        ->get()->toJson();
+});
 
 /**
  * Routes for the Homepage
  */
 Route::get('preview', function (){
-    return App\Models\Gallery::with('pictures')
+    return App\Models\Gallery::with(['pictures' => function($query){
+        $query->where('has_focus', '=', '1');
+    }])
         ->orderBy('created_at', 'desc')
         ->limit(5)
         ->get()->toJson();

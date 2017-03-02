@@ -41,3 +41,24 @@ footer {
     display: flex;
   }
 }
+
+/** Admin (studio) **/
+.admin-container{
+  display: flex;
+
+  .sidebar{
+    text-align: center;
+    width: 15em;
+
+  }
+}
+
+.admin-nav{
+    display: flex;
+    flex-flow: column;
+    width: inherit;
+
+  a{
+    width: auto;
+  }
+}

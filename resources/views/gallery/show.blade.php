@@ -1,30 +1,33 @@
-<div>
-    <h1> {{ $gallery->title }}</h1>
-</div>
+@extends('studio.admin')
 
-<div>
-    <p> {{ $gallery->description }}</p>
-</div>
+@section('admin-content')
+    <div>
+        <h1> {{ $gallery->title }}</h1>
+    </div>
 
-<div>
-    <p> slug = {{ $gallery->slug }}</p>
-</div>
+    <div>
+        <p> {{ $gallery->description }}</p>
+    </div>
 
-<div>
-    {!! Form::open([
-        'method' => 'delete',
-        'route' =>[
-            'gallery.destroy', $gallery->id ]
-        ]) !!}
-    {!! Form::submit('Supprimer la gallerie') !!}
-    {!! Form::close() !!}
-</div>
+    <div>
+        <p> slug = {{ $gallery->slug }}</p>
+    </div>
 
-<a href="{{ route('gallery.edit', $gallery->id) }}"><button>Editer la galerie</button></a>
+    <div>
+        {!! Form::open([
+            'method' => 'delete',
+            'route' =>[
+                'gallery.destroy', $gallery->id ]
+            ]) !!}
+        {!! Form::submit('Supprimer la gallerie') !!}
+        {!! Form::close() !!}
+    </div>
 
-<div>
-    @foreach($pictures as $picture)
-        <img src="{{ asset($picture->path . '/' . $picture->title) }}" alt=" photo ">
-    @endforeach
-</div>
+    <a href="{{ route('gallery.edit', $gallery->id) }}"><button>Editer la galerie</button></a>
 
+    <div>
+        @foreach($pictures as $picture)
+            <img src="{{ asset($picture->path . '/' . $picture->title) }}" alt=" photo ">
+        @endforeach
+    </div>
+@endsection

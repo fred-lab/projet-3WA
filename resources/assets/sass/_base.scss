@@ -16,12 +16,27 @@ img {
 /** Police **/
 a {
   text-decoration: none;
-  font-family: $regular-font;
+  font-family:$regular-font;
 }
 
 a, p {
   color: $primary-text-color;
   @include shadow-text;
+}
+
+.admin-container {
+  font-family: $title-font;
+}
+
+.admin-nav {
+
+  h2{
+    color: $secondary-text-color;
+  }
+
+  a{
+    color:$primary-text-color; //White;
+  }
 }
 
 /** Header **/
@@ -35,4 +50,12 @@ header {
 footer {
   background-image: url("/assets/img/desktop/bck_footer_desktop.png");
   background-color: black;
+}
+
+.admin-container{
+  background-color: $admin-bck-color;
+}
+
+.sidebar{
+  background-color: $dark-color;
 }

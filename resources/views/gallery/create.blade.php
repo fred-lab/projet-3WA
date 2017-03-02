@@ -1,22 +1,26 @@
-<h1>Création d'une gallerie</h1>
+@extends('studio.admin')
 
-<h2> Etape 1 : Créer une gallerie</h2>
+@section('admin-content')
+    <h1>Création d'une gallerie</h1>
 
-{!! Form::open([ 'route' => 'gallery.store', 'files' => true ]) !!}
+    <h2> Etape 1 : Créer une gallerie</h2>
 
-<p>Sélectionnez une catégorie :</p>
-{!! Form::select('category', ['1' => 'Portrait', '2' => 'Voyage', '3' => 'Mariage', '4' => 'Street']) !!}
+    {!! Form::open([ 'route' => 'gallery.store', 'files' => true ]) !!}
 
-<p>Donnez un nom à la galerie :</p>
-{!! Form::text('title') !!}
+    <p>Sélectionnez une catégorie :</p>
+    {!! Form::select('category', ['1' => 'Portrait', '2' => 'Voyage', '3' => 'Mariage', '4' => 'Street']) !!}
 
-<p>Décrivez la galerie :</p>
-{!! Form::textarea('description', null, ['placeholder' => 'Décrivez cette galerie (optionnel)']) !!}
+    <p>Donnez un nom à la galerie :</p>
+    {!! Form::text('title') !!}
 
-<p>Choisissez les photos à ajouter à la galerie :</p>
-{!! Form::file('pictures[]', ['multiple']) !!}
+    <p>Décrivez la galerie :</p>
+    {!! Form::textarea('description', null, ['placeholder' => 'Décrivez cette galerie (optionnel)']) !!}
 
-<p>Cliquez sur "Créer" pour créer la galerie et passer à l'étape d'édition de la galerie :</p>
-{!! Form::submit('Créer la galerie') !!}
+    <p>Choisissez les photos à ajouter à la galerie :</p>
+    {!! Form::file('pictures[]', ['multiple']) !!}
 
-{!! Form::close() !!}
+    <p>Cliquez sur "Créer" pour créer la galerie et passer à l'étape d'édition de la galerie :</p>
+    {!! Form::submit('Créer la galerie') !!}
+
+    {!! Form::close() !!}
+@endsection
