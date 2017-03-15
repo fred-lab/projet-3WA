@@ -20,13 +20,20 @@ import router from './routes.js';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('admin-nav', require('./components/AdminNav.vue'));
-Vue.component('picture-form', require('./components/PictureForm.vue'));
-Vue.component('gallery-form', require('./components/GalleryForm.vue'));
-Vue.component('admin-galleries', require('./components/AdminGalleriesIndex.vue'));
-Vue.component('admin-gallery', require('./components/AdminGallery.vue'));
-Vue.component('gallery-preview', require('./components/GalleryPreview.vue'));
-Vue.component('main-preview', require('./components/MainPreview.vue'));
+Vue.component('admin-nav', require('./components/studio/AdminNav.vue'));
+Vue.component('gallery-form', require('./components/studio/GalleryForm.vue'));
+Vue.component('admin-galleries', require('./components/studio/AdminGalleriesIndex.vue'));
+Vue.component('admin-gallery', require('./components/studio/AdminGallery.vue'));
+
+Vue.component('gallery-preview', require('./components/home/GalleryPreview.vue'));
+Vue.component('homepage', require('./components/home/Homepage.vue'));
+Vue.component('gallery', require('./components/home/Gallery.vue'));
+Vue.component('gallery-category', require('./components/home/IndexCategory.vue'));
+Vue.component('picture', require('./components/home/Picture.vue'));
+Vue.component('home-nav', require('./components/home/HomeNav.vue'));
+Vue.component('footer-view', require('./components/home/Footer.vue'));
+Vue.component('about-view', require('./components/home/About.vue'));
+Vue.component('contact-view', require('./components/home/Contact.vue'));
 
 Vue.directive('focus',
     (el, value) => {

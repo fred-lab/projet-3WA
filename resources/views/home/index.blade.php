@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="galleries">
-        <main-preview></main-preview>
+        <router-view></router-view>
     </section>
     <section class="about">
         {{--la zone about--}}

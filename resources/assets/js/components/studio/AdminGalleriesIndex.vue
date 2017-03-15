@@ -3,7 +3,7 @@
         <h1>Index des {{galleries.length}} galeries du site</h1>
         <div class="gallery-item" v-for="gallery in galleries" :class="{ private: !gallery.public}">
             <template  v-for="picture in gallery.pictures">
-                <router-link :to="{name: 'gallery.show', params:{ id: gallery.id}}">
+                <router-link :to="{name: 'studio.gallery.show', params:{ id: gallery.id}}">
                     <div>
                         <img :src="picture.path +'/'+ picture.thumb_name" :alt="picture.title">
                     </div>
@@ -30,10 +30,10 @@
             return{
                 galleries: [],
                 categories:[
-                    { id:0, value:'Portrait'},
-                    { id:1, value:'Voyage'},
-                    { id:2, value:'Mariage'},
-                    { id:3, value:'Street'}
+                    { id:1, value:'portrait'},
+                    { id:2, value:'voyage'},
+                    { id:3, value:'mariage'},
+                    { id:4, value:'street'}
                 ]
             }
         },
@@ -53,7 +53,7 @@
 </script>
 
 <style lang="scss">
-    @import "../../sass/_variables.scss";
+    @import "../../../sass/_variables.scss";
     .admin-galleries{
         display: flex;
         flex-flow: column;

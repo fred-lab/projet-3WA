@@ -12,37 +12,16 @@ header {
   height: 2.5em;
 }
 
-nav {
-  margin-right : 10em;
-}
+
 
 /** Container **/
 
 .content {
 }
 
-/** Footer **/
-footer {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
 
-  height: 25em;
 
-  padding: 2em 0 2em 0;
-
-  a {
-    display: inline-block;
-
-    margin: 1rem;
-  }
-
-  div{
-    display: flex;
-  }
-}
-
-/** Admin (studio) **/
+/** Admin **/
 .admin-container{
   display: flex;
 

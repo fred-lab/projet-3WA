@@ -30,7 +30,7 @@
 
             <!-- Header -->
             <header>
-                @include('partials.header')
+                <home-nav></home-nav>
             </header>
 
             <!-- Main Content -->
@@ -40,7 +40,7 @@
 
             <!-- Footer -->
             <footer>
-                @include('partials.footer')
+                <footer-view></footer-view>
             </footer>
 
         </div>

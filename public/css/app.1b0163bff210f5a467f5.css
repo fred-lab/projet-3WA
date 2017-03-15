@@ -83,11 +83,6 @@ header {
 
 /** BackGround **/
 
-footer {
-  background-image: url("/assets/img/desktop/bck_footer_desktop.png");
-  background-color: black;
-}
-
 .admin-container {
   background-color: #4E4466;
 }
@@ -114,41 +109,9 @@ header {
   height: 2.5em;
 }
 
-nav {
-  margin-right: 10em;
-}
-
 /** Container **/
 
-/** Footer **/
-
-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 25em;
-  padding: 2em 0 2em 0;
-}
-
-footer a {
-  display: inline-block;
-  margin: 1rem;
-}
-
-footer div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-/** Admin (studio) **/
+/** Admin **/
 
 .admin-container {
   display: -webkit-box;
@@ -183,74 +146,3 @@ footer div {
 /**
 * The module's rules : all the rules for the module
 **/
-
-/** Menu **/
-
-.logo {
-  margin-left: 2rem;
-  text-align: center;
-  font-family: "Roboto Slab", serif;
-  font-size: 2em;
-  line-height: 1.1em;
-  color: #000000;
-}
-
-.logo span {
-  font-family: "Caveat", cursive;
-  color: #FF0C64;
-  font-weight: bold;
-}
-
-nav a {
-  display: inline-block;
-  width: 5rem;
-  height: 2rem;
-  margin: 0 1.5rem;
-  text-align: center;
-  line-height: 2rem;
-  font-size: 1.2em;
-  color: #FF0C64;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
-}
-
-nav a:hover {
-  font-size: 1.1em;
-  text-shadow: 1px 1px 2px grey;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
-}
-
-/** Footer **/
-
-footer p {
-  font-size: 0.6rem;
-  text-shadow: none;
-}
-
-footer a {
-  display: inline-block;
-  height: 2rem;
-  width: 100%;
-  line-height: 2rem;
-  text-align: center;
-  text-shadow: none;
-  font-size: 1em;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
-}
-
-footer a:hover {
-  color: #FF0C64;
-  font-size: 0.95em;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
-}
-
-footer a .fa {
-  font-size: 2em;
-}
-
-footer div a {
-  width: 3rem;
-}

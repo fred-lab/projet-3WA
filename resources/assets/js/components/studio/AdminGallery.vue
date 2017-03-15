@@ -259,7 +259,7 @@
                 const prompt = confirm("Voulez-vous supprimer cette galerie ?\nCette action est irreversible !")
 
                 if (prompt){
-                    axios.delete('/studio/gallery/'+this.gallery.id).then(this.$router.push({name : 'gallery.index' }))
+                    axios.delete('/studio/gallery/'+this.gallery.id).then(this.$router.push({name : 'studio.gallery.index' }))
                 }
             },
             destroyPicture(picture){
@@ -310,7 +310,7 @@
 </script>
 
 <style lang="scss">
-    @import "../../sass/_variables.scss";
+    @import "../../../sass/_variables.scss";
     .gallery-show{
         text-align: center;
 

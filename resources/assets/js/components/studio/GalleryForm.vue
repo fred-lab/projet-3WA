@@ -85,7 +85,7 @@
                 if(formData.get('title') && formData.getAll('pictures[]').length > 0){
                     axios.post('/studio/gallery', formData)
                             .then( ({data}) => this.$router.push({
-                                name: 'gallery.show',
+                                name: 'studio.gallery.show',
                                 params: { id: data.id}
                             }))
                 }

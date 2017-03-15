@@ -1,14 +1,15 @@
 <template>
-    <a :href="route" class="gallery-wrapper" :style="{ height : ratio + 'vw'}">
-        <img :src="path + '/' + title" :alt="title" class="gallery-picture" ref="picture">
-        <span class="gallery-title">{{ galleryTitle }}</span>
-        <p>{{ratio}}</p>
-    </a>
+    <!--:style="{ height : ratio + 'vw'}"-->
+    <!--route vers gallery.show-->
+    <router-link :to="{name: 'gallery.show', params:{category: category, slug: slug}}" class="gallery-wrapper">
+        <img :src="path + '/' + filename" :alt="title" class="gallery-picture" ref="picture">
+        <span class="gallery-title">{{ title }}</span>
+    </router-link>
 </template>
 
 <script type="text/babel">
     export default {
-        props: ['path', 'title', 'route', 'galleryTitle'],
+        props: ['slug', 'category', 'filename', 'path', 'title'],
         data(){
             return {
                 width: 0,
