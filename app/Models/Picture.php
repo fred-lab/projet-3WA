@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\FilesManager;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\Services\PicturesManager;
 use Illuminate\Database\Eloquent\Model;
@@ -26,9 +27,12 @@ class Picture extends Model
     {
         parent::boot();
 
-        static::saved(function ($picture)
+        static::deleted(function ($picture)
         {
-           
+            FilesManager::destroyPicture(public_path().$picture->path. '/' .$picture->title);
+            if($picture->has_focus == 1){
+                FilesManager::destroyPicture(public_path().$picture->path. '/' .$picture->thumb_name);
+            }
         });
     }
 

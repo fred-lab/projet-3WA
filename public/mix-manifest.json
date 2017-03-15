@@ -1,5 +1,7 @@
 {
-  "/js/app.js": "/js/app.js",
-  "/css/app.css": "/css/app.css",
+  "/js/app.js": "/js/app.3d50943331ea07bedf1a.js",
+  "/css/app.css": "/css/app.084f61bd874d433c4596.css",
+  "/js/vendor.js": "/js/vendor.b42e817bf212aa1f1001.js",
+  "/js/manifest.js": "/js/manifest.d41d8cd98f00b204e980.js",
   "/css/normalize.min.css": "/css/normalize.min.css"
 }

@@ -24,6 +24,7 @@ Route::group(['prefix' => 'book'], function (){
 Route::group(['prefix' => 'studio'], function (){
     Route::get('/', 'StudioController@index')->name('studio.show');
     Route::resource('gallery', 'GalleryController');
+    Route::resource('picture', 'PictureController');
 });
 Route::get('preview-all', function (){
     return App\Models\Gallery::with(['pictures' => function($query){

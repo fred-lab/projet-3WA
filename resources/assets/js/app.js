@@ -5,7 +5,14 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import './bootstrap';
+
+/**
+ * Import routes file
+ */
+import router from './routes.js';
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -13,14 +20,34 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('admin-nav', require('./components/AdminNav.vue'));
 Vue.component('picture-form', require('./components/PictureForm.vue'));
 Vue.component('gallery-form', require('./components/GalleryForm.vue'));
-Vue.component('admin-galleries', require('./components/AdminGalleries.vue'));
+Vue.component('admin-galleries', require('./components/AdminGalleriesIndex.vue'));
+Vue.component('admin-gallery', require('./components/AdminGallery.vue'));
 Vue.component('gallery-preview', require('./components/GalleryPreview.vue'));
 Vue.component('main-preview', require('./components/MainPreview.vue'));
 
+Vue.directive('focus',
+    (el, value) => {
+        if(value){
+            Vue.nextTick(_ =>{
+                el.focus()
+            })
+        }
+})
+
+Vue.directive('area',
+    (el) => {
+        Vue.nextTick(_ =>{
+            el.style.height = (el.scrollHeight) + 'px'
+        })
+    })
+
+
 const app = new Vue({
     el: '#app',
+    router,
     mounted : function () {
         console.log('App is ready to rock !')
     }

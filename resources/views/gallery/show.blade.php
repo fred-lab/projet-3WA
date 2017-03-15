@@ -26,7 +26,7 @@
     <a href="{{ route('gallery.edit', $gallery->id) }}"><button>Editer la galerie</button></a>
 
     <div>
-        @foreach($pictures as $picture)
+        @foreach($gallery->pictures as $picture)
             <img src="{{ asset($picture->path . '/' . $picture->title) }}" alt=" photo ">
         @endforeach
     </div>

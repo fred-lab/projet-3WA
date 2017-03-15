@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GalleryRequest;
 use App\Models\Gallery;
 
-use App\Services\FilesManager;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
@@ -25,9 +25,15 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries = Gallery::All();
+        $galleries = Gallery::with(['pictures' => function($query){
+            $query->where('has_focus', '=', '1');
+            }])
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-        return view('gallery.index', compact('galleries'));
+        return (request()->ajax())
+            ? $galleries
+            : view('gallery.index', compact('galleries'));
     }
 
     /**
@@ -45,18 +51,23 @@ class GalleryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @return $gallery json
      */
-    public function store(Request $request)
+    public function store(GalleryRequest $request)
     {
-        $data = $request->all();
-        // create a gallery
-        $gallery = new Gallery();
-        $gallery->title = $data['title'];
-        $gallery->description = $data['description'];
-        $gallery->category_id = $data['category']; // trouver un moyen de récupérer l'id de la gallerie
-        $gallery->save();
+        $gallery = Gallery::create([
+                'title'       => $request['title'],
+                'description' => $request['description'],
+                'category_id' => $request['category'],
+                'date'        => $request['date'],
+                'city'        => $request['city'],
+                'price'       => $request['price'],
+                'public'      => ($request['public'] == 1) ? 1 : 0
+            ]);
 
-        return redirect(action('GalleryController@show', $gallery));
+        return ($request->ajax())
+            ? $gallery
+            : redirect(action('GalleryController@show', $gallery));
     }
 
     /**
@@ -67,13 +78,11 @@ class GalleryController extends Controller
      */
     public function show($id)
     {
-        $gallery = Gallery::findOrFail($id);
+        $gallery = Gallery::with('pictures')->findOrFail($id);
 
-        $pictures = $gallery->pictures()->get();
-
-        // eadger loading !!
-
-        return view('gallery.show', compact('gallery', 'pictures'));
+        return (request()->ajax())
+            ? $gallery
+            : view('gallery.show', compact('gallery'));
     }
 
     /**
@@ -95,16 +104,21 @@ class GalleryController extends Controller
      * @param  \App\Models\Gallery $gallery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gallery $gallery)
+    public function update(GalleryRequest $request, Gallery $gallery)
     {
-//        dd($request->all());
-        $data = $request->all();
-        $gallery->title = $data['title'];
-        $gallery->description = $data['description'];
-        $gallery->category_id = $data['category'];
-        $gallery->save();
+        $gallery->update([
+            'title'       => $request['title'],
+            'description' => $request['description'],
+            'category_id' => $request['category'],
+            'date'        => $request['date'],
+            'city'        => $request['city'],
+            'price'       => $request['price'],
+            'public'      => ($request['public'] == 1) ? 1 : 0
+        ]);
 
-        return redirect(action('GalleryController@show', $gallery));
+        return ($request->ajax())
+            ? $gallery->load('pictures')
+            : redirect(action('GalleryController@show', $gallery));
     }
 
     /**
@@ -118,6 +132,8 @@ class GalleryController extends Controller
         $gallery = Gallery::findOrFail($id);
         $gallery->delete();
 
-        return redirect(action('GalleryController@index'));
+        return (request()->ajax())
+            ?  response()->json([ 'success' => 'Gallerie supprimée' ])
+            : redirect(action('GalleryController@index'));
     }
 }

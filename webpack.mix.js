@@ -12,6 +12,8 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+    .extract(['vue', 'jquery', 'axios','lodash', 'vue-router'])
     .mix.copy('node_modules/normalize-css/normalize.css', 'public/css')
     .mix.minify('public/css/normalize.css')
-    .sass('resources/assets/sass/app.scss', 'public/css');
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .version();

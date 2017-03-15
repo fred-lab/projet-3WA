@@ -11,13 +11,14 @@ namespace App\Services;
 
 use App\Models\Gallery;
 use App\Models\Category;
+use App\Models\Picture;
 use Intervention\Image\ImageManagerStatic as Image;
 use Mockery\CountValidator\Exception;
 
 class FilesManager
 {
     /**
-     * Create a gallery and upload/move pictures into folder
+     * When a gallery is create, upload/move pictures into folder
      *
      * @param array $pictures
      * @param \App\Models\Gallery $gallery
@@ -68,6 +69,11 @@ class FilesManager
 
         foreach ($pictures as $index => $picture){
             $rank = $index + $count  + 1;
+
+            //check the size of the file
+            if($picture->getClientSize() > 20000000){
+                throw new Exception('The file size exceeds the limit of size allowed');
+            }
 
             if($picture->isValid()){
 
@@ -122,7 +128,6 @@ class FilesManager
         if ($gallery->slug !== $oldSlug){
             if(is_dir($dirPath)){
                 $files = scandir($dirPath);
-//                dd($files);
                 foreach ($files as $index => $file){
                     if($file != '.' && $file != '..'){
 
@@ -212,7 +217,7 @@ class FilesManager
 
 
     /**
-     * check if the request has a key 'has_focus' and if, update the gallery with
+     * Check if the request has a key 'has_focus' and if, update the gallery with
      * a new picture's preview
      *
      * @param \App\Models\Gallery $gallery
@@ -224,7 +229,6 @@ class FilesManager
 
             $oldPreview = $gallery->pictures()->where('has_focus', 1)->get();
 
-            dump($oldPreview);
 
             if (!empty($oldPreview) && request()->has_focus != $oldPreview[0]->id){
 
@@ -240,7 +244,7 @@ class FilesManager
 
                 $picture[0]->update([
                     'has_focus'     => true,
-                    'thumb_name'    => $gallery->slug. '/-preview.jpg'
+                    'thumb_name'    => $gallery->slug. '-preview.jpg'
                 ]);
 
                 PicturesManager::setThumbsPicture(
@@ -250,5 +254,4 @@ class FilesManager
             }
         }
     }
-
 }

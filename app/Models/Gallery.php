@@ -40,6 +40,7 @@ class Gallery extends Model
         {
             FilesManager::upload(request()->pictures, $gallery);
             FilesManager::isPreview($gallery);
+            Gallery::picturesCount($gallery);
         });
 
         static::updating(function ($gallery){
@@ -68,5 +69,17 @@ class Gallery extends Model
      */
     public  function pictures(){
         return $this->hasMany('App\Models\Picture');
+    }
+
+    /**
+     * Update the gallery with the count of pictures in the gallery
+     */
+    public static function picturesCount($gallery){
+        $count = $gallery->pictures()->count();
+        
+        if($gallery->total_pictures != $count)
+            return $gallery->update([
+            'total_pictures' => $count
+        ]);
     }
 }
