@@ -32,13 +32,13 @@
                 /** category_id = int **/
                 var category = 0;
                 for(let key in this.categories){
-                    console.log(this.$route.params.category)
-                    console.log(this.categories[key].value == this.$route.params.category)
+//                    console.log(this.$route.params.category)
+//                    console.log(this.categories[key].value == this.$route.params.category)
                     if(this.categories[key].value == this.$route.params.category){
                         category = this.categories[key].id
                     }
                 }
-                console.log(category)
+//                console.log(category)
                 axios.get('category/'+category).then( ({data}) => this.galleries = data)
             }
         },

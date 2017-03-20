@@ -44,6 +44,11 @@ const routes = [
         path: '/gallery/:id(\\d+)',
         name: 'studio.gallery.show',
         component: require('./components/studio/AdminGallery')
+    },
+    {
+        path: '/messages',
+        name: 'studio.messages.index',
+        component: require('./components/studio/BoiteReception')
     }
 ]
 

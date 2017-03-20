@@ -33,7 +33,7 @@ services:
                 - PGID=1000
                 - NODE_VERSION=stable
                 - YARN_VERSION=latest
-                - TZ=UTC
+                - TZ=Europe/Paris
         volumes_from:
             - applications
         extra_hosts:
@@ -336,6 +336,13 @@ services:
         build: ./selenium
         ports:
             - "4444:4444"
+
+### MailDev #########
+
+    maildev:
+      image: djfarrelly/maildev
+      ports:
+       - "1080:80"
 
 ### Volumes Setup ###########################################
 

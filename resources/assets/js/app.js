@@ -24,6 +24,7 @@ Vue.component('admin-nav', require('./components/studio/AdminNav.vue'));
 Vue.component('gallery-form', require('./components/studio/GalleryForm.vue'));
 Vue.component('admin-galleries', require('./components/studio/AdminGalleriesIndex.vue'));
 Vue.component('admin-gallery', require('./components/studio/AdminGallery.vue'));
+Vue.component('boite-reception', require('./components/studio/BoiteReception.vue'));
 
 Vue.component('gallery-preview', require('./components/home/GalleryPreview.vue'));
 Vue.component('homepage', require('./components/home/Homepage.vue'));

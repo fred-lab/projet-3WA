@@ -49,7 +49,7 @@ class GalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\GalleryRequest  $request
      * @return \Illuminate\Http\Response
      * @return $gallery json
      */
@@ -100,7 +100,7 @@ class GalleryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\GalleryRequest  $request
      * @param  \App\Models\Gallery $gallery
      * @return \Illuminate\Http\Response
      */
@@ -124,12 +124,11 @@ class GalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Gallery $gallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Gallery $gallery)
     {
-        $gallery = Gallery::findOrFail($id);
         $gallery->delete();
 
         return (request()->ajax())
