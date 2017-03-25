@@ -1,7 +1,7 @@
 <template>
     <section class="index-category">
         <div class="category-item" v-for="gallery in galleries">
-            <gallery-preview :slug="gallery.slug" :category="1" :filename="gallery.pictures[0].title"
+            <gallery-preview :slug="gallery.slug" :category="category" :filename="gallery.pictures[0].title"
                              :path="gallery.pictures[0].path" :title="gallery.title"></gallery-preview>
         </div>
     </section>
@@ -17,7 +17,8 @@
                     { id:2, value:'voyage'},
                     { id:3, value:'mariage'},
                     { id:4, value:'street'}
-                ]
+                ],
+                category: ''
             }
         },
         watch: {
@@ -30,16 +31,14 @@
         methods: {
             getIndexByCategory(){
                 /** category_id = int **/
-                var category = 0;
+                var categoryId = 0;
                 for(let key in this.categories){
-//                    console.log(this.$route.params.category)
-//                    console.log(this.categories[key].value == this.$route.params.category)
                     if(this.categories[key].value == this.$route.params.category){
-                        category = this.categories[key].id
+                        categoryId = this.categories[key].id
+                        this.category = this.categories[key].value
                     }
                 }
-//                console.log(category)
-                axios.get('category/'+category).then( ({data}) => this.galleries = data)
+                axios.get('/api/category/'+categoryId).then( ({data}) => this.galleries = data)
             }
         },
         created(){

@@ -800,6 +800,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {};
 
@@ -809,6 +811,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -975,7 +978,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        axios.get('/gallery/' + this.$route.params.slug).then(function (_ref) {
+        axios.get('/api/gallery/' + this.$route.params.slug).then(function (_ref) {
             var data = _ref.data;
             return _this.gallery = data;
         });
@@ -1008,7 +1011,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        //            console.log(this.$refs.picture)
         this.width = this.$refs.picture.naturalWidth;
         this.height = this.$refs.picture.naturalHeight;
         this.ratio = Math.round(this.height / this.width * 10000) / 100;
@@ -1100,7 +1102,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        axios.get('/preview').then(function (_ref) {
+        axios.get('/api/preview').then(function (_ref) {
             var data = _ref.data;
             return _this.galleries = data;
         });
@@ -1127,7 +1129,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             galleries: [],
-            categories: [{ id: 1, value: 'portrait' }, { id: 2, value: 'voyage' }, { id: 3, value: 'mariage' }, { id: 4, value: 'street' }]
+            categories: [{ id: 1, value: 'portrait' }, { id: 2, value: 'voyage' }, { id: 3, value: 'mariage' }, { id: 4, value: 'street' }],
+            category: ''
         };
     },
 
@@ -1143,16 +1146,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             /** category_id = int **/
-            var category = 0;
+            var categoryId = 0;
             for (var key in this.categories) {
-                //                    console.log(this.$route.params.category)
-                //                    console.log(this.categories[key].value == this.$route.params.category)
                 if (this.categories[key].value == this.$route.params.category) {
-                    category = this.categories[key].id;
+                    categoryId = this.categories[key].id;
+                    this.category = this.categories[key].value;
                 }
             }
-            //                console.log(category)
-            axios.get('category/' + category).then(function (_ref) {
+            axios.get('/api/category/' + categoryId).then(function (_ref) {
                 var data = _ref.data;
                 return _this.galleries = data;
             });
@@ -2022,6 +2023,14 @@ var routes = [
     name: 'homepage',
     component: __webpack_require__(19)
 }, {
+    path: '/about',
+    name: 'about',
+    component: __webpack_require__(16)
+}, {
+    path: '/contact',
+    name: 'contact',
+    component: __webpack_require__(17)
+}, {
     path: '/:category',
     name: 'gallery.category',
     component: __webpack_require__(20)
@@ -2030,14 +2039,6 @@ var routes = [
     name: 'gallery.show',
     component: __webpack_require__(18),
     props: true
-}, {
-    path: '/about',
-    name: 'about',
-    component: __webpack_require__(16)
-}, {
-    path: '/contact',
-    name: 'contact',
-    component: __webpack_require__(17)
 },
 /** Studio **/
 {
@@ -2056,9 +2057,13 @@ var routes = [
     path: '/messages',
     name: 'studio.messages.index',
     component: __webpack_require__(23)
+}, {
+    path: '*',
+    redirect: '/'
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["default"]({
+    mode: 'history',
     routes: routes
 });
 
@@ -2085,7 +2090,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.carre {\n  width: 20vw;\n  height: 20vw;\n  background-color: #1b6d85;\n}\n", ""]);
 
 // exports
 
@@ -2099,7 +2104,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -2127,7 +2132,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.contact-view {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 15em 0;\n  background-image: url(\"/assets/img/desktop/concert_desktop.jpg\");\n  background-repeat: no-repeat;\n}\n.contact-view .form-group {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-flow: column;\n            flex-flow: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    width: 100vw;\n    height: 30vw;\n    font-size: 1.2rem;\n    color: #FFFFFF;\n    background-image: url(\"/assets/img/desktop/bck_contact_desktop.png\");\n    background-repeat: no-repeat;\n}\n.contact-view .form-group .form-element {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      position: relative;\n      padding: 1vw 2vw;\n}\n.contact-view .form-group .form-element label {\n        position: absolute;\n        top: 1.5em;\n        cursor: pointer;\n        -webkit-transition: all 0.5s ease-in;\n        transition: all 0.5s ease-in;\n}\nh2 {\n  -ms-flex-item-align: start;\n      align-self: flex-start;\n  font-size: 1.4rem;\n}\ninput,\ntextarea {\n  padding: 0.5em 0em;\n  background-color: transparent;\n  color: transparent;\n  cursor: pointer;\n  border-bottom: thin solid #FFFFFF !important;\n}\ninput:focus,\n  textarea:focus {\n    color: #FFFFFF;\n    -webkit-transition: color 0.3s ease-out;\n    transition: color 0.3s ease-out;\n    -webkit-transition-delay: 0.3s;\n            transition-delay: 0.3s;\n    /*+ label {*/\n    /*animation-name: move;*/\n    /*animation-duration: 0.3s;*/\n    /*transition: all 0.3s ease-in;*/\n    /*}*/\n}\ninput:not([type=\"submit\"]) {\n  width: 30vw;\n}\ntextarea {\n  width: 64vw;\n  height: 10vw;\n}\n#title {\n  width: 64vw;\n}\ninput[type=\"submit\"] {\n  padding: 0.5em 0.8em;\n  background-color: transparent;\n  color: #fff;\n  border-style: solid;\n  border-radius: 10em;\n  box-shadow: 1px 1px 2px grey;\n  -webkit-transition: all 0.5s linear;\n  transition: all 0.5s linear;\n  text-shadow: 1px 1px 2px grey;\n}\ninput[type=\"submit\"]:disabled {\n    cursor: not-allowed;\n}\n.select {\n  position: absolute;\n  top: 0em !important;\n  -webkit-transition: all 0.3s ease-in;\n  transition: all 0.3s ease-in;\n}\n.solid {\n  color: #FFFFFF !important;\n}\n.form-error,\n.form-success {\n  padding-left: 1em;\n  font-size: 0.9rem;\n}\n.form-error {\n  color: #ff3654;\n}\n.form-success {\n  color: #26ee77;\n}\ninput:-webkit-autofill,\ninput:-webkit-autofill:hover,\ninput:-webkit-autofill:focus,\ninput:-webkit-autofill:active {\n  -webkit-transition: background-color 500000s ease-in-out 0s;\n  transition: background-color 500000s ease-in-out 0s;\n  -webkit-text-fill-color: #fff !important;\n}\n", ""]);
+exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.contact-view {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 15em 0;\n  background-image: url(\"/assets/img/desktop/concert_desktop.jpg\");\n  background-repeat: no-repeat;\n}\n.contact-view .form-group {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-flow: column;\n            flex-flow: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    width: 100vw;\n    height: 30vw;\n    font-size: 1.2rem;\n    color: #FFFFFF;\n    background-image: url(\"/assets/img/desktop/bck_contact_desktop.png\");\n    background-repeat: no-repeat;\n}\n.contact-view .form-group .form-element {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      position: relative;\n      padding: 1vw 2vw;\n}\n.contact-view .form-group .form-element label {\n        position: absolute;\n        top: 1.5em;\n        cursor: pointer;\n        -webkit-transition: all 0.5s ease-in;\n        transition: all 0.5s ease-in;\n}\n.contact-view .form-group .counter {\n      color: rgba(255, 255, 255, 0.5);\n      top: 65.5em;\n      left: 50%;\n}\nh2 {\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center;\n  font-size: 1.2rem;\n}\ninput,\ntextarea {\n  padding: 0.5em 0em;\n  background-color: transparent;\n  color: transparent;\n  cursor: pointer;\n  border-bottom: thin solid #FFFFFF !important;\n}\ninput:focus,\n  textarea:focus {\n    color: #FFFFFF;\n    -webkit-transition: color 0.3s ease-out;\n    transition: color 0.3s ease-out;\n    -webkit-transition-delay: 0.3s;\n            transition-delay: 0.3s;\n    /*+ label {*/\n    /*animation-name: move;*/\n    /*animation-duration: 0.3s;*/\n    /*transition: all 0.3s ease-in;*/\n    /*}*/\n}\ninput:not([type=\"submit\"]) {\n  width: 30vw;\n}\ntextarea {\n  width: 64vw;\n  height: 10vw;\n}\n#title {\n  width: 64vw;\n}\ninput[type=\"submit\"] {\n  padding: 0.5em 0.8em;\n  background-color: transparent;\n  color: #fff;\n  border-style: solid;\n  border-radius: 10em;\n  box-shadow: 1px 1px 2px grey;\n  -webkit-transition: all 0.5s linear;\n  transition: all 0.5s linear;\n  text-shadow: 1px 1px 2px grey;\n}\ninput[type=\"submit\"]:disabled {\n    cursor: not-allowed;\n}\n.select {\n  position: absolute;\n  top: 0em !important;\n  -webkit-transition: all 0.3s ease-in;\n  transition: all 0.3s ease-in;\n}\n.solid {\n  color: #FFFFFF !important;\n}\n.form-error,\n.form-success {\n  padding-left: 1em;\n  font-size: 0.9rem;\n}\n.form-error {\n  color: #ff3654;\n}\n.form-success {\n  color: #26ee77;\n}\ninput:-webkit-autofill,\ninput:-webkit-autofill:hover,\ninput:-webkit-autofill:focus,\ninput:-webkit-autofill:active {\n  -webkit-transition: background-color 500000s ease-in-out 0s;\n  transition: background-color 500000s ease-in-out 0s;\n  -webkit-text-fill-color: #fff !important;\n}\n", ""]);
 
 // exports
 
@@ -2476,10 +2481,14 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('section', {
     staticClass: "about-view"
-  })
-},staticRenderFns: []}
+  }, [_c('div', {
+    staticClass: "carre"
+  }, [_c('p', [_vm._v("Test")])])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -2501,7 +2510,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('gallery-preview', {
       attrs: {
         "slug": gallery.slug,
-        "category": 1,
+        "category": _vm.category,
         "filename": gallery.pictures[0].title,
         "path": gallery.pictures[0].path,
         "title": gallery.title
@@ -2778,7 +2787,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.success = ''
       }
     }
-  }, [_vm._v(_vm._s(_vm.success))]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.success))]), _vm._v(" "), _c('span', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.target == 'message'),
+      expression: "target == 'message'"
+    }],
+    staticClass: "counter"
+  }, [_vm._v(_vm._s(_vm.message.length) + "/1000 caractères")]), _vm._v(" "), _c('div', {
     staticClass: "form-element"
   }, [_c('input', {
     attrs: {

@@ -55,7 +55,7 @@
             }
         },
         created () {
-            axios.get('/preview').then( ({data}) => this.galleries = data)
+            axios.get('/api/preview').then( ({data}) => this.galleries = data)
         }
     }
 </script>

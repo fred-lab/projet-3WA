@@ -43,6 +43,7 @@
                 </div>
                 <span class="form-error" v-for="error in errors.spam">{{ error }}</span>
                 <span class="form-success" v-show="success" @click="success ='' ">{{ success }}</span>
+                <span class="counter" v-show="target == 'message'">{{ message.length }}/1000 caractères</span>
                 <div class="form-element">
                     <input type="submit" value="Envoyer" :disabled="disabled">
                 </div>
@@ -141,11 +142,16 @@
                     transition: all 0.5s ease-in;
                 }
             }
+            .counter{
+                color: rgba(255,255,255, 0.5);
+                top: 65.5em;
+                left: 50%;
+            }
         }
     }
     h2{
-        align-self: flex-start;
-        font-size: 1.4rem;
+        align-self: center;
+        font-size: 1.2rem;
     }
     input,
     textarea{

@@ -14,7 +14,7 @@
             }
         },
         created(){
-            axios.get('/gallery/'+this.$route.params.slug).then(({data}) => this.gallery = data)
+            axios.get('/api/gallery/'+this.$route.params.slug).then(({data}) => this.gallery = data)
         }
 
     }

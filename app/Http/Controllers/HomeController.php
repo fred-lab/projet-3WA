@@ -18,16 +18,6 @@ class HomeController extends Controller
         return view('home.index');
     }
 
-    /**
-     * Display a preview of the last 5 galleries
-     */
-    public function getPreview ()
-    {
-        return Gallery::with('pictures')
-            ->orderBy('created_at', 'desc')
-            ->limit(5)
-            ->get();
-    }
 
     /**
      * Show the form for creating a new resource.

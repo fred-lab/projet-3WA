@@ -18,7 +18,6 @@
             }
         },
         mounted(){
-//            console.log(this.$refs.picture)
             this.width = this.$refs.picture.naturalWidth
             this.height = this.$refs.picture.naturalHeight
             this.ratio = Math.round((this.height / this.width) * 10000)/100

@@ -33,8 +33,8 @@ class MessageController extends Controller
     public function store(MessageRequest $request, Mailer $mail)
     {
         $antiSpam = AntiSpam::check();
-        
-        if ($antiSpam === true){
+
+        if ($antiSpam == true){
             $message = new Message();
             $message->name = $request['name'];
             $message->email = $request['email'];

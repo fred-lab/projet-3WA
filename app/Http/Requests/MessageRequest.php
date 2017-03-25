@@ -24,7 +24,7 @@ class MessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'    => 'bail | required | alpha_dash | min:3 | max:50',
+            'name'    => 'bail | required | min:3 | max:50',
             'email'   => 'bail | required | email',
             'title' => 'required | min:3 | max: 50',
             'message' => 'bail | required |min:3 | max:1000 ',

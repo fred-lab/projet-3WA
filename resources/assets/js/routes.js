@@ -11,6 +11,15 @@ const routes = [
         component: require('./components/home/Homepage')
     },
     {
+        path: '/about',
+        name: 'about',
+        component: require('./components/home/About')
+    },{
+        path: '/contact',
+        name: 'contact',
+        component: require('./components/home/Contact')
+    },
+    {
         path: '/:category',
         name: 'gallery.category',
         component: require('./components/home/IndexCategory')
@@ -20,14 +29,6 @@ const routes = [
         name: 'gallery.show',
         component: require('./components/home/Gallery'),
         props: true
-    },{
-        path: '/about',
-        name: 'about',
-        component: require('./components/home/About')
-    },{
-        path: '/contact',
-        name: 'contact',
-        component: require('./components/home/Contact')
     },
     /** Studio **/
     {
@@ -49,10 +50,15 @@ const routes = [
         path: '/messages',
         name: 'studio.messages.index',
         component: require('./components/studio/BoiteReception')
+    },
+    {
+        path: '*',
+        redirect: '/'
     }
 ]
 
 export default new VueRouter({
+    mode: 'history',
     routes
 })
 
