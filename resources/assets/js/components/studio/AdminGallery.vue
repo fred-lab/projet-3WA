@@ -146,7 +146,7 @@
             }
         },
         created(){
-            axios.get('/studio/gallery/'+this.$route.params.id)
+            axios.get('/gallery/'+this.$route.params.id)
                     .then(({data}) => {
                         this.gallery = data
                         this.setFocus(data)
@@ -191,12 +191,12 @@
 
                 for (let key in this.gallery){
                     if (key == this.target && this.gallery[key] != this.oldValue ){
-                        axios.post('/studio/gallery/'+this.gallery.id, formData)
+                        axios.post('/gallery/'+this.gallery.id, formData)
                     }
                 }
 
                 if(this.target == 'focus'  && this.focus != this.oldValue){
-                    axios.post('/studio/gallery/'+this.gallery.id, formData)
+                    axios.post('/gallery/'+this.gallery.id, formData)
 
                     for (let key in this.gallery.pictures){
                         if(this.gallery.pictures[key].id != this.focus && this.gallery.pictures[key].has_focus == 1){
@@ -213,7 +213,7 @@
             },
             pictureUpdate(picture){
                 if(this.target == picture.id && picture.description != this.oldValue){
-                    axios.patch('/studio/picture/'+picture.id, {
+                    axios.patch('/picture/'+picture.id, {
                         description: picture.description,
                         visible:     picture.visible
                     })
@@ -223,7 +223,7 @@
                 this.oldValue = null
             },
             visibiltyUpdate(picture){
-                axios.patch('/studio/picture/'+picture.id, {
+                axios.patch('/picture/'+picture.id, {
                     description: picture.description,
                     visible:     picture.visible
                 })
@@ -232,7 +232,7 @@
                 let formData = this.form()
 
                 if(formData.getAll('pictures[]')[0].size > 0){
-                    axios.post('/studio/gallery/'+this.gallery.id, formData).then(({data}) => this.gallery = data)
+                    axios.post('/gallery/'+this.gallery.id, formData).then(({data}) => this.gallery = data)
                 }
                 this.upload = false
             },
@@ -259,7 +259,7 @@
                 const prompt = confirm("Voulez-vous supprimer cette galerie ?\nCette action est irreversible !")
 
                 if (prompt){
-                    axios.delete('/studio/gallery/'+this.gallery.id).then(this.$router.push({name : 'studio.gallery.index' }))
+                    axios.delete('/gallery/'+this.gallery.id).then(this.$router.push({name : 'studio.gallery.index' }))
                 }
             },
             destroyPicture(picture){
@@ -282,7 +282,7 @@
                 }
 
                 if (prompt){
-                    axios.delete('/studio/picture/'+picture.id).then(console.log('photo supprimée'))
+                    axios.delete('/picture/'+picture.id).then(console.log('photo supprimée'))
                 }
                 this.gallery.pictures.splice(this.gallery.pictures.indexOf(picture), 1)
             },

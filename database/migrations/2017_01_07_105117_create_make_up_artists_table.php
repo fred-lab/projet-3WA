@@ -15,16 +15,6 @@ class CreateMakeUpArtistsTable extends Migration
     {
         Schema::create('make_up_artists', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name', 20);
-            $table->string('last_name', 20);
-            $table->string('slug', 50)->unique()->comment('nom du MUA slugifié pour son url');
-            $table->json('phones');
-            $table->string('email')->unique();
-            $table->string('email_failover')->unique()->nullable()->comment('email de secours');
-            $table->json('websites')->nullable();
-            $table->string('address', 100)->nullable();
-            $table->string('city', 20)->nullable();
-            $table->integer('zip_code')->unsigned()->nullable();
             $table->enum('experience', ['débutant', 'expérimenté', 'confirmé'])->default('débutant');
             $table->enum('statut', ['amateur', 'semi-pro', 'professionnel'])->default('amateur');
             $table->boolean('compensation')->default(false)->comment('rémunération du MUA, par défaut : aucune');

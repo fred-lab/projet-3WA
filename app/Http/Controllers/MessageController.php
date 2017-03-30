@@ -9,9 +9,18 @@ use App\Services\AntiSpam;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Mailer;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
+    /**
+     * MessageController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => 'store']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +28,14 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return Message::latest()->get();
+        if(Auth::user()->level > 1){
+            return Message::latest()->get();
+        }
+        else{
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires']], 401
+            );
+        }
     }
 
 
@@ -34,7 +50,7 @@ class MessageController extends Controller
     {
         $antiSpam = AntiSpam::check();
 
-        if ($antiSpam == true){
+        if ($antiSpam === true){
             $message = new Message();
             $message->name = $request['name'];
             $message->email = $request['email'];
@@ -66,7 +82,9 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        return Message::findOrFail($message);
+        if(Auth::user()->level > 1){
+            return Message::findOrFail($message);
+        }
     }
 
     /**
@@ -79,29 +97,37 @@ class MessageController extends Controller
      */
     public function update(Request $request, Message $message, Mailer $mail)
     {
-        $message->update([
-            'answered'    => true,
-            'answer_date' => Carbon::now(),
-            'answer'      => $request['reply']
-        ]);
+        if(Auth::user()->level > 1){
+            $message->update([
+                'answered'    => true,
+                'answer_date' => Carbon::now(),
+                'answer'      => $request['reply']
+            ]);
 
-        if($message){
-            $mail->send('mail.contact-reply',[
-                'title'    => $request['title'],
-                'receiver' => $request['receiver'],
-                'reply'    => $request['reply'],
-                'quote'    => $request['quote']
-            ],
-                function($message) use($request){
-                    $message->to($request['replyMail'])
-                        ->from('contact@bokehlicious.fr')
-                        ->subject($request['title']);
-                });
-            return 'La réponse a bien été envoyé';
+            if($message){
+                $mail->send('mail.contact-reply',[
+                    'title'    => $request['title'],
+                    'receiver' => $request['receiver'],
+                    'reply'    => $request['reply'],
+                    'quote'    => $request['quote']
+                ],
+                    function($message) use($request){
+                        $message->to($request['replyMail'])
+                            ->from('contact@bokehlicious.fr')
+                            ->subject($request['title']);
+                    });
+                return 'La réponse a bien été envoyé';
+            }
+            else{
+                return 'Une erreur est survenue lors de la sauvegarde, le message n\'a pas été envoyé';
+            }
         }
         else{
-            return 'Une erreur est survenue lors de la sauvegarde, le message n\'a pas été envoyé';
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires']], 401
+            );
         }
+
     }
 
     /**
@@ -112,9 +138,17 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        $message->delete();
+        if(Auth::user()->level > 1){
+            $message->delete();
 
-        return 'Message supprimé';
+            return 'Message supprimé';
+        }
+        else{
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires']], 401
+            );
+        }
+
     }
 
     /**
@@ -155,11 +189,19 @@ class MessageController extends Controller
      */
     public function ban(Request $request)
     {
-        $this->createIp($request['ip']);
+        if(Auth::user()->level > 1){
+            $this->createIp($request['ip']);
 
-        $this->deleteMessage($request['ip']);
+            $this->deleteMessage($request['ip']);
 
-        return 'Cette Ip a été banni';
+            return 'Cette Ip a été banni';
+        }
+        else{
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires']], 401
+            );
+        }
+
     }
 
     /**
@@ -170,12 +212,19 @@ class MessageController extends Controller
      */
     public function massDelete(Request $request)
     {
-        if(count($request->all()) > 0){
-            foreach ($request->all() as $message){
-                Message::findOrFail($message['id'])->delete();
+        if(Auth::user()->level > 1){
+            if(count($request->all()) > 0){
+                foreach ($request->all() as $message){
+                    Message::findOrFail($message['id'])->delete();
+                }
             }
+            return "Les messages ont bien été supprimés";
         }
-        return "Les messages ont bien été supprimés";
+        else{
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires']], 401
+            );
+        }
     }
     /**
      * Mass banning
@@ -185,12 +234,19 @@ class MessageController extends Controller
      */
     public function massBan(Request $request)
     {
-        if(count($request->all()) > 0){
-            foreach ($request->all() as $message){
-                $this->createIp($message['ip']);
-                $this->deleteMessage($message['ip']);
+        if(Auth::user()->level > 1){
+            if(count($request->all()) > 0){
+                foreach ($request->all() as $message){
+                    $this->createIp($message['ip']);
+                    $this->deleteMessage($message['ip']);
+                }
             }
+            return "Les IP des messages ont bien été bannis";
         }
-        return "Les IP des messages ont bien été bannis";
+        else{
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires']], 401
+            );
+        }
     }
 }

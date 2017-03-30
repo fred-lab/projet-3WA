@@ -6,6 +6,7 @@ use App\Http\Requests\GalleryRequest;
 use App\Models\Gallery;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GalleryController extends Controller
 {
@@ -14,7 +15,7 @@ class GalleryController extends Controller
      */
     public function __construct()
     {
-        //ajouter le middleware auth pour restreindre l'accès
+        $this->middleware('auth:api');
     }
 
 
@@ -25,25 +26,22 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $galleries = Gallery::with(['pictures' => function($query){
-            $query->where('has_focus', '=', '1');
+        if(Auth::user()->level > 1){
+            $galleries = Gallery::with(['pictures' => function($query){
+                $query->where('has_focus', '=', '1');
             }])
-            ->orderBy('created_at', 'desc')
-            ->get();
+                ->orderBy('created_at', 'desc')
+                ->get();
 
-        return (request()->ajax())
-            ? $galleries
-            : view('gallery.index', compact('galleries'));
-    }
+            return $galleries;
+        }
+        else{
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires']], 401
+            );
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('gallery.create');
+
     }
 
     /**
@@ -55,7 +53,8 @@ class GalleryController extends Controller
      */
     public function store(GalleryRequest $request)
     {
-        $gallery = Gallery::create([
+        if(Auth::user()->level > 1){
+            $gallery = Gallery::create([
                 'title'       => $request['title'],
                 'description' => $request['description'],
                 'category_id' => $request['category'],
@@ -65,9 +64,15 @@ class GalleryController extends Controller
                 'public'      => ($request['public'] == 1) ? 1 : 0
             ]);
 
-        return ($request->ajax())
-            ? $gallery
-            : redirect(action('GalleryController@show', $gallery));
+            return ($request->ajax())
+                ? $gallery
+                : redirect(action('GalleryController@show', $gallery));
+        }
+        else{
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires']], 401
+            );
+        }
     }
 
     /**
@@ -78,23 +83,15 @@ class GalleryController extends Controller
      */
     public function show($id)
     {
-        $gallery = Gallery::with('pictures')->findOrFail($id);
+        if (Auth::user()->level > 1) {
+            $gallery = Gallery::with('pictures')->findOrFail($id);
 
-        return (request()->ajax())
-            ? $gallery
-            : view('gallery.show', compact('gallery'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Gallery $gallery
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Gallery $gallery)
-    {
-        $pictures = $gallery->pictures()->get();
-        return view('gallery.edit', compact('gallery', 'pictures'));
+            return $gallery;
+        } else {
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires']], 401
+            );
+        }
     }
 
     /**
@@ -106,19 +103,27 @@ class GalleryController extends Controller
      */
     public function update(GalleryRequest $request, Gallery $gallery)
     {
-        $gallery->update([
-            'title'       => $request['title'],
-            'description' => $request['description'],
-            'category_id' => $request['category'],
-            'date'        => $request['date'],
-            'city'        => $request['city'],
-            'price'       => $request['price'],
-            'public'      => ($request['public'] == 1) ? 1 : 0
-        ]);
+        if(Auth::user()->level > 1){
+            $gallery->update([
+                'title'       => $request['title'],
+                'description' => $request['description'],
+                'category_id' => $request['category'],
+                'date'        => $request['date'],
+                'city'        => $request['city'],
+                'price'       => $request['price'],
+                'public'      => ($request['public'] == 1) ? 1 : 0
+            ]);
 
-        return ($request->ajax())
-            ? $gallery->load('pictures')
-            : redirect(action('GalleryController@show', $gallery));
+            return ($request->ajax())
+                ? $gallery->load('pictures')
+                : redirect(action('GalleryController@show', $gallery));
+        }
+        else{
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires'], 401]
+            );
+        }
+
     }
 
     /**
@@ -129,10 +134,18 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-        $gallery->delete();
+        if(Auth::user()->level > 1){
+            $gallery->delete();
 
-        return (request()->ajax())
-            ?  response()->json([ 'success' => 'Gallerie supprimée' ])
-            : redirect(action('GalleryController@index'));
+            return (request()->ajax())
+                ?  response()->json([ 'success' => 'Gallerie supprimée' ])
+                : redirect(action('GalleryController@index'));
+        }
+        else{
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires']], 401
+            );
+        }
+
     }
 }

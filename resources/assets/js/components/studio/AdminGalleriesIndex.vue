@@ -47,7 +47,7 @@
             }
         },
         created(){
-            axios.get('/studio/gallery').then( ({data}) => this.galleries = data)
+            axios.get('/gallery').then( ({data}) => this.galleries = data)
         }
     }
 </script>

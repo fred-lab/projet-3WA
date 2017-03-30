@@ -14,11 +14,11 @@ class AddInfosUser extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('last_name', 20);
-            $table->string('slug', 50)->unique()->comment('nom utilisateur slugifié pour son url');
-            $table->json('phones');
+            $table->string('last_name', 20)->nullable();
+            $table->string('slug', 50)->unique()->nullable()->comment('nom utilisateur slugifié pour son url');
+            $table->text('phones')->nullable();
             $table->string('email_failover')->unique()->nullable()->comment('email de secours');
-            $table->json('websites')->nullable();
+            $table->text('websites')->nullable();
             $table->string('address', 100)->nullable();
             $table->string('city', 20)->nullable();
             $table->integer('zip_code')->unsigned()->nullable();

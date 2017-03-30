@@ -41,7 +41,6 @@
         height: 25em;
 
         padding: 2em 0 2em 0;
-        margin: 10em 0 0 0;
 
         background-image: url("/assets/img/desktop/bck_footer_desktop.png");
         background-color: black;

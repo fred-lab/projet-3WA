@@ -20,8 +20,10 @@ window.$ = window.jQuery = require('jquery');
 window.Vue = require('vue');
 
 import VueRouter from 'vue-router'
+import Auth from './plugin/auth'
 
 Vue.use(VueRouter)
+Vue.use(Auth)
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

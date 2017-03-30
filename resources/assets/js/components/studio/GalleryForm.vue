@@ -41,6 +41,9 @@
                 <span>Cocher pour publier publiquement automatiquement la galerie</span>
                 <input type="checkbox" name="public" :value="public" v-model="public" :true-value="1" :false-value="0">
             </div>
+            <div class="form-info">
+                <span class="form-error" v-for="msg in errors">{{ msg }}</span>
+            </div>
 
             <div class="form-submit">
                 <span v-if="!valid" class="empty">Choisir un titre et sélectionner des fichiers pour pouvoir enregistrer la gallerie</span>
@@ -66,7 +69,8 @@
                 countFiles: 0,
                 date: 'text',
                 title: '',
-                public: 0
+                public: 0,
+                errors: []
             }
         },
         computed:{
@@ -83,11 +87,14 @@
                 let formData = new FormData(this.$refs.form)
 
                 if(formData.get('title') && formData.getAll('pictures[]').length > 0){
-                    axios.post('/studio/gallery', formData)
-                            .then( ({data}) => this.$router.push({
-                                name: 'studio.gallery.show',
-                                params: { id: data.id}
-                            }))
+                    axios.post('/gallery', formData)
+                            .then(
+                                ({data}) => this.$router.push({
+                                    name: 'studio.gallery.show',
+                                    params: { id: data.id}
+                                }),
+                                    (error) => this.errors = error.response.data.error
+                            )
                 }
             },
             onUpload (){
@@ -183,6 +190,9 @@
     .form-submit{
         display: flex;
         justify-content: center;
+    }
+    .form-info{
+        height:3em;
     }
     .empty{
         color: #ff3f49;

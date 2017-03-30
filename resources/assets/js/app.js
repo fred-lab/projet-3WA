@@ -12,6 +12,8 @@ import './bootstrap';
  */
 import router from './routes.js';
 
+import Axios from 'axios'
+
 
 
 /**
@@ -20,6 +22,7 @@ import router from './routes.js';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('admin-layout', require('./components/studio/Studio.vue'));
 Vue.component('admin-nav', require('./components/studio/AdminNav.vue'));
 Vue.component('gallery-form', require('./components/studio/GalleryForm.vue'));
 Vue.component('admin-galleries', require('./components/studio/AdminGalleriesIndex.vue'));
@@ -36,6 +39,8 @@ Vue.component('footer-view', require('./components/home/Footer.vue'));
 Vue.component('about-view', require('./components/home/About.vue'));
 Vue.component('contact-view', require('./components/home/Contact.vue'));
 
+Vue.component('user-login', require('./components/auth/Login.vue'));
+
 Vue.directive('focus',
     (el, value) => {
         if(value){
@@ -51,6 +56,32 @@ Vue.directive('area',
             el.style.height = (el.scrollHeight) + 'px'
         })
     })
+
+Vue.directive('width',
+    (el) => {
+        Vue.nextTick(_ =>{
+            el.style.width = (el.firstChild.naturalWidth) + 'px'
+        })
+    })
+
+router.beforeEach((to, from, next) =>{
+    if(to.matched.some(e => e.meta.studio)){
+        if( ! Vue.auth.isAuthenticated()){
+            next({
+                name: 'studio.login'
+            })
+        }
+        else{
+            next()
+        }
+    }
+    else{
+        next()
+    }
+})
+
+Axios.defaults.headers.common['Accept'] = 'application/json'
+Axios.defaults.headers.common['Authorization'] = 'Bearer '+sessionStorage.getItem('access_token')
 
 
 const app = new Vue({

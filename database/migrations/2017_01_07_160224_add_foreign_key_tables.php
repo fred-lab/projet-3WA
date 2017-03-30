@@ -34,17 +34,6 @@ class AddForeignKeyTables extends Migration
                 ->onUpdate('cascade');
         });
 
-        Schema::create('user_picture', function (Blueprint $table){
-            $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('picture_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-            $table->foreign('picture_id')->references('id')->on('pictures')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
-        });
 
         Schema::table('pictures', function (Blueprint $table){
             $table->integer('gallery_id')->unsigned()->index();
@@ -61,7 +50,6 @@ class AddForeignKeyTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_picture');
         Schema::table('models', function (Blueprint $table){
             $table->dropForeign('user_id');
         });

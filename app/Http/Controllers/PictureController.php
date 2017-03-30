@@ -4,60 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Picture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PictureController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * PictureController constructor.
      */
-    public function index()
+    public function __construct()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Picture  $picture
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Picture $picture)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Picture  $picture
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Picture $picture)
-    {
-        //
+        $this->middleware('auth:api');
     }
 
     /**
@@ -69,11 +25,17 @@ class PictureController extends Controller
      */
     public function update(Request $request, Picture $picture)
     {
-//        dd($request->all());
-        $picture->update([
-            'description' => $request['description'],
-            'visible'     => $request['visible']
-        ]);
+        if(Auth::user()->level > 1){
+            $picture->update([
+                'description' => $request['description'],
+                'visible'     => $request['visible']
+            ]);
+        }
+        else{
+            return response()->json(
+                ['error' => ['Vous n\'avez pas les droits nécessaires']], 401
+            );
+        }
     }
 
     /**

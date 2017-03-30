@@ -74,7 +74,7 @@
             onSubmit(){
                 if(this.name && this.email && this.message){
 
-                    axios.post('message', {
+                    axios.post('/message', {
                         name: this.name,
                         email:   this.email,
                         title: this.title,

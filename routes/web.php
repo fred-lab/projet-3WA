@@ -22,20 +22,20 @@ Route::group(['prefix' => 'book'], function (){
 /**
  * Routes for the message
  */
-Route::post('message', 'MessageController@store');
 Route::post('ban', 'MessageController@ban');
 Route::post('mass-delete', 'MessageController@massDelete');
 Route::post('mass-ban', 'MessageController@massBan');
+Route::resource('message', 'MessageController', [ 'except' => ['create', 'edit']]);
 
 /**
- * Route group for the studio section
+ * Route group for the admin section
  */
-Route::group(['prefix' => 'studio'], function (){
-    Route::get('/', 'StudioController@index')->name('studio.show');
-    Route::resource('gallery', 'GalleryController');
-    Route::resource('picture', 'PictureController');
-    Route::resource('message', 'MessageController', ['only' => ['index', 'show', 'update', 'destroy']]);
-});
+    Route::resource('gallery', 'GalleryController', ['except' => ['create', 'edit']]);
+    Route::resource('picture', 'PictureController', ['only' => ['update', 'destroy']]);
+
+
+
+
 Route::get('preview-all', function (){
     return App\Models\Gallery::with(['pictures' => function($query){
         $query->where('has_focus', '=', '1');
@@ -46,4 +46,3 @@ Route::get('preview-all', function (){
 Route::get('/{vue?}', function(){
     return view('home.index');
 })->where('vue', '[\/\w\.-]*');
-//Route::resource('/{vue?}', 'HomeController')->where('vue', '[\/w\.-]*');

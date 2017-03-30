@@ -16,13 +16,16 @@ class CreateGalleriesTable extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 50)->unique();
-            $table->text('description');
-            $table->dateTime('date')->comment('date du shooting');
+            $table->text('description')->nullable();
+            $table->string('slug', 50)->nullable();
+            $table->tinyInteger('total_pictures')->unsigned()->nullable()->comment('the number of pictures of the gallery');
+            $table->boolean('public')->default(false)->index()->comment('true if the gallery is public');
+            $table->dateTime('date')->nullable()->comment('date du shooting');
             $table->string('address', 100)->nullable();
             $table->string('city', 20)->nullable();
             $table->decimal('zip_code', 5, 0)->unsigned()->nullable();
-            $table->float('longitude', 10, 6)->unsigned()->comment('longitude GPS');
-            $table->float('latitude', 10, 6)->unsigned()->comment('latitude GPS');
+            $table->float('longitude', 10, 6)->unsigned()->nullable()->comment('longitude GPS');
+            $table->float('latitude', 10, 6)->unsigned()->nullable()->comment('latitude GPS');
             $table->decimal('price', 7, 2)->unsigned()->nullable()->comment('coût du shooting');
             $table->timestamps();
         });

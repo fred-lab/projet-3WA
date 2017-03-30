@@ -127,7 +127,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(108)
+var listToStyles = __webpack_require__(119)
 
 /*
 type StyleObject = {
@@ -362,13 +362,51 @@ function applyToTag (styleElement, obj) {
 
 
 /* styles */
-__webpack_require__(95)
+__webpack_require__(108)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(45),
+  __webpack_require__(47),
   /* template */
-  __webpack_require__(81),
+  __webpack_require__(92),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/fred/web/bokehlicious/resources/assets/js/components/auth/Login.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Login.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4bfdc55f", Component.options)
+  } else {
+    hotAPI.reload("data-v-4bfdc55f", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(104)
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(48),
+  /* template */
+  __webpack_require__(88),
   /* scopeId */
   null,
   /* cssModules */
@@ -395,18 +433,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(98)
+__webpack_require__(109)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(46),
+  __webpack_require__(49),
   /* template */
-  __webpack_require__(84),
+  __webpack_require__(93),
   /* scopeId */
   null,
   /* cssModules */
@@ -433,18 +471,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(100)
+__webpack_require__(111)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(48),
+  __webpack_require__(51),
   /* template */
-  __webpack_require__(86),
+  __webpack_require__(95),
   /* scopeId */
   null,
   /* cssModules */
@@ -471,18 +509,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(106)
+__webpack_require__(117)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(51),
+  __webpack_require__(54),
   /* template */
-  __webpack_require__(92),
+  __webpack_require__(101),
   /* scopeId */
   null,
   /* cssModules */
@@ -509,18 +547,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(96)
+__webpack_require__(105)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(52),
+  __webpack_require__(55),
   /* template */
-  __webpack_require__(82),
+  __webpack_require__(89),
   /* scopeId */
   null,
   /* cssModules */
@@ -547,18 +585,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(102)
+__webpack_require__(113)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(54),
+  __webpack_require__(57),
   /* template */
-  __webpack_require__(88),
+  __webpack_require__(97),
   /* scopeId */
   null,
   /* cssModules */
@@ -585,18 +623,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(105)
+__webpack_require__(116)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(55),
+  __webpack_require__(58),
   /* template */
-  __webpack_require__(91),
+  __webpack_require__(100),
   /* scopeId */
   null,
   /* cssModules */
@@ -623,18 +661,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(99)
+__webpack_require__(110)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(57),
+  __webpack_require__(60),
   /* template */
-  __webpack_require__(85),
+  __webpack_require__(94),
   /* scopeId */
   null,
   /* cssModules */
@@ -661,18 +699,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(103)
+__webpack_require__(114)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(58),
+  __webpack_require__(61),
   /* template */
-  __webpack_require__(89),
+  __webpack_require__(98),
   /* scopeId */
   null,
   /* cssModules */
@@ -699,14 +737,52 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 25 */,
 /* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(107)
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(62),
+  /* template */
+  __webpack_require__(91),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/fred/web/bokehlicious/resources/assets/js/components/studio/Studio.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Studio.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4504d4bc", Component.options)
+  } else {
+    hotAPI.reload("data-v-4504d4bc", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 27 */,
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes_js__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes_js__ = __webpack_require__(65);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -727,21 +803,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('admin-nav', __webpack_require__(79));
-Vue.component('gallery-form', __webpack_require__(24));
-Vue.component('admin-galleries', __webpack_require__(21));
-Vue.component('admin-gallery', __webpack_require__(22));
-Vue.component('boite-reception', __webpack_require__(23));
+Vue.component('admin-layout', __webpack_require__(26));
+Vue.component('admin-nav', __webpack_require__(86));
+Vue.component('gallery-form', __webpack_require__(25));
+Vue.component('admin-galleries', __webpack_require__(22));
+Vue.component('admin-gallery', __webpack_require__(23));
+Vue.component('boite-reception', __webpack_require__(24));
 
-Vue.component('gallery-preview', __webpack_require__(76));
-Vue.component('homepage', __webpack_require__(19));
-Vue.component('gallery', __webpack_require__(18));
-Vue.component('gallery-category', __webpack_require__(20));
-Vue.component('picture', __webpack_require__(78));
-Vue.component('home-nav', __webpack_require__(77));
-Vue.component('footer-view', __webpack_require__(75));
-Vue.component('about-view', __webpack_require__(16));
-Vue.component('contact-view', __webpack_require__(17));
+Vue.component('gallery-preview', __webpack_require__(83));
+Vue.component('homepage', __webpack_require__(20));
+Vue.component('gallery', __webpack_require__(19));
+Vue.component('gallery-category', __webpack_require__(21));
+Vue.component('picture', __webpack_require__(85));
+Vue.component('home-nav', __webpack_require__(84));
+Vue.component('footer-view', __webpack_require__(82));
+Vue.component('about-view', __webpack_require__(17));
+Vue.component('contact-view', __webpack_require__(18));
+
+Vue.component('user-login', __webpack_require__(16));
 
 Vue.directive('focus', function (el, value) {
     if (value) {
@@ -757,6 +836,22 @@ Vue.directive('area', function (el) {
     });
 });
 
+Router.beforeEach(function (to, from, next) {
+    if (to.matched.some(function (e) {
+        return e.meta.studio;
+    })) {
+        if (Vue.auth.isAuthenticated) {
+            next();
+        } else {
+            next({
+                name: 'studio.login'
+            });
+        }
+    } else {
+        next();
+    }
+});
+
 var app = new Vue({
     el: '#app',
     router: __WEBPACK_IMPORTED_MODULE_1__routes_js__["a" /* default */],
@@ -766,14 +861,12 @@ var app = new Vue({
 });
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 28 */,
-/* 29 */,
 /* 30 */,
 /* 31 */,
 /* 32 */,
@@ -789,7 +882,59 @@ var app = new Vue({
 /* 42 */,
 /* 43 */,
 /* 44 */,
-/* 45 */
+/* 45 */,
+/* 46 */,
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    data: function data() {
+        return {
+            email: '',
+            password: ''
+        };
+    },
+
+    methods: {
+        login: function login() {
+            var _this = this;
+
+            var data = {
+                client_id: 2,
+                client_secret: 'f6EHTKqa1wMkx5Rx43HHxU5zkmrooM5BpXGEqxLf',
+                grant_type: 'password',
+                username: this.email,
+                password: this.password
+            };
+            axios.post('/oauth/token', data).then(function (_ref) {
+                var data = _ref.data;
+                return _this.$auth.setToken(data.access_token, data.expires_in);
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -806,7 +951,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = {};
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -890,7 +1035,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             if (this.name && this.email && this.message) {
 
-                axios.post('message', {
+                axios.post('/message', {
                     name: this.name,
                     email: this.email,
                     title: this.title,
@@ -920,7 +1065,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -955,7 +1100,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = {};
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -986,7 +1131,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1018,7 +1163,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 50 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1042,7 +1187,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = {};
 
 /***/ }),
-/* 51 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1110,7 +1255,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1165,7 +1310,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1182,7 +1327,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1234,7 +1379,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        axios.get('/studio/gallery').then(function (_ref) {
+        axios.get('/gallery').then(function (_ref) {
             var data = _ref.data;
             return _this.galleries = data;
         });
@@ -1242,7 +1387,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 55 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1397,7 +1542,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        axios.get('/studio/gallery/' + this.$route.params.id).then(function (_ref) {
+        axios.get('/gallery/' + this.$route.params.id).then(function (_ref) {
             var data = _ref.data;
 
             _this.gallery = data;
@@ -1441,12 +1586,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             for (var key in this.gallery) {
                 if (key == this.target && this.gallery[key] != this.oldValue) {
-                    axios.post('/studio/gallery/' + this.gallery.id, formData);
+                    axios.post('/gallery/' + this.gallery.id, formData);
                 }
             }
 
             if (this.target == 'focus' && this.focus != this.oldValue) {
-                axios.post('/studio/gallery/' + this.gallery.id, formData);
+                axios.post('/gallery/' + this.gallery.id, formData);
 
                 for (var _key in this.gallery.pictures) {
                     if (this.gallery.pictures[_key].id != this.focus && this.gallery.pictures[_key].has_focus == 1) {
@@ -1462,7 +1607,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         pictureUpdate: function pictureUpdate(picture) {
             if (this.target == picture.id && picture.description != this.oldValue) {
-                axios.patch('/studio/picture/' + picture.id, {
+                axios.patch('/picture/' + picture.id, {
                     description: picture.description,
                     visible: picture.visible
                 });
@@ -1472,7 +1617,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.oldValue = null;
         },
         visibiltyUpdate: function visibiltyUpdate(picture) {
-            axios.patch('/studio/picture/' + picture.id, {
+            axios.patch('/picture/' + picture.id, {
                 description: picture.description,
                 visible: picture.visible
             });
@@ -1483,7 +1628,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var formData = this.form();
 
             if (formData.getAll('pictures[]')[0].size > 0) {
-                axios.post('/studio/gallery/' + this.gallery.id, formData).then(function (_ref2) {
+                axios.post('/gallery/' + this.gallery.id, formData).then(function (_ref2) {
                     var data = _ref2.data;
                     return _this2.gallery = data;
                 });
@@ -1512,7 +1657,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var prompt = confirm("Voulez-vous supprimer cette galerie ?\nCette action est irreversible !");
 
             if (prompt) {
-                axios.delete('/studio/gallery/' + this.gallery.id).then(this.$router.push({ name: 'studio.gallery.index' }));
+                axios.delete('/gallery/' + this.gallery.id).then(this.$router.push({ name: 'studio.gallery.index' }));
             }
         },
         destroyPicture: function destroyPicture(picture) {
@@ -1533,7 +1678,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             if (prompt) {
-                axios.delete('/studio/picture/' + picture.id).then(console.log('photo supprimée'));
+                axios.delete('/picture/' + picture.id).then(console.log('photo supprimée'));
             }
             this.gallery.pictures.splice(this.gallery.pictures.indexOf(picture), 1);
         },
@@ -1570,7 +1715,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 56 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1588,13 +1733,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = {};
 
 /***/ }),
-/* 57 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1702,7 +1845,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             if (this.reply) {
-                axios.put('/studio/message/' + message.id, {
+                axios.put('/message/' + message.id, {
                     title: message.title,
                     reply: this.reply,
                     receiver: message.name,
@@ -1733,7 +1876,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             if (this.target != null) {
-                axios.delete('/studio/message/' + this.target.id).then(function (_ref2) {
+                axios.delete('/message/' + this.target.id).then(function (_ref2) {
                     var data = _ref2.data;
                     return _this2.success = data;
                 }, function (errors) {
@@ -1832,7 +1975,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this5 = this;
 
-        axios.get('/studio/message').then(function (_ref5) {
+        axios.get('/message').then(function (_ref5) {
             var data = _ref5.data;
             return _this5.messages = data;
         }, function (errors) {
@@ -1842,7 +1985,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 58 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1930,7 +2073,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var formData = new FormData(this.$refs.form);
 
             if (formData.get('title') && formData.getAll('pictures[]').length > 0) {
-                axios.post('/studio/gallery', formData).then(function (_ref) {
+                axios.post('/gallery', formData).then(function (_ref) {
                     var data = _ref.data;
                     return _this.$router.push({
                         name: 'studio.gallery.show',
@@ -1948,11 +2091,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 59 */
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    data: function data() {
+        return {};
+    },
+    created: function created() {
+        console.log('studio open');
+    },
+    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+        console.log('en entrant');
+        next();
+    },
+    beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
+        console.log('en naviguant');
+        next();
+    }
+};
+
+/***/ }),
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__plugin_auth__ = __webpack_require__(64);
 
 window._ = __webpack_require__(9);
 
@@ -1976,7 +2155,9 @@ window.Vue = __webpack_require__(10);
 
 
 
+
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["default"]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_1__plugin_auth__["a" /* default */]);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -2006,7 +2187,48 @@ window.axios.defaults.headers.common = {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(5)))
 
 /***/ }),
-/* 60 */
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = function (Vue) {
+    Vue.auth = {
+        setToken: function setToken(token, expiration) {
+            sessionStorage.setItem('access_token', token);
+            sessionStorage.setItem('expires_in', expiration + Date.now());
+        },
+        getToken: function getToken() {
+            var token = sessionStorage.getItem('access_token');
+            var expiration = sessionStorage.getItem('expires_in');
+
+            if (!token || !expiration) {
+                return null;
+            } else if (Date.now() > parseInt(expiration)) {
+                this.destroyToken();
+                return null;
+            } else {
+                return token;
+            }
+        },
+        destroyToken: function destroyToken() {
+            sessionStorage.removeItem('access_token');
+            sessionStorage.removeItem('expires_in');
+        },
+        isAuthenticated: function isAuthenticated() {
+            return this.getToken() ? true : false;
+        }
+    };
+    Object.defineProperties(Vue.prototype, {
+        $auth: {
+            get: function get() {
+                Vue.auth;
+            }
+        }
+    });
+};
+
+/***/ }),
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2021,45 +2243,57 @@ var routes = [
 {
     path: '/',
     name: 'homepage',
-    component: __webpack_require__(19)
+    component: __webpack_require__(20)
 }, {
     path: '/about',
     name: 'about',
-    component: __webpack_require__(16)
+    component: __webpack_require__(17)
 }, {
     path: '/contact',
     name: 'contact',
-    component: __webpack_require__(17)
-}, {
-    path: '/:category',
-    name: 'gallery.category',
-    component: __webpack_require__(20)
-}, {
-    path: '/:category/:slug',
-    name: 'gallery.show',
-    component: __webpack_require__(18),
-    props: true
+    component: __webpack_require__(18)
 },
 /** Studio **/
 {
-    path: '/gallery',
-    name: 'studio.gallery.index',
-    component: __webpack_require__(21)
-}, {
-    path: '/gallery/create',
-    name: 'studio.gallery.create',
-    component: __webpack_require__(24)
-}, {
-    path: '/gallery/:id(\\d+)',
-    name: 'studio.gallery.show',
-    component: __webpack_require__(22)
-}, {
-    path: '/messages',
-    name: 'studio.messages.index',
-    component: __webpack_require__(23)
+    path: '/studio/',
+    component: __webpack_require__(26),
+    children: [{
+        path: 'login',
+        name: 'studio.login',
+        component: __webpack_require__(16)
+    }, {
+        path: '',
+        name: 'studio.gallery.index',
+        component: __webpack_require__(22),
+        meta: { studio: true }
+    }, {
+        path: 'gallery/create',
+        name: 'studio.gallery.create',
+        component: __webpack_require__(25),
+        meta: { studio: true }
+    }, {
+        path: 'gallery/:id(\\d+)',
+        name: 'studio.gallery.show',
+        component: __webpack_require__(23),
+        meta: { studio: true }
+    }, {
+        path: 'messages',
+        name: 'studio.messages.index',
+        component: __webpack_require__(24),
+        meta: { studio: true }
+    }]
 }, {
     path: '*',
     redirect: '/'
+}, {
+    path: '/:category',
+    name: 'gallery.category',
+    component: __webpack_require__(21)
+}, {
+    path: '/:category/:slug',
+    name: 'gallery.show',
+    component: __webpack_require__(19),
+    props: true
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["default"]({
@@ -2068,7 +2302,7 @@ var routes = [
 });
 
 /***/ }),
-/* 61 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -2082,7 +2316,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 
 /***/ }),
-/* 62 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -2096,7 +2330,7 @@ exports.push([module.i, "\n.carre {\n  width: 20vw;\n  height: 20vw;\n  backgrou
 
 
 /***/ }),
-/* 63 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -2110,7 +2344,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 64 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)();
@@ -2124,76 +2358,6 @@ exports.push([module.i, "\n.gallery-wrapper {\n  display: -webkit-inline-box;\n 
 
 
 /***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)();
-// imports
-
-
-// module
-exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.contact-view {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 15em 0;\n  background-image: url(\"/assets/img/desktop/concert_desktop.jpg\");\n  background-repeat: no-repeat;\n}\n.contact-view .form-group {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-flow: column;\n            flex-flow: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    width: 100vw;\n    height: 30vw;\n    font-size: 1.2rem;\n    color: #FFFFFF;\n    background-image: url(\"/assets/img/desktop/bck_contact_desktop.png\");\n    background-repeat: no-repeat;\n}\n.contact-view .form-group .form-element {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      position: relative;\n      padding: 1vw 2vw;\n}\n.contact-view .form-group .form-element label {\n        position: absolute;\n        top: 1.5em;\n        cursor: pointer;\n        -webkit-transition: all 0.5s ease-in;\n        transition: all 0.5s ease-in;\n}\n.contact-view .form-group .counter {\n      color: rgba(255, 255, 255, 0.5);\n      top: 65.5em;\n      left: 50%;\n}\nh2 {\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center;\n  font-size: 1.2rem;\n}\ninput,\ntextarea {\n  padding: 0.5em 0em;\n  background-color: transparent;\n  color: transparent;\n  cursor: pointer;\n  border-bottom: thin solid #FFFFFF !important;\n}\ninput:focus,\n  textarea:focus {\n    color: #FFFFFF;\n    -webkit-transition: color 0.3s ease-out;\n    transition: color 0.3s ease-out;\n    -webkit-transition-delay: 0.3s;\n            transition-delay: 0.3s;\n    /*+ label {*/\n    /*animation-name: move;*/\n    /*animation-duration: 0.3s;*/\n    /*transition: all 0.3s ease-in;*/\n    /*}*/\n}\ninput:not([type=\"submit\"]) {\n  width: 30vw;\n}\ntextarea {\n  width: 64vw;\n  height: 10vw;\n}\n#title {\n  width: 64vw;\n}\ninput[type=\"submit\"] {\n  padding: 0.5em 0.8em;\n  background-color: transparent;\n  color: #fff;\n  border-style: solid;\n  border-radius: 10em;\n  box-shadow: 1px 1px 2px grey;\n  -webkit-transition: all 0.5s linear;\n  transition: all 0.5s linear;\n  text-shadow: 1px 1px 2px grey;\n}\ninput[type=\"submit\"]:disabled {\n    cursor: not-allowed;\n}\n.select {\n  position: absolute;\n  top: 0em !important;\n  -webkit-transition: all 0.3s ease-in;\n  transition: all 0.3s ease-in;\n}\n.solid {\n  color: #FFFFFF !important;\n}\n.form-error,\n.form-success {\n  padding-left: 1em;\n  font-size: 0.9rem;\n}\n.form-error {\n  color: #ff3654;\n}\n.form-success {\n  color: #26ee77;\n}\ninput:-webkit-autofill,\ninput:-webkit-autofill:hover,\ninput:-webkit-autofill:focus,\ninput:-webkit-autofill:active {\n  -webkit-transition: background-color 500000s ease-in-out 0s;\n  transition: background-color 500000s ease-in-out 0s;\n  -webkit-text-fill-color: #fff !important;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)();
-// imports
-
-
-// module
-exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.admin-messages {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.admin-messages h1 {\n    color: #FFFFFF;\n}\n.admin-messages input[type=\"checkbox\"] {\n    width: 2vw;\n}\n.inbox-dashboard,\n.message-group {\n  width: 100%;\n  background-color: #FFFFFF;\n}\n.inbox-dashboard {\n  margin-top: 2em;\n  height: 3vw;\n  line-height: 3vw;\n  border-bottom-style: solid;\n  border-width: thin;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n.inbox-dashboard .message-danger {\n    margin: 0 2em;\n}\n.message-group {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n}\n.message-item {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  heigth: 3vw;\n  padding: 1em 0;\n  border-style: solid;\n  border-width: thin;\n}\n.message-item span {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n}\n.message-preview span {\n  cursor: zoom-in;\n}\n.answered {\n  color: #479fe5 !important;\n}\n.message-name {\n  width: 6vw;\n  overflow: hidden;\n}\n.message-email {\n  width: 12vw;\n  overflow: hidden;\n}\n.message-title {\n  width: 48vw;\n  margin-right: 1vw;\n  overflow: hidden;\n}\n.message-content p {\n  color: rgba(0, 0, 0, 0.5);\n  text-shadow: none;\n  line-height: 1.5em;\n  padding: 0 2em;\n  cursor: zoom-out;\n}\n.message-reply {\n  background-color: rgba(0, 0, 0, 0.1);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n  padding-bottom: 1em;\n}\n.message-reply textarea {\n    width: 70vw;\n    margin: 1em;\n    padding: 0.5em 1em;\n    line-height: 2em;\n    color: #0F0F0F;\n    cursor: text;\n    background-color: #FFFFFF;\n    border: thin solid #479fe5 !important;\n}\n.message-reply span {\n    margin: 1em;\n    padding: 0.5em;\n}\n.message-success,\n.message-danger {\n  padding: 0 1em;\n  border-radius: 5em;\n  border-color: #FFFFFF;\n  border-width: thin;\n  color: #FFFFFF;\n}\n.message-success {\n  background-color: #5bbf5b;\n}\n.message-success:hover {\n    border-color: #5bbf5b;\n    cursor: pointer;\n}\n.message-danger {\n  background-color: #e65e5e;\n}\n.message-danger:hover {\n    border-color: #e65e5e;\n    cursor: pointer;\n}\n.select-all {\n  display: inline-block;\n  margin-left: 1em;\n  color: #FFFFFF;\n  -webkit-transform: rotate(-90deg);\n          transform: rotate(-90deg);\n}\n.info-box {\n  position: absolute;\n  width: 120vw;\n  height: 150vw;\n  background-color: rgba(0, 0, 0, 0.5);\n  cursor: pointer;\n}\n.info-box .info-container {\n    position: fixed;\n    top: 20vw;\n    left: 45vw;\n    width: 20vw;\n    height: 10vw;\n    line-height: 10vw;\n    text-align: center;\n    background-color: #FFFFFF;\n}\n.info-box .info-success {\n    color: #5bbf5b;\n}\n.info-box .info-errors {\n    color: #e65e5e;\n}\n.counter {\n  position: absolute;\n  left: 40%;\n  font-size: 0.6em;\n  color: rgba(0, 0, 0, 0.6);\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)();
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)();
-// imports
-
-
-// module
-exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.admin-nav h2 {\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center;\n  color: #FF0C64;\n}\n.admin-nav a {\n  color: #FFFFFF;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)();
-// imports
-
-
-// module
-exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.admin-galleries {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 1em 0 10em;\n}\n.admin-galleries h1 {\n    color: #FFFFFF;\n}\n.gallery-item {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 4em;\n  margin: 2em;\n  background-color: #FFFFFF;\n}\n.gallery-item a {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n}\n.gallery-item .gallery-info {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-flow: column;\n            flex-flow: column;\n}\n.gallery-item .gallery-info p {\n      padding: 1em;\n      color: #000000;\n      text-shadow: none;\n}\n.gallery-item .gallery-info p span {\n        color: #FF0C64;\n}\n.private {\n  border-style: solid;\n  border-color: #FF0C64;\n  border-width: 0.2em;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
 /* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2202,7 +2366,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n.gallery-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 2em 2em 15em 2em;\n  text-align: center;\n}\n.gallery-form h1,\n  .gallery-form select,\n  .gallery-form input[type=\"file\"] {\n    color: #fff;\n}\n.gallery-form .form-item {\n    margin: 2em;\n}\n.gallery-form .form-item span {\n      padding: 0.8em;\n      color: #fff;\n}\n.gallery-form input[type=\"text\"] {\n    width: 30vw;\n}\n.gallery-form select,\n  .gallery-form input[type=\"file\"] {\n    background-color: #4e4466;\n    margin: 0 auto;\n}\n.gallery-form input[type=\"file\"] {\n    display: none;\n}\n.gallery-form textarea {\n    width: 30vw;\n    height: 10vw;\n}\n.gallery-form input[type=\"submit\"] {\n    width: 10vw;\n    height: 3vw;\n    background-color: transparent;\n    color: #fff;\n    border-style: solid;\n    border-radius: 10em;\n    -webkit-transition: all 0.5s linear;\n    transition: all 0.5s linear;\n}\n.gallery-form input[type=\"submit\"]:hover {\n      background-color: #5bbf5b;\n      -webkit-transition: all 0.5s linear;\n      transition: all 0.5s linear;\n}\n.gallery-form label {\n    width: 25em;\n    color: #ffffff;\n    border-style: dashed;\n    border-radius: 10em;\n    padding: 0.5em;\n    margin: 0 auto;\n    cursor: pointer;\n    -webkit-transition: all 0.5s linear;\n    transition: all 0.5s linear;\n}\n.gallery-form label:hover {\n      border-style: solid;\n      -webkit-transition: all 0.5s linear;\n      transition: all 0.5s linear;\n}\n.gallery-form input, .gallery-form textarea {\n    padding: 0.8em;\n}\n.gallery-form .public {\n    display: inline-block;\n}\n.gallery-form input[type=\"checkbox\"] {\n    padding: 0.8em;\n}\n.gallery-form .form-submit {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.gallery-form .empty {\n    color: #ff3f49;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -2216,7 +2380,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.home-nav {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  width: 100%;\n  height: 2.5em;\n}\n.logo {\n  margin-left: 2rem;\n  text-align: center;\n  font-family: \"Roboto Slab\", serif;\n  font-size: 2em;\n  line-height: 1.1em;\n  color: #000000;\n}\n.logo span {\n    font-family: \"Caveat\", cursive;\n    color: #FF0C64;\n    font-weight: bold;\n}\n.main-nav {\n  margin-right: 10em;\n}\n.main-nav a {\n    display: inline-block;\n    width: 5rem;\n    height: 2rem;\n    margin: 0 1.5rem;\n    text-align: center;\n    line-height: 2rem;\n    font-size: 1.2em;\n    color: #FF0C64;\n    -webkit-transition: all .5s ease;\n    transition: all .5s ease;\n}\n.main-nav a:hover {\n      font-size: 1.1em;\n      text-shadow: 1px 1px 2px grey;\n      -webkit-transition: all .3s ease;\n      transition: all .3s ease;\n}\n", ""]);
+exports.push([module.i, "\n.form-login input {\n  /**\n* List of variables\n**/\n  /** Colors **/\n  /** Fonts **/\n  /**\n* List of mixins\n**/\n  /** Material Shadow for block, depth between 0 and 5 **/\n  /** Effects **/\n  /**\n* List of function\n**/\n  /** shadow function **/\n  color: #FFFFFF;\n}\n", ""]);
 
 // exports
 
@@ -2230,7 +2394,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.gallery-show {\n  text-align: center;\n  line-height: 2em;\n  color: #000;\n}\n.gallery-show .focus {\n    color: #FFFFFF;\n    background-color: #FF0C64 !important;\n}\n.gallery-show h1, .gallery-show input[name=\"title\"] {\n    font-size: 3em;\n    color: #FF0C64;\n    text-align: center;\n}\n.gallery-show p {\n    color: #000;\n}\n.gallery-show .info-gallery {\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-flow: column;\n            flex-flow: column;\n    width: 80%;\n    padding: 1em;\n    margin: 3em auto;\n    text-align: left;\n    background-color: #FFFFFF;\n}\n.gallery-show .info-gallery .destroy {\n      visibility: hidden;\n      opacity: 0;\n      position: absolute;\n      top: -0.2em;\n      right: -1.2em;\n      width: 1em;\n      margin: 0em;\n      font-size: 5em;\n      color: #FFFFFF;\n      cursor: pointer;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.gallery-show .info-gallery:hover .destroy {\n      visibility: visible;\n      opacity: 100;\n      -webkit-transition: all 0.3s;\n      transition: all 0.3s;\n}\n.gallery-show .admin-picture {\n    position: relative;\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-flow: column;\n            flex-flow: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 0.8em;\n    margin: 1em;\n    background-color: #fff;\n    text-align: left;\n}\n.gallery-show .admin-picture span {\n      width: 50%;\n      margin-right: 10em;\n}\n.gallery-show .admin-picture .destroy {\n      visibility: hidden;\n      opacity: 0;\n      position: absolute;\n      top: -0.2em;\n      right: -1.2em;\n      width: 1em;\n      margin: 0em;\n      font-size: 5em;\n      color: #FFFFFF;\n      cursor: pointer;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.gallery-show .admin-picture:hover .destroy {\n      visibility: visible;\n      opacity: 100;\n      -webkit-transition: all 0.3s;\n      transition: all 0.3s;\n}\n.editable:hover .label:after {\n  content: '\\F040';\n  font-family: FontAwesome;\n  position: absolute;\n  font-size: 0.8rem;\n  margin: 0 0 0 0.8em;\n  color: #3c3f41;\n}\ntextarea, input {\n  outline: none;\n  border: none;\n  resize: none;\n}\n.details {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n.form-item {\n  text-align: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n}\n.form-item .additionnal-info {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n}\n.form-item:hover .label:after {\n    content: '\\F040';\n    font-family: FontAwesome;\n    position: absolute;\n    font-size: 0.8rem;\n    margin: 0 0 0 0.8em;\n    color: #3c3f41;\n}\n.area {\n  width: 100%;\n  height: 8em;\n}\ninput[name=\"title\"] + .editing {\n  display: block;\n}\n.field {\n  display: none;\n}\n.label {\n  cursor: pointer;\n  text-shadow: none;\n}\n.consigne {\n  font-size: 0.8em;\n}\n.editing {\n  display: inline;\n}\n.editing + .label {\n  display: none;\n}\n.additionnal-info {\n  font-size: 0.8em;\n}\n.validation {\n  padding: 0.3em 1em;\n  margin: 0 0.5em !important;\n  border-radius: 1em;\n  background-color: #e65e5e;\n  color: #FFFFFF;\n  text-align: center;\n  cursor: pointer;\n  -webkit-transition: all 0.5s;\n  transition: all 0.5s;\n}\n.validation:hover {\n    background-color: #5bbf5b;\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.visible-label {\n  display: inline-block;\n  width: 23em !important;\n  margin: 0 !important;\n}\n.public-label {\n  display: inline-block;\n  width: 17em;\n}\n.new-upload {\n  width: 80%;\n  padding: 2em;\n  margin: 3em auto 10em;\n  background-color: #fff;\n}\n", ""]);
+exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.contact-view {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  padding: 15em 0;\n  background-image: url(\"/assets/img/desktop/concert_desktop.jpg\");\n  background-repeat: no-repeat;\n}\n.contact-view .form-group {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-flow: column;\n            flex-flow: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    width: 100vw;\n    height: 30vw;\n    font-size: 1.2rem;\n    color: #FFFFFF;\n    background-image: url(\"/assets/img/desktop/bck_contact_desktop.png\");\n    background-repeat: no-repeat;\n}\n.contact-view .form-group .form-element {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      position: relative;\n      padding: 1vw 2vw;\n}\n.contact-view .form-group .form-element label {\n        position: absolute;\n        top: 1.5em;\n        cursor: pointer;\n        -webkit-transition: all 0.5s ease-in;\n        transition: all 0.5s ease-in;\n}\n.contact-view .form-group .counter {\n      color: rgba(255, 255, 255, 0.5);\n      top: 65.5em;\n      left: 50%;\n}\nh2 {\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center;\n  font-size: 1.2rem;\n}\ninput,\ntextarea {\n  padding: 0.5em 0em;\n  background-color: transparent;\n  color: transparent;\n  cursor: pointer;\n  border-bottom: thin solid #FFFFFF !important;\n}\ninput:focus,\n  textarea:focus {\n    color: #FFFFFF;\n    -webkit-transition: color 0.3s ease-out;\n    transition: color 0.3s ease-out;\n    -webkit-transition-delay: 0.3s;\n            transition-delay: 0.3s;\n    /*+ label {*/\n    /*animation-name: move;*/\n    /*animation-duration: 0.3s;*/\n    /*transition: all 0.3s ease-in;*/\n    /*}*/\n}\ninput:not([type=\"submit\"]) {\n  width: 30vw;\n}\ntextarea {\n  width: 64vw;\n  height: 10vw;\n}\n#title {\n  width: 64vw;\n}\ninput[type=\"submit\"] {\n  padding: 0.5em 0.8em;\n  background-color: transparent;\n  color: #fff;\n  border-style: solid;\n  border-radius: 10em;\n  box-shadow: 1px 1px 2px grey;\n  -webkit-transition: all 0.5s linear;\n  transition: all 0.5s linear;\n  text-shadow: 1px 1px 2px grey;\n}\ninput[type=\"submit\"]:disabled {\n    cursor: not-allowed;\n}\n.select {\n  position: absolute;\n  top: 0em !important;\n  -webkit-transition: all 0.3s ease-in;\n  transition: all 0.3s ease-in;\n}\n.solid {\n  color: #FFFFFF !important;\n}\n.form-error,\n.form-success {\n  padding-left: 1em;\n  font-size: 0.9rem;\n}\n.form-error {\n  color: #ff3654;\n}\n.form-success {\n  color: #26ee77;\n}\ninput:-webkit-autofill,\ninput:-webkit-autofill:hover,\ninput:-webkit-autofill:focus,\ninput:-webkit-autofill:active {\n  -webkit-transition: background-color 500000s ease-in-out 0s;\n  transition: background-color 500000s ease-in-out 0s;\n  -webkit-text-fill-color: #fff !important;\n}\n", ""]);
 
 // exports
 
@@ -2244,7 +2408,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "\n.preview {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.preview .focus {\n    margin: 2em 0;\n}\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.item {\n  width: 48em;\n  height: 32em;\n  margin: 1em 2em;\n}\n", ""]);
+exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.admin-messages {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding-bottom: 10em;\n}\n.admin-messages h1 {\n    color: #FFFFFF;\n}\n.admin-messages input[type=\"checkbox\"] {\n    width: 2vw;\n}\n.inbox-dashboard,\n.message-group {\n  width: 100%;\n  background-color: #FFFFFF;\n}\n.inbox-dashboard {\n  margin-top: 2em;\n  height: 3vw;\n  line-height: 3vw;\n  border-bottom-style: solid;\n  border-width: thin;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n.inbox-dashboard .message-danger {\n    margin: 0 2em;\n}\n.message-group {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n}\n.message-item {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  heigth: 3vw;\n  padding: 1em 0;\n  border-style: solid;\n  border-width: thin;\n}\n.message-item span {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n}\n.message-preview span {\n  cursor: zoom-in;\n}\n.answered {\n  color: #479fe5 !important;\n}\n.message-name {\n  width: 6vw;\n  overflow: hidden;\n}\n.message-email {\n  width: 12vw;\n  overflow: hidden;\n}\n.message-title {\n  width: 48vw;\n  margin-right: 1vw;\n  overflow: hidden;\n}\n.message-content p {\n  color: rgba(0, 0, 0, 0.5);\n  text-shadow: none;\n  line-height: 1.5em;\n  padding: 0 2em;\n  cursor: zoom-out;\n}\n.message-reply {\n  background-color: rgba(0, 0, 0, 0.1);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: end;\n      -ms-flex-align: end;\n          align-items: flex-end;\n  padding-bottom: 1em;\n}\n.message-reply textarea {\n    width: 70vw;\n    margin: 1em;\n    padding: 0.5em 1em;\n    line-height: 2em;\n    color: #0F0F0F;\n    cursor: text;\n    background-color: #FFFFFF;\n    border: thin solid #479fe5 !important;\n}\n.message-reply span {\n    margin: 1em;\n    padding: 0.5em;\n}\n.message-success,\n.message-danger {\n  padding: 0 1em;\n  border-radius: 5em;\n  border-color: #FFFFFF;\n  border-width: thin;\n  color: #FFFFFF;\n}\n.message-success {\n  background-color: #5bbf5b;\n}\n.message-success:hover {\n    border-color: #5bbf5b;\n    cursor: pointer;\n}\n.message-danger {\n  background-color: #e65e5e;\n}\n.message-danger:hover {\n    border-color: #e65e5e;\n    cursor: pointer;\n}\n.select-all {\n  display: inline-block;\n  margin-left: 1em;\n  color: #FFFFFF;\n  -webkit-transform: rotate(-90deg);\n          transform: rotate(-90deg);\n}\n.info-box {\n  position: absolute;\n  width: 120vw;\n  height: 150vw;\n  background-color: rgba(0, 0, 0, 0.5);\n  cursor: pointer;\n}\n.info-box .info-container {\n    position: fixed;\n    top: 20vw;\n    left: 45vw;\n    width: 20vw;\n    height: 10vw;\n    line-height: 10vw;\n    text-align: center;\n    background-color: #FFFFFF;\n}\n.info-box .info-success {\n    color: #5bbf5b;\n}\n.info-box .info-errors {\n    color: #e65e5e;\n}\n.counter {\n  position: absolute;\n  left: 40%;\n  font-size: 0.6em;\n  color: rgba(0, 0, 0, 0.6);\n}\n", ""]);
 
 // exports
 
@@ -2258,7 +2422,7 @@ exports = module.exports = __webpack_require__(0)();
 
 
 // module
-exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.footer-view {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  height: 25em;\n  padding: 2em 0 2em 0;\n  margin: 10em 0 0 0;\n  background-image: url(\"/assets/img/desktop/bck_footer_desktop.png\");\n  background-color: black;\n}\n.footer-view a {\n    display: inline-block;\n    margin: 1rem;\n}\n.footer-view div {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n}\n.footer-view p {\n    font-size: 0.6rem;\n    text-shadow: none;\n}\n.footer-view a {\n    display: inline-block;\n    height: 2rem;\n    width: 100%;\n    line-height: 2rem;\n    text-align: center;\n    text-shadow: none;\n    font-size: 1em;\n    -webkit-transition: all .5s ease;\n    transition: all .5s ease;\n}\n.footer-view a:hover {\n      color: #FF0C64;\n      font-size: 0.95em;\n      -webkit-transition: all .3s ease;\n      transition: all .3s ease;\n}\n.footer-view a .fa {\n      font-size: 2em;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -2267,15 +2431,113 @@ exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Font
 /* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.admin-nav h2 {\n  -ms-flex-item-align: center;\n      -ms-grid-row-align: center;\n      align-self: center;\n  color: #FF0C64;\n}\n.admin-nav a {\n  color: #FFFFFF;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.admin-galleries {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 1em 0 10em;\n}\n.admin-galleries h1 {\n    color: #FFFFFF;\n}\n.gallery-item {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 4em;\n  margin: 2em;\n  background-color: #FFFFFF;\n}\n.gallery-item a {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n}\n.gallery-item .gallery-info {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-flow: column;\n            flex-flow: column;\n}\n.gallery-item .gallery-info p {\n      padding: 1em;\n      color: #000000;\n      text-shadow: none;\n}\n.gallery-item .gallery-info p span {\n        color: #FF0C64;\n}\n.private {\n  border-style: solid;\n  border-color: #FF0C64;\n  border-width: 0.2em;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.gallery-form {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  margin: 2em 2em 15em 2em;\n  text-align: center;\n}\n.gallery-form h1,\n  .gallery-form select,\n  .gallery-form input[type=\"file\"] {\n    color: #fff;\n}\n.gallery-form .form-item {\n    margin: 2em;\n}\n.gallery-form .form-item span {\n      padding: 0.8em;\n      color: #fff;\n}\n.gallery-form input[type=\"text\"] {\n    width: 30vw;\n}\n.gallery-form select,\n  .gallery-form input[type=\"file\"] {\n    background-color: #4e4466;\n    margin: 0 auto;\n}\n.gallery-form input[type=\"file\"] {\n    display: none;\n}\n.gallery-form textarea {\n    width: 30vw;\n    height: 10vw;\n}\n.gallery-form input[type=\"submit\"] {\n    width: 10vw;\n    height: 3vw;\n    background-color: transparent;\n    color: #fff;\n    border-style: solid;\n    border-radius: 10em;\n    -webkit-transition: all 0.5s linear;\n    transition: all 0.5s linear;\n}\n.gallery-form input[type=\"submit\"]:hover {\n      background-color: #5bbf5b;\n      -webkit-transition: all 0.5s linear;\n      transition: all 0.5s linear;\n}\n.gallery-form label {\n    width: 25em;\n    color: #ffffff;\n    border-style: dashed;\n    border-radius: 10em;\n    padding: 0.5em;\n    margin: 0 auto;\n    cursor: pointer;\n    -webkit-transition: all 0.5s linear;\n    transition: all 0.5s linear;\n}\n.gallery-form label:hover {\n      border-style: solid;\n      -webkit-transition: all 0.5s linear;\n      transition: all 0.5s linear;\n}\n.gallery-form input, .gallery-form textarea {\n    padding: 0.8em;\n}\n.gallery-form .public {\n    display: inline-block;\n}\n.gallery-form input[type=\"checkbox\"] {\n    padding: 0.8em;\n}\n.gallery-form .form-submit {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n.gallery-form .empty {\n    color: #ff3f49;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.home-nav {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  width: 100%;\n  height: 2.5em;\n}\n.logo {\n  margin-left: 2rem;\n  text-align: center;\n  font-family: \"Roboto Slab\", serif;\n  font-size: 2em;\n  line-height: 1.1em;\n  color: #000000;\n}\n.logo span {\n    font-family: \"Caveat\", cursive;\n    color: #FF0C64;\n    font-weight: bold;\n}\n.main-nav {\n  margin-right: 10em;\n}\n.main-nav a {\n    display: inline-block;\n    width: 5rem;\n    height: 2rem;\n    margin: 0 1.5rem;\n    text-align: center;\n    line-height: 2rem;\n    font-size: 1.2em;\n    color: #FF0C64;\n    -webkit-transition: all .5s ease;\n    transition: all .5s ease;\n}\n.main-nav a:hover {\n      font-size: 1.1em;\n      text-shadow: 1px 1px 2px grey;\n      -webkit-transition: all .3s ease;\n      transition: all .3s ease;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.gallery-show {\n  text-align: center;\n  line-height: 2em;\n  color: #000;\n}\n.gallery-show .focus {\n    color: #FFFFFF;\n    background-color: #FF0C64 !important;\n}\n.gallery-show h1, .gallery-show input[name=\"title\"] {\n    font-size: 3em;\n    color: #FF0C64;\n    text-align: center;\n}\n.gallery-show p {\n    color: #000;\n}\n.gallery-show .info-gallery {\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-flow: column;\n            flex-flow: column;\n    width: 80%;\n    padding: 1em;\n    margin: 3em auto;\n    text-align: left;\n    background-color: #FFFFFF;\n}\n.gallery-show .info-gallery .destroy {\n      visibility: hidden;\n      opacity: 0;\n      position: absolute;\n      top: -0.2em;\n      right: -1.2em;\n      width: 1em;\n      margin: 0em;\n      font-size: 5em;\n      color: #FFFFFF;\n      cursor: pointer;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.gallery-show .info-gallery:hover .destroy {\n      visibility: visible;\n      opacity: 100;\n      -webkit-transition: all 0.3s;\n      transition: all 0.3s;\n}\n.gallery-show .admin-picture {\n    position: relative;\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-flow: column;\n            flex-flow: column;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 0.8em;\n    margin: 1em;\n    background-color: #fff;\n    text-align: left;\n}\n.gallery-show .admin-picture span {\n      width: 50%;\n      margin-right: 10em;\n}\n.gallery-show .admin-picture .destroy {\n      visibility: hidden;\n      opacity: 0;\n      position: absolute;\n      top: -0.2em;\n      right: -1.2em;\n      width: 1em;\n      margin: 0em;\n      font-size: 5em;\n      color: #FFFFFF;\n      cursor: pointer;\n      -webkit-transition: all 0.5s;\n      transition: all 0.5s;\n}\n.gallery-show .admin-picture:hover .destroy {\n      visibility: visible;\n      opacity: 100;\n      -webkit-transition: all 0.3s;\n      transition: all 0.3s;\n}\n.editable:hover .label:after {\n  content: '\\F040';\n  font-family: FontAwesome;\n  position: absolute;\n  font-size: 0.8rem;\n  margin: 0 0 0 0.8em;\n  color: #3c3f41;\n}\ntextarea, input {\n  outline: none;\n  border: none;\n  resize: none;\n}\n.details {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n.form-item {\n  text-align: center;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n}\n.form-item .additionnal-info {\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n}\n.form-item:hover .label:after {\n    content: '\\F040';\n    font-family: FontAwesome;\n    position: absolute;\n    font-size: 0.8rem;\n    margin: 0 0 0 0.8em;\n    color: #3c3f41;\n}\n.area {\n  width: 100%;\n  height: 8em;\n}\ninput[name=\"title\"] + .editing {\n  display: block;\n}\n.field {\n  display: none;\n}\n.label {\n  cursor: pointer;\n  text-shadow: none;\n}\n.consigne {\n  font-size: 0.8em;\n}\n.editing {\n  display: inline;\n}\n.editing + .label {\n  display: none;\n}\n.additionnal-info {\n  font-size: 0.8em;\n}\n.validation {\n  padding: 0.3em 1em;\n  margin: 0 0.5em !important;\n  border-radius: 1em;\n  background-color: #e65e5e;\n  color: #FFFFFF;\n  text-align: center;\n  cursor: pointer;\n  -webkit-transition: all 0.5s;\n  transition: all 0.5s;\n}\n.validation:hover {\n    background-color: #5bbf5b;\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.visible-label {\n  display: inline-block;\n  width: 23em !important;\n  margin: 0 !important;\n}\n.public-label {\n  display: inline-block;\n  width: 17em;\n}\n.new-upload {\n  width: 80%;\n  padding: 2em;\n  margin: 3em auto 10em;\n  background-color: #fff;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.preview {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.preview .focus {\n    margin: 2em 0;\n}\n.row {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.item {\n  width: 48em;\n  height: 32em;\n  margin: 1em 2em;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "/**\n* List of variables\n**/\n/** Colors **/\n/** Fonts **/\n/**\n* List of mixins\n**/\n/** Material Shadow for block, depth between 0 and 5 **/\n/** Effects **/\n/**\n* List of function\n**/\n/** shadow function **/\n.footer-view {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column;\n          flex-flow: column;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  height: 25em;\n  padding: 2em 0 2em 0;\n  background-image: url(\"/assets/img/desktop/bck_footer_desktop.png\");\n  background-color: black;\n}\n.footer-view a {\n    display: inline-block;\n    margin: 1rem;\n}\n.footer-view div {\n    display: -webkit-inline-box;\n    display: -ms-inline-flexbox;\n    display: inline-flex;\n}\n.footer-view p {\n    font-size: 0.6rem;\n    text-shadow: none;\n}\n.footer-view a {\n    display: inline-block;\n    height: 2rem;\n    width: 100%;\n    line-height: 2rem;\n    text-align: center;\n    text-shadow: none;\n    font-size: 1em;\n    -webkit-transition: all .5s ease;\n    transition: all .5s ease;\n}\n.footer-view a:hover {\n      color: #FF0C64;\n      font-size: 0.95em;\n      -webkit-transition: all .3s ease;\n      transition: all .3s ease;\n}\n.footer-view a .fa {\n      font-size: 2em;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
 
 /* styles */
-__webpack_require__(107)
+__webpack_require__(118)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(47),
+  __webpack_require__(50),
   /* template */
-  __webpack_require__(93),
+  __webpack_require__(102),
   /* scopeId */
   null,
   /* cssModules */
@@ -2302,18 +2564,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 76 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(97)
+__webpack_require__(106)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(49),
+  __webpack_require__(52),
   /* template */
-  __webpack_require__(83),
+  __webpack_require__(90),
   /* scopeId */
   null,
   /* cssModules */
@@ -2340,18 +2602,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 77 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(104)
+__webpack_require__(115)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(50),
+  __webpack_require__(53),
   /* template */
-  __webpack_require__(90),
+  __webpack_require__(99),
   /* scopeId */
   null,
   /* cssModules */
@@ -2378,18 +2640,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 78 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(94)
+__webpack_require__(103)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(53),
+  __webpack_require__(56),
   /* template */
-  __webpack_require__(80),
+  __webpack_require__(87),
   /* scopeId */
   null,
   /* cssModules */
@@ -2416,18 +2678,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 79 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(101)
+__webpack_require__(112)
 
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(56),
+  __webpack_require__(59),
   /* template */
-  __webpack_require__(87),
+  __webpack_require__(96),
   /* scopeId */
   null,
   /* cssModules */
@@ -2454,7 +2716,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 80 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2477,7 +2739,7 @@ if (false) {
 }
 
 /***/ }),
-/* 81 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2498,7 +2760,7 @@ if (false) {
 }
 
 /***/ }),
-/* 82 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2527,7 +2789,7 @@ if (false) {
 }
 
 /***/ }),
-/* 83 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2562,7 +2824,104 @@ if (false) {
 }
 
 /***/ }),
-/* 84 */
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', {
+    staticClass: "admin-container"
+  }, [_c('div', {
+    staticClass: "sidebar"
+  }, [_c('admin-nav')], 1), _vm._v(" "), _c('section', {
+    staticClass: "admin-view"
+  }, [_c('router-view')], 1)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4504d4bc", module.exports)
+  }
+}
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', {
+    staticClass: "user-login"
+  }, [_c('form', {
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.login($event)
+      }
+    }
+  }, [_c('div', {
+    staticClass: "form-login"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.email),
+      expression: "email"
+    }],
+    attrs: {
+      "type": "email"
+    },
+    domProps: {
+      "value": _vm._s(_vm.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.email = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-login"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.password),
+      expression: "password"
+    }],
+    attrs: {
+      "type": "password"
+    },
+    domProps: {
+      "value": _vm._s(_vm.password)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.password = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-login"
+  }, [_c('input', {
+    attrs: {
+      "type": "submit",
+      "value": "Connexion"
+    },
+    on: {
+      "click": _vm.login
+    }
+  })])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4bfdc55f", module.exports)
+  }
+}
+
+/***/ }),
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2814,7 +3173,7 @@ if (false) {
 }
 
 /***/ }),
-/* 85 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3136,7 +3495,7 @@ if (false) {
 }
 
 /***/ }),
-/* 86 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3163,7 +3522,7 @@ if (false) {
 }
 
 /***/ }),
-/* 87 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3212,7 +3571,7 @@ if (false) {
 }
 
 /***/ }),
-/* 88 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3254,7 +3613,7 @@ if (false) {
 }
 
 /***/ }),
-/* 89 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3427,7 +3786,7 @@ if (false) {
 }
 
 /***/ }),
-/* 90 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3454,7 +3813,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       },
       "title": "Les galeries 'Portraits'",
-      "replace": ""
+      "exact": ""
     }
   }, [_vm._v("Portraits")]), _vm._v(" "), _c('router-link', {
     attrs: {
@@ -3465,7 +3824,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       },
       "title": "Les galeries 'Voyage'",
-      "replace": ""
+      "exact": ""
     }
   }, [_vm._v("Voyage")]), _vm._v(" "), _c('router-link', {
     attrs: {
@@ -3476,7 +3835,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       },
       "title": "Les galeries 'Street'",
-      "replace": ""
+      "exact": ""
     }
   }, [_vm._v("Street")]), _vm._v(" "), _c('router-link', {
     attrs: {
@@ -3487,7 +3846,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       },
       "title": "Les galeries 'Mariage'",
-      "replace": ""
+      "exact": ""
     }
   }, [_vm._v("Mariage")]), _vm._v(" "), _c('router-link', {
     attrs: {
@@ -3514,7 +3873,7 @@ if (false) {
 }
 
 /***/ }),
-/* 91 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4123,7 +4482,7 @@ if (false) {
 }
 
 /***/ }),
-/* 92 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4196,7 +4555,7 @@ if (false) {
 }
 
 /***/ }),
-/* 93 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -4257,13 +4616,13 @@ if (false) {
 }
 
 /***/ }),
-/* 94 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(61);
+var content = __webpack_require__(66);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4283,13 +4642,13 @@ if(false) {
 }
 
 /***/ }),
-/* 95 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(62);
+var content = __webpack_require__(67);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4309,13 +4668,13 @@ if(false) {
 }
 
 /***/ }),
-/* 96 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(63);
+var content = __webpack_require__(68);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4335,13 +4694,13 @@ if(false) {
 }
 
 /***/ }),
-/* 97 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(64);
+var content = __webpack_require__(69);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4361,13 +4720,65 @@ if(false) {
 }
 
 /***/ }),
-/* 98 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(65);
+var content = __webpack_require__(70);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("7af7bf21", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4504d4bc!./../../../../../node_modules/sass-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Studio.vue", function() {
+     var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4504d4bc!./../../../../../node_modules/sass-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Studio.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(71);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("46ce40fb", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4bfdc55f!./../../../../../node_modules/sass-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue", function() {
+     var newContent = require("!!./../../../../../node_modules/css-loader/index.js!./../../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-4bfdc55f!./../../../../../node_modules/sass-loader/index.js!./../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(72);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4387,13 +4798,13 @@ if(false) {
 }
 
 /***/ }),
-/* 99 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(66);
+var content = __webpack_require__(73);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4413,13 +4824,13 @@ if(false) {
 }
 
 /***/ }),
-/* 100 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(67);
+var content = __webpack_require__(74);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4439,13 +4850,13 @@ if(false) {
 }
 
 /***/ }),
-/* 101 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(68);
+var content = __webpack_require__(75);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4465,13 +4876,13 @@ if(false) {
 }
 
 /***/ }),
-/* 102 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(69);
+var content = __webpack_require__(76);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4491,13 +4902,13 @@ if(false) {
 }
 
 /***/ }),
-/* 103 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(70);
+var content = __webpack_require__(77);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4517,13 +4928,13 @@ if(false) {
 }
 
 /***/ }),
-/* 104 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(71);
+var content = __webpack_require__(78);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4543,13 +4954,13 @@ if(false) {
 }
 
 /***/ }),
-/* 105 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(72);
+var content = __webpack_require__(79);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4569,13 +4980,13 @@ if(false) {
 }
 
 /***/ }),
-/* 106 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(73);
+var content = __webpack_require__(80);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4595,13 +5006,13 @@ if(false) {
 }
 
 /***/ }),
-/* 107 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(74);
+var content = __webpack_require__(81);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -4621,7 +5032,7 @@ if(false) {
 }
 
 /***/ }),
-/* 108 */
+/* 119 */
 /***/ (function(module, exports) {
 
 /**
@@ -4654,13 +5065,13 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 109 */,
-/* 110 */
+/* 120 */,
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(26);
-module.exports = __webpack_require__(27);
+__webpack_require__(28);
+module.exports = __webpack_require__(29);
 
 
 /***/ })
-],[110]);
+],[121]);

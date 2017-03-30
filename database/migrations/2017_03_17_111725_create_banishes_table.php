@@ -15,7 +15,7 @@ class CreateBanishesTable extends Migration
     {
         Schema::create('banishes', function (Blueprint $table) {
             $table->increments('id');
-            $table->ipAddress('ip')->index()->comment('the banish IP');
+            $table->ipAddress('ip')->index()->unique()->comment('the banish IP');
             $table->timestamps();
         });
     }

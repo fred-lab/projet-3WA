@@ -48,5 +48,16 @@
 </script>
 
 <style lang="scss">
+    @import "../../../sass/_variables.scss";
+
+    .index-category{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        padding-bottom: 15em;
+    }
+    .category-item{
+        padding: 2em 0;
+    }
 
 </style>

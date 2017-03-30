@@ -96,15 +96,20 @@ class FilesManager
 
                 if ($savePicture) {
                     $picture->move(public_path() . $dir, $filename );
-                    ($focus) ? PicturesManager::setThumbsPicture(public_path() . $dir. '/' .$filename, public_path() . $dir. '/' .$thumbName) : null;
+                    if($focus){
+                        PicturesManager::setThumbsPicture(public_path() . $dir. '/' .$filename, public_path() . $dir. '/' .$thumbName);
+                        if(file_exists(public_path() . $dir . '/' . $thumbName)){
+                            $dimension = PicturesManager::getDimension(public_path() . $dir . '/' . $thumbName);
+                            $gallery->pictures()->update([
+                                'width'     => $dimension['width'],
+                                'height'    => $dimension['height'],
+                                'ratio'     => $dimension['ratio']
+                            ]);
+                        }
+                    }
                     PicturesManager::setLargePicture(public_path() . $dir. '/' .$filename);
-                    $dimension = PicturesManager::getDimension(public_path() . $dir . '/' . $filename);
 
-                    $gallery->pictures()->update([
-                        'width'     => $dimension['width'],
-                        'height'    => $dimension['height'],
-                        'ratio'     => $dimension['ratio']
-                    ]);
+
                 }
                 else {
                     return false;
@@ -251,6 +256,15 @@ class FilesManager
                     public_path() . self::getPictureDir($gallery). '/' .$picture[0]->title,
                     public_path() . self::getPictureDir($gallery). '/' .$gallery->slug. '-preview.jpg'
                 );
+
+                if(file_exists(public_path() . self::getPictureDir($gallery). '/' .$gallery->slug. '-preview.jpg')){
+                    $dimension = PicturesManager::getDimension(public_path() . self::getPictureDir($gallery). '/' .$gallery->slug. '-preview.jpg');
+                    $gallery->pictures()->update([
+                        'width'     => $dimension['width'],
+                        'height'    => $dimension['height'],
+                        'ratio'     => $dimension['ratio']
+                    ]);
+                }
             }
         }
     }

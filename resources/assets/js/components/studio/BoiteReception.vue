@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="message-reply" v-if="displayReply === message" >
-                    <textarea v-model="reply" v-focus="displayReply === message" @blur="onClose" @keyup.esc="onClose" @keyup.ctrl.enter="onReply(message)"></textarea>
+                    <textarea v-model="reply" v-focus="displayReply === message"  @keyup.esc="onClose" @keyup.ctrl.enter="onReply(message)"></textarea>
                     <span class="message-success" @click="onReply(message)">Envoyer</span>
                     <span class="message-danger" @click="onClose">Annuler</span>
                     <span class="counter" v-show="!info">{{ reply.length}} caractères - ESC pour fermer - CTRL+ENTER pour envoyer</span>
@@ -99,8 +99,9 @@
                 (this.displayContent === null) ? this.displayContent = message : this.displayContent = null;
             },
             onReply(message){
+                console.log('réponse')
                 if(this.reply){
-                    axios.put('/studio/message/'+message.id, {
+                    axios.put('/message/'+message.id, {
                         title: message.title,
                         reply: this.reply,
                         receiver: message.name,
@@ -129,7 +130,7 @@
             },
             confirmDelete(){
                 if(this.target != null){
-                    axios.delete('/studio/message/'+this.target.id).then(
+                    axios.delete('/message/'+this.target.id).then(
                             (({data}) => this.success = data),
                             (errors) => this.errors = errors.response.data
                     ).then(
@@ -222,7 +223,7 @@
             }
         },
         created(){
-            axios.get('/studio/message').then(
+            axios.get('/message').then(
                     ({data}) => this.messages = data,
                     (errors) => this.errors = errors.response.data
             )
@@ -237,6 +238,7 @@
         display: flex;
         flex-flow: column;
         align-items: center;
+        padding-bottom: 10em;
 
         h1{
             color: $primary-text-color;

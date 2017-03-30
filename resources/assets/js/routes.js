@@ -8,16 +8,55 @@ const routes = [
     {
         path: '/',
         name: 'homepage',
-        component: require('./components/home/Homepage')
+        component: require('./components/home/Homepage'),
     },
     {
         path: '/about',
         name: 'about',
-        component: require('./components/home/About')
+        component: require('./components/home/About'),
     },{
         path: '/contact',
         name: 'contact',
         component: require('./components/home/Contact')
+    },
+    /** Studio **/
+    {
+        path: '/studio/',
+        component: require('./components/studio/Studio'),
+        children: [
+            {
+                path: 'login',
+                name: 'studio.login',
+                component: require('./components/auth/Login')
+            },{
+                path: '',
+                name: 'studio.gallery.index',
+                component: require('./components/studio/AdminGalleriesIndex'),
+                meta: { studio: true}
+            },
+            {
+                path: 'gallery/create',
+                name: 'studio.gallery.create',
+                component: require('./components/studio/GalleryForm.vue'),
+                meta: { studio: true}
+            },
+            {
+                path: 'gallery/:id(\\d+)',
+                name: 'studio.gallery.show',
+                component: require('./components/studio/AdminGallery'),
+                meta: { studio: true}
+            },
+            {
+                path: 'messages',
+                name: 'studio.messages.index',
+                component: require('./components/studio/BoiteReception'),
+                meta: { studio: true}
+            }
+        ]
+    },
+    {
+        path: '*',
+        redirect: '/'
     },
     {
         path: '/:category',
@@ -29,31 +68,6 @@ const routes = [
         name: 'gallery.show',
         component: require('./components/home/Gallery'),
         props: true
-    },
-    /** Studio **/
-    {
-        path: '/gallery',
-        name: 'studio.gallery.index',
-        component: require('./components/studio/AdminGalleriesIndex')
-    },
-    {
-        path: '/gallery/create',
-        name: 'studio.gallery.create',
-        component: require('./components/studio/GalleryForm.vue')
-    },
-    {
-        path: '/gallery/:id(\\d+)',
-        name: 'studio.gallery.show',
-        component: require('./components/studio/AdminGallery')
-    },
-    {
-        path: '/messages',
-        name: 'studio.messages.index',
-        component: require('./components/studio/BoiteReception')
-    },
-    {
-        path: '*',
-        redirect: '/'
     }
 ]
 

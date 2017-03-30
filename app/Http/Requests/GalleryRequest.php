@@ -23,8 +23,9 @@ class GalleryRequest extends FormRequest
      */
     public function rules()
     {
+        (request('_method') == 'PUT') ? $unique = 'unique:galleries,title,'.$this->route('gallery')->id : $unique ='unique:galleries,title';
         return [
-            'title'         => 'bail | required | unique:galleries,title| min:3 | max:75',
+            'title'         => 'bail | required | '.$unique.'| min:3 | max:75',
             'description'   => 'nullable | min:3 | max:1000',
             'date'          => 'nullable | date',
             'address'       => 'nullable | alpha_num | min:3 | max:75',

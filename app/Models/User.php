@@ -11,6 +11,20 @@ class User extends Authenticatable
     use HasApiTokens, Notifiable;
 
     /**
+     * the "boot" function
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->slug = self::uniqueSlug($user);
+        });
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -33,5 +47,24 @@ class User extends Authenticatable
      */
     public function pictures(){
         return $this->belongsToMany('App\Models\Picture');
+    }
+
+    /**
+     * Give a unique slug to the user
+     * @param \App\Models\User $user
+     * @return string
+     */
+    public static function uniqueSlug(User $user)
+    {
+        $name = str_slug($user->name);
+        $lastName = str_slug($user->last_name);
+        $slugName = $name.'-'.$lastName;
+
+        $count = User::where('slug', 'LIKE', $slugName.'%')->count();
+        
+        if( $count > 0){
+            $slugName = $slugName.'-'.$count;
+        }
+        return $slugName;
     }
 }

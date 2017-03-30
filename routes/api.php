@@ -31,7 +31,9 @@ Route::get('preview', function (){
         ->get()->toJson();
 });
 Route::get('gallery/{slug}', function($slug){
-    return App\Models\Gallery::with('pictures')
+    return App\Models\Gallery::with(['pictures' => function($query){
+        $query->where('visible', '=', '1');
+    }])
         ->where('slug', $slug)
         ->firstOrFail()->toJson();
 });
