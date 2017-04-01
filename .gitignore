@@ -1,8 +1,10 @@
+/public/css/*
 /node_modules
 /public/galeries
 /public/storage
 /public/hot
 /storage/*.key
+/public/js/*
 /vendor
 /.idea
 Homestead.json
