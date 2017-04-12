@@ -140,4 +140,7 @@
             transition: all 0.3s;
          }
     }
+    .category-nav{
+        margin: 10em 0;
+    }
 </style>
