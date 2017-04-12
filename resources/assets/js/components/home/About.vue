@@ -1,7 +1,7 @@
 <template>
     <section class="about-view">
             <div class="about-text">
-                <p>Je ne saurais me limiter à un style, tant diverses domaines de la photographie m'intrigue, il y a cet attrait pour les expression </p>
+                <p>Work in progress</p>
 
             </div>
     </section>
