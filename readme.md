@@ -2,6 +2,7 @@ Pré Requis :
 - MySQL > 5.7.7
 - PHP 7.0 avec Imagick
 
+
 Installation :
 - Cloner le repo
 - Faire un : 'composer install' puis 'composer dump-autoload'
@@ -18,10 +19,12 @@ les installer : 'php artisan passport:install'
 dans la table 'oauth_clients'
 - S'assurer que Nginx (ou Apache) & PHP acceptent l'upload de fichier lourds lors d'un post.
 
+
 Utilisation :
 - Se rendre sur la page 'http://localhost/studio/login' pour un environnement de dev
 - Se connecter avec le compte user:'admin@demo.com' pwd:'secret'
 - L'upload d'image et la boite de réception des messages seront accessibles
+
 
 Version beta :
 - Le site permet l'upload de photo, la création de galerie, la gestion de la galerie (ajout/suppression de photo, modification du nom de la galerie, photo d'en-tête)
@@ -30,10 +33,12 @@ se fait par des requêtes AJAX, sans rechargement de la page.
 - Les photos sont redimensionnées grâce à 'Intervention' et le driver 'Imagick'
 - Les visiteurs peuvent envoyer des messages à l'administration et recevoir une réponse par mail.
 
+
 Souhait d'évolution:
 - Ajouter de transition lors du changement de route.
 - Améliorer la gestion utilisateur (création/suppression de compte).
 - Créer une zone privé pour échanger les photos avec les modèles.
 - Créer une zone privé pour héberger et partager des albums de mariage.
+
 
 Site visible ici : http://bokehlicious.fr

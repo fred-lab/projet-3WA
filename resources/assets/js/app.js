@@ -64,6 +64,20 @@ Vue.directive('width',
         })
     })
 
+Vue.directive('click-outside', {
+    bind: function (el, binding, vnode) {
+        let event = function (event) {
+            if (!(el == event.target || el.contains(event.target))) {
+                vnode.context[binding.expression](event);
+            }
+        };
+        document.body.addEventListener('click', event)
+    },
+    unbind: function () {
+        document.body.removeEventListener('click', this.event)
+    }
+})
+
 router.beforeEach((to, from, next) =>{
     if(to.matched.some(e => e.meta.studio)){
         if( ! Vue.auth.isAuthenticated()){
