@@ -1,6 +1,6 @@
 <template>
     <section class="index-category">
-        <div class="category-item" v-for="gallery in galleries">
+        <div class="category-preview" v-for="gallery in galleries">
             <gallery-preview :slug="gallery.slug" :category="category" :filename="gallery.pictures[0].title"
                              :path="gallery.pictures[0].path" :title="gallery.title"></gallery-preview>
         </div>
@@ -54,10 +54,38 @@
         display: flex;
         flex-flow: column;
         align-items: center;
-        padding-bottom: 15em;
+        padding-bottom: 5em;
     }
-    .category-item{
+    .category-preview{
         padding: 2em 0;
+        font-size: 0.4em;
+
+        .gallery-wrapper{
+            height: auto;
+        }
+    }
+
+    /** Responsive **/
+    /** screen > 440px **/
+    @media only screen and (min-width: 440px){
+        .category-preview{
+            font-size: 0.6em;
+        }
+    }
+    /** screen > 960px **/
+    @media only screen and (min-width: 960px){
+        .category-preview{
+            font-size: 0.8em;
+        }
+        .index-category{
+            padding-bottom: 10em;
+        }
+    }
+    /** screen > 1200px **/
+    @media only screen and (min-width: 1200px){
+        .category-preview{
+            font-size: 1em;
+        }
     }
 
 </style>

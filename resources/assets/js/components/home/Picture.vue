@@ -11,5 +11,7 @@
 </script>
 
 <style lang="scss">
-
+    .picture img{
+        max-width: 100%;
+    }
 </style>

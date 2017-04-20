@@ -20,52 +20,86 @@
         justify-content: center;
         position: relative;
         overflow: hidden;
-        text-align: center;
+        /*text-align: center;*/
         box-shadow: #968e95 7px 7px 15px;
-        transition: all 1s;
+        height: auto;
 
-        /*width: inherit;*/
-        height: inherit;
-
-    &:hover {
-        transform: scale(0.98, 0.98);
-        box-shadow: none;
-        transition: all 1s;
-     }
-
-    &:hover .gallery-title {
-         opacity:100;
-         color: $secondary-text-color;
-         filter: blur(0px);
-         transition: all 1s;
-     }
-
-    &:hover .gallery-picture {
-         filter: blur(6px);
-         transition: all 0.3s;
-     }
     }
     .gallery-picture {
-        max-width: 100%;
+        width: 100%;
+        max-height: 100%;
         transition: all 1s;
     }
 
     .gallery-title {
         position: absolute;
-        z-index: 3;
-        opacity: 0;
-        filter: blur(6px);
-        transition: all 0.7s;
+        z-index: 1;
 
         width: inherit;
 
-        color: white;
-        font-size: 4em;
+        color: $secondary-text-color;
+        font-size: 2em;
         line-height: 2em;
         font-family: $title-font;
 
         border-style: solid;
         padding: 0.5em 2em;
+    }
+    /** Responsive **/
+    /** screen > 440 **/
+    @media only screen and (min-width: 440px){
+        .gallery-title{
+            font-size: 2.4em;
+        }
+    }
+    /** screen > 580px **/
+    @media only screen and (min-width: 580px){
+        .gallery-title{
+            font-size: 3em;
+        }
+    }
+    /** screen > 768px **/
+    @media only screen and (min-width: 768px){
+        .gallery-picture {
+            min-height: 100%;
+        }
+
+        .gallery-wrapper{
+            height: 32rem;
+        }
+        .gallery-title{
+            font-size: 4em;
+        }
+    }
+    /** screen > 1200x **/
+    @media only screen and (min-width: 1200px){
+        .gallery-wrapper{
+            transition: all 1s;
+
+            &:hover {
+                 transform: scale(0.98, 0.98);
+                 box-shadow: none;
+                 transition: all 1s;
+             }
+
+            &:hover .gallery-title {
+                 opacity:100;
+                 color: $secondary-text-color;
+                 filter: blur(0px);
+                 transition: all 1s;
+             }
+
+            &:hover .gallery-picture {
+                 filter: blur(6px);
+                 transition: all 0.3s;
+             }
+        }
+        .gallery-title{
+            color: $primary-text-color;
+            opacity: 0;
+            filter: blur(6px);
+            transition: all 0.7s;
+        }
     }
 
 </style>

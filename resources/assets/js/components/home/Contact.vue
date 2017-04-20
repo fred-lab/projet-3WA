@@ -34,6 +34,7 @@
                     </label>
                 </div>
                 <div class="form-element">
+                    <span class="counter" v-show="target == 'message'">{{ message.length }}/1000 caractères</span>
                     <textarea id="message" data-key="message" v-model.trim="message" @focus="focus($event)"
                               @blur="target = null" :class="{solid: message}"></textarea>
                     <label for="message" :class="{select: target == 'message' || message}">
@@ -43,7 +44,6 @@
                 </div>
                 <span class="form-error" v-for="error in errors.spam">{{ error }}</span>
                 <span class="form-success" v-show="success" @click="success ='' ">{{ success }}</span>
-                <span class="counter" v-show="target == 'message'">{{ message.length }}/1000 caractères</span>
                 <div class="form-element">
                     <input type="submit" value="Envoyer" :disabled="disabled">
                 </div>
@@ -108,7 +108,7 @@
 <style lang="scss">
     @import "../../../sass/_variables.scss";
     
-    .contact-view{
+    .contact-view {
         display: flex;
         justify-content: center;
         padding: 15em 0;
@@ -116,80 +116,84 @@
         background-image: url("/assets/img/desktop/concert_desktop.jpg");
         background-repeat: no-repeat;
 
-        .form-group{
+        .form-group {
             display: flex;
             flex-flow: column;
             justify-content: center;
             align-items: center;
             width: 100vw;
-            height: 30vw;
+            /*height: 30vw;*/
+            padding: 2em 0;
 
             font-size: 1.2rem;
             color: $primary-text-color;
             background-image: url("/assets/img/desktop/bck_contact_desktop.png");
             background-repeat: no-repeat;
 
-            .form-element{
+            .form-element {
                 display: flex;
+                flex-direction: column;
                 position: relative;
                 padding: 1vw 2vw;
+                margin: 2vw 0;
 
-                label{
+                label {
                     position: absolute;
-                    top: 1.5em;
+                    top: 1rem;
                     cursor: pointer;
+                    font-size: 0.8rem;
 
                     transition: all 0.5s ease-in;
                 }
             }
-            .counter{
-                color: rgba(255,255,255, 0.5);
-                top: 65.5em;
+            .counter {
+                visibility: hidden;
+                color: rgba(255, 255, 255, 0.5);
+                top: 5%;
                 left: 50%;
             }
         }
-    }
-    h2{
+
+    h2 {
         align-self: center;
-        font-size: 1.2rem;
+        font-size: 0.8rem;
+        padding: 0 1em;
+        text-align: center;
     }
+
     input,
-    textarea{
+    textarea {
         padding: 0.5em 0em;
         background-color: transparent;
         color: transparent;
         cursor: pointer;
+        font-size: 0.7em;
 
-        border-bottom:thin solid $primary-text-color!important;
+        border-bottom: thin solid $primary-text-color !important;
 
         &:focus {
-             color: $primary-text-color;
-             transition: color 0.3s ease-out;
-             transition-delay: 0.3s;
-
-                /*+ label {*/
-                 /*animation-name: move;*/
-                  /*animation-duration: 0.3s;*/
-
-                 /*transition: all 0.3s ease-in;*/
-                /*}*/
-
+            color: $primary-text-color;
+            transition: color 0.3s ease-out;
+            transition-delay: 0.3s;
         }
     }
 
-    input:not([type="submit"]){
-        width: 30vw;
-    }
-    textarea{
-        width: 64vw;
-        height: 10vw;
-    }
-    #title{
+    input:not([type="submit"]) {
         width: 64vw;
     }
 
-    input[type="submit"]{
+    textarea {
+        width: 64vw;
+        height: 10vw;
+    }
+
+    #title {
+        width: 64vw;
+    }
+
+    input[type="submit"] {
         padding: 0.5em 0.8em;
+        margin: 1em;
         background-color: transparent;
         color: #fff;
         border-style: solid;
@@ -198,34 +202,96 @@
         transition: all 0.5s linear;
         text-shadow: 1px 1px 2px grey;
 
-            &:disabled{
-                cursor: not-allowed;
-             }
+        &:disabled {
+            cursor: not-allowed;
+        }
     }
-    .select{
+    .select {
         position: absolute;
-        top: 0em!important;
+        top: -0.4rem !important;
         transition: all 0.3s ease-in;
     }
-    .solid{
-        color: $primary-text-color!important;
+
+    .solid {
+        color: $primary-text-color !important;
     }
+
     .form-error,
-    .form-success{
+    .form-success {
         padding-left: 1em;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
-    .form-error{
+
+    .form-error {
         color: #ff3654;
     }
-    .form-success{
+
+    .form-success {
         color: #26ee77;
     }
+
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active {
         transition: background-color 500000s ease-in-out 0s;
         -webkit-text-fill-color: #fff !important;
+    }
+
+    }
+    /** Responsive **/
+    /** screen > 320px **/
+    @media only screen and (min-width: 320px){
+        .contact-view{
+            h2,
+            label{
+                font-size: 1rem;
+            }
+        }
+    }
+    /** screen > 580px **/
+    @media only screen and (min-width: 580px){
+        .contact-view{
+            .form-element {
+                margin: 0!important;
+            }
+            h2{
+                font-size: 1.2rem!important;
+            }
+            label,
+            input,
+            textarea{
+                font-size: 0.8em!important;
+            }
+            label{
+                top: 1.5em;
+            }
+            .counter{
+                visibility: visible!important;
+            }
+            .select{
+                top: 0rem!important;
+            }
+        }
+    }
+    /** screen > 1200px **/
+    @media only screen and (min-width: 1200px){
+        .contact-view{
+            .form-element{
+                flex-direction: row!important;
+            }
+            input:not([type="submit"]){
+                width: 30vw;
+            }
+
+            h2{
+                font-size: 2rem!important;
+            }
+            label,
+            input,
+            textarea{
+                font-size: 1rem!important;
+            }
+        }
     }
 </style>

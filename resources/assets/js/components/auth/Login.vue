@@ -1,5 +1,6 @@
 <template>
     <section class="user-login">
+        <h1>Studio</h1>
         <form @submit.prevent="login">
             <div class="form-login">
                 <input type="email" v-model="email">
@@ -8,7 +9,7 @@
                 <input type="password" v-model="password">
             </div>
             <div class="form-login">
-                <input type="submit" value="Connexion" @click="login">
+                <span @click="login">Se Connecter</span>
             </div>
         </form>
     </section>
@@ -56,9 +57,55 @@
 </script>
 
 <style lang="scss">
-    .form-login input{
-        @import "../../../sass/_variables.scss";
+    @import "../../../sass/_variables.scss";
 
-        color: $primary-text-color;
+    .user-login{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5rem 0;
+
+        h1{
+            color: $primary-text-color;
+            font-family: $title-font;
+        }
+
+        .form-login{
+            display: flex;
+
+            input{
+                width: 20em;
+                height: 3em;
+                padding: 0.5em;
+                margin: 1em 0;
+                color: rgba(0,0,0,0.5);
+            }
+            span{
+                display: inline-block;
+                margin: 1em auto;
+                padding: 0.5em 1em;
+                color: $primary-text-color!important;
+                font-size: 1.4em;
+                font-weight: bold;
+                background-color: $info-color;
+                transition: color 0.3s ease-in;
+                cursor: pointer;
+
+                    &:hover{
+                         color: $danger-color!important;
+                         transition: color 0.5s ease-in;
+                     }
+            }
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            transition: background-color 500000s ease-in-out 0s;
+            /*-webkit-text-fill-color: #fff !important;*/
+        }
     }
+
 </style>

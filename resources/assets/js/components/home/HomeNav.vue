@@ -37,7 +37,8 @@
                 this.target = e.target.dataset.value
             },
             closeMenu(){
-                this.toggle ? this.toggle = false : null
+                if(this.window < 1150)
+                    this.toggle ? this.toggle = false : null
             },
             homepage(){
                 this.closeMenu()
@@ -63,7 +64,6 @@
                 }, delay)
             },
             leave(el, done){
-                console.log('leave')
                 const delay = (el.dataset.key * 0.7) * 20
                 let style = el.style
 
@@ -90,12 +90,16 @@
 
 <style lang="scss">
     @import "../../../sass/_variables.scss";
+    header{
+        height: 4.5em;
+    }
+
     .home-nav{
         display: flex;
-        justify-content: space-between;
+        flex-wrap: wrap;
+        justify-content: center;
 
         width: 100%;
-        height: 2.5em;
     }
     .logo {
         align-self: flex-start;
@@ -130,6 +134,7 @@
         color: $secondary-text-color;
         text-shadow: 1px 1px 2px grey;
         cursor: pointer;
+        align-self: center;
         /*transition: opacity 0.7s ease-out*/
     }
     .breadcrumb{
@@ -164,14 +169,25 @@
             background-color: green;
          }
     }
-    /*@media only screen and (min-width: 1140px){*/
-        /*.main-nav{*/
-            /*flex-direction: row;*/
-        /*}*/
-    /*}*/
+
 
 
     /** Responsive **/
+    /** screen > 432px **/
+    @media only screen and (min-width: 432px){
+        header{
+            height: 2.5em;
+        }
+        .home-nav{
+            height: 2.5em;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+        .burger{
+            align-self: flex-end;
+        }
+    }
+
     /** screen > 1150px **/
     @media only screen and (min-width: 1150px){
         .home-nav{

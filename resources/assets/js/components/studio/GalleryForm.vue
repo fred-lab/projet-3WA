@@ -26,7 +26,7 @@
 
             <div class="form-aside">
                 <div class="form-item">
-                    <input :type="date" name="date" placeholder="Date du shooting (optionnel)"
+                    <input type="date" name="date" placeholder="Date du shooting (optionnel)"
                            @focus="date = 'date'" @blur="date = 'text'">
                 </div>
                 <div class="form-item">
