@@ -1,13 +1,38 @@
 <template>
-    <router-link :to="{name: 'gallery.show', params:{category: category, slug: slug}}" class="gallery-wrapper">
-        <img :src="path + '/' + filename" :alt="title" class="gallery-picture">
+    <router-link :to="{name: 'gallery.show', params:{category: category, slug: slug}}" class="gallery-wrapper" :class="{crop: resize}">
+        <img :src="path + '/' + filename" :alt="title" class="gallery-picture" ref="picture">
         <span class="gallery-title">{{ title }}</span>
     </router-link>
 </template>
 
 <script type="text/babel">
     export default {
-        props: ['slug', 'category', 'filename', 'path', 'title']
+        props: ['slug', 'category', 'filename', 'path', 'title'],
+        data(){
+            return{
+                height : 0,
+                resize: false
+            }
+        },
+        watch:{
+            height(){
+                return this.height > 512 ? this.resize = true : this.resize = false
+            }
+        },
+        methods:{
+            getHeight(){
+                this.height = this.$refs.picture.clientHeight
+            }
+        },
+        mounted(){
+            this.$nextTick(_=>{
+                window.addEventListener('resize', this.getHeight)
+                this.getHeight()
+            })
+        },
+        beforeDestroy() {
+            window.removeEventListener('resize', this.getHeight)
+        }
     }
 </script>
 
@@ -23,11 +48,12 @@
         /*text-align: center;*/
         box-shadow: #968e95 7px 7px 15px;
         height: auto;
+        margin: 0 0.5em;
 
     }
     .gallery-picture {
         width: 100%;
-        max-height: 100%;
+        /*max-height: 100%;*/
         transition: all 1s;
     }
 
@@ -45,6 +71,9 @@
         border-style: solid;
         padding: 0.5em 2em;
     }
+    .crop{
+        height: 32rem;
+    }
     /** Responsive **/
     /** screen > 440 **/
     @media only screen and (min-width: 440px){
@@ -54,6 +83,9 @@
     }
     /** screen > 580px **/
     @media only screen and (min-width: 580px){
+        .gallery-wrapper{
+            margin: 0 1em;
+        }
         .gallery-title{
             font-size: 3em;
         }
@@ -74,6 +106,7 @@
     /** screen > 1200x **/
     @media only screen and (min-width: 1200px){
         .gallery-wrapper{
+            margin: 0;
             transition: all 1s;
 
             &:hover {
