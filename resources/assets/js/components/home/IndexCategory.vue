@@ -61,7 +61,7 @@
         font-size: 0.4em;
 
         .gallery-wrapper{
-            height: auto;
+            height: auto!important;
         }
     }
 

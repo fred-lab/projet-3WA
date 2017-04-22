@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'gallery.show', params:{category: category, slug: slug}}" class="gallery-wrapper" :class="{crop: resize}">
+    <router-link :to="{name: 'gallery.show', params:{category: category, slug: slug}}" class="gallery-wrapper">
         <img :src="path + '/' + filename" :alt="title" class="gallery-picture" ref="picture">
         <span class="gallery-title">{{ title }}</span>
     </router-link>
@@ -15,13 +15,18 @@
             }
         },
         watch:{
-            height(){
-                return this.height > 512 ? this.resize = true : this.resize = false
-            }
+//            height(){
+//                return this.height > 512 ? this.resize = true : this.resize = false
+//            }
         },
         methods:{
             getHeight(){
-                this.height = this.$refs.picture.clientHeight
+                const picture = this.$refs.picture
+                this.height = picture.clientWidth * 0.6667
+
+                if(picture.naturalHeight > 512) {
+                    picture.parentElement.style.height = this.height+'px'
+                }
             }
         },
         mounted(){
