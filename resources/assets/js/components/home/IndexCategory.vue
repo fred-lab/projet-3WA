@@ -1,5 +1,5 @@
 <template>
-    <section class="index-category">
+    <section class="index-category" :key="category">
         <div class="category-preview" v-for="gallery in galleries">
             <gallery-preview :slug="gallery.slug" :category="category" :filename="gallery.pictures[0].title"
                              :path="gallery.pictures[0].path" :title="gallery.title"></gallery-preview>
@@ -31,7 +31,7 @@
         methods: {
             getIndexByCategory(){
                 /** category_id = int **/
-                var categoryId = 0;
+                let categoryId = 0;
                 for(let key in this.categories){
                     if(this.categories[key].value == this.$route.params.category){
                         categoryId = this.categories[key].id

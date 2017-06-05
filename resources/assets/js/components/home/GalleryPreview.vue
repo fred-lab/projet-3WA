@@ -10,21 +10,15 @@
         props: ['slug', 'category', 'filename', 'path', 'title'],
         data(){
             return{
-                height : 0,
-                resize: false
+                height : 512
             }
-        },
-        watch:{
-//            height(){
-//                return this.height > 512 ? this.resize = true : this.resize = false
-//            }
         },
         methods:{
             getHeight(){
                 const picture = this.$refs.picture
                 this.height = picture.clientWidth * 0.6667
 
-                if(picture.naturalHeight > 512) {
+                if(picture.naturalHeight > 512 && this.height > 0) {
                     picture.parentElement.style.height = this.height+'px'
                 }
             }

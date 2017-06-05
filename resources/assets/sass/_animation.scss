@@ -1,0 +1,100 @@
+/**
+* Transitions
+**/
+
+/** Focus Slide Blur **/
+
+.focus-slide-enter-active{
+  overflow: hidden;
+  animation: slide-in 1s ease-out;
+}
+
+.focus-slide-leave-active{
+  animation: slide-out 0.7s ease-in;
+}
+
+
+/** Blur All**/
+
+.blur-all-enter-active{
+  filter: blur(0px);
+  opacity: 1;
+  transition: filter 0.3s linear, opacity 0.5s ease;
+}
+
+.blur-all-leave-active{
+  //filter: blur(24px);
+  //opacity: 0;
+  //transition: filter 0.3s linear, opacity 0.5s ease;
+  animation: slide-out 0.7s ease-in;
+}
+
+.blur-all-enter{
+  filter: blur(24px);
+  opacity: 0;
+}
+
+/** Slide Up **/
+.slide-up-enter{
+  filter: blur(6px);
+  opacity: 0;
+  transform: translateY(100px);
+}
+.slide-up-enter-active{
+  transition: opacity 0.7s ease, filter 0.5s ease, transform 0.3s linear;
+}
+.slide-up-leave{
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.slide-up-leave-active{
+   transform: translateY(-100px);
+   opacity: 0;
+   transition: opacity 0.5s ease, transform 0.3s linear;
+ }
+
+/**
+* Animations
+**/
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(100px);
+    filter: blur(16px);
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  60% {
+    filter: blur(12px);
+  }
+  80% {
+    transform: translateX(0px);
+    filter: blur(10px);
+  }
+  85% {
+    filter: blur(6px);
+  }
+  100% {
+    filter: blur(0);
+  }
+}
+@keyframes slide-out {
+  0% {
+    transform: translateX(0px);
+    filter: blur(0px);
+  }
+  40% {
+    filter: blur(6px);
+  }
+  80% {
+    filter: blur(12px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100px);
+    filter: blur(16px);
+    opacity: 0;
+  }
+}

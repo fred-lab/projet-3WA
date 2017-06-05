@@ -12,8 +12,11 @@ import './bootstrap';
  */
 import router from './routes.js';
 
+/** Import Axios **/
 import Axios from 'axios'
 
+Axios.defaults.headers.common['Accept'] = 'application/json'
+Axios.defaults.headers.common['Authorization'] = 'Bearer '+sessionStorage.getItem('access_token')
 
 
 /**
@@ -67,7 +70,7 @@ Vue.directive('width',
 Vue.directive('click-outside', {
     bind: function (el, binding, vnode) {
         let event = function (event) {
-            if (!(el == event.target || el.contains(event.target))) {
+            if (!(el == event.target || el.contains(event.target)) ) {
                 vnode.context[binding.expression](event);
             }
         };
@@ -77,6 +80,61 @@ Vue.directive('click-outside', {
         document.body.removeEventListener('click', this.event)
     }
 })
+
+Vue.directive('scroll', {
+    inserted: (el, binding)=>{
+        let handler = event => binding.value(event, el)
+        window.addEventListener('scroll', handler)
+    },
+    unbind: binding => window.removeEventListener('scroll', binding.value)
+})
+
+
+Vue.directive('wheel', {
+    inserted: (el, binding) =>{
+        let handler = event => {
+            let direction = event.deltaY > 0 ? 'down' : 'up'
+            binding.value(direction)
+            // console.log('wheelDelta ', event.deltaY)
+        }
+        window.addEventListener('wheel', handler)
+    },
+    unbind: (el, binding) => window.removeEventListener('wheel', binding.value)
+})
+
+Vue.directive('touch', {
+    inserted: (el, binding) =>{
+        let origin, final = 0
+        const sensitivity = 100
+        let direction = ''
+
+        let getPosition = event => {
+            origin = event.touches[0].clientY
+            // console.log('origin ', origin)
+        }
+
+        let getDirection = event =>{
+            final = event.changedTouches[0].clientY
+            // console.log('final ', final)
+
+            if(Math.abs(origin - final ) > sensitivity){
+                if(origin > final){
+                    direction = 'down'
+                }
+                else {
+                    direction = 'up'
+                }
+                binding.value(direction)
+            }
+        }
+
+        window.addEventListener('touchstart', getPosition)
+        window.addEventListener('touchmove', getDirection)
+    },
+    unbind: (el, binding) => window.removeEventListener('touch', binding.value)
+})
+
+
 
 router.beforeEach((to, from, next) =>{
     if(to.matched.some(e => e.meta.studio)){
@@ -94,12 +152,13 @@ router.beforeEach((to, from, next) =>{
     }
 })
 
-Axios.defaults.headers.common['Accept'] = 'application/json'
-Axios.defaults.headers.common['Authorization'] = 'Bearer '+sessionStorage.getItem('access_token')
 
 
 const app = new Vue({
     el: '#app',
+    data:{
+        transition: ''
+    },
     router,
     mounted : function () {
         console.log('App is ready to rock !')

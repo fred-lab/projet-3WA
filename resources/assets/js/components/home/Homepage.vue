@@ -1,36 +1,49 @@
 <template>
-    <section class="preview"  v-if="galleries.length > 0">
-        <transition name="focus-slide" appear>
-            <div class="focus">
+    <section class="preview"  v-if="galleries.length > 0" v-wheel="onMove" v-touch="onMove">
+        <transition name="slide-up" appear mode="out-in">
+            <div class="focus" v-if="trigger" key="focus">
                 <gallery-preview :path="galleries[0].pictures[0].path" :filename="galleries[0].pictures[0].title"
                                  :slug="galleries[0].slug" :category="category(galleries[0].category_id)" :title="galleries[0].title"
                                  :width="galleries[0].pictures[0].width"
                 ></gallery-preview>
             </div>
         </transition>
+        <!--<div class="hr" :style="{top: middlePage+'px'}">-->
 
-        <div class="grid">
-            <div class="row">
-                <div class="item">
-                    <gallery-preview :path="galleries[1].pictures[0].path" :filename="galleries[1].pictures[0].thumb_name"
-                                     :slug="galleries[1].slug" :category="category(galleries[1].category_id)" :title="galleries[1].title"></gallery-preview>
+        <!--</div>-->
+
+
+            <div class="grid" key="grid-preview">
+                <div class="row">
+                    <transition appear v-if="!trigger" @before-enter="left" @enter="enter" @before-leave="beforeLeave" @leave="leave" >
+                        <div class="item" data-level="1">
+                            <gallery-preview :path="galleries[1].pictures[0].path" :filename="galleries[1].pictures[0].thumb_name"
+                                             :slug="galleries[1].slug" :category="category(galleries[1].category_id)" :title="galleries[1].title"></gallery-preview>
+                        </div>
+                    </transition>
+                    <transition appear v-if="!trigger" @before-enter="right" @enter="enter"  @leave="leave">
+                        <div class="item" data-level="1">
+                            <gallery-preview :path="galleries[2].pictures[0].path" :filename="galleries[2].pictures[0].thumb_name"
+                                             :slug="galleries[2].slug" :category="category(galleries[2].category_id)" :title="galleries[2].title"></gallery-preview>
+                        </div>
+                    </transition>
                 </div>
-                <div class="item">
-                    <gallery-preview :path="galleries[2].pictures[0].path" :filename="galleries[2].pictures[0].thumb_name"
-                                     :slug="galleries[2].slug" :category="category(galleries[2].category_id)" :title="galleries[2].title"></gallery-preview>
+                <div class="row">
+                    <transition appear v-if="!trigger" @before-enter="left" @enter="enter"  @leave="leave">
+                        <div class="item" data-level="2">
+                            <gallery-preview :path="galleries[3].pictures[0].path" :filename="galleries[3].pictures[0].thumb_name"
+                                             :slug="galleries[3].slug" :category="category(galleries[3].category_id)" :title="galleries[3].title"></gallery-preview>
+                        </div>
+                    </transition>
+                    <transition appear v-if="!trigger" @before-enter="right" @enter="enter"  @leave="leave">
+                        <div class="item" data-level="2">
+                            <gallery-preview :path="galleries[4].pictures[0].path" :filename="galleries[4].pictures[0].thumb_name"
+                                             :slug="galleries[4].slug" :category="category(galleries[4].category_id)" :title="galleries[4].title"></gallery-preview>
+                        </div>
+                    </transition>
                 </div>
             </div>
-            <div class="row">
-                <div class="item">
-                    <gallery-preview :path="galleries[3].pictures[0].path" :filename="galleries[3].pictures[0].thumb_name"
-                                     :slug="galleries[3].slug" :category="category(galleries[3].category_id)" :title="galleries[3].title"></gallery-preview>
-                </div>
-                <div class="item">
-                    <gallery-preview :path="galleries[4].pictures[0].path" :filename="galleries[4].pictures[0].thumb_name"
-                                     :slug="galleries[4].slug" :category="category(galleries[4].category_id)" :title="galleries[4].title"></gallery-preview>
-                </div>
-            </div>
-        </div>
+
         <section class="category-nav">
             <div class="grid">
                 <div class="row-category">
@@ -76,7 +89,11 @@
                     { id:2, value:'voyage'},
                     { id:3, value:'mariage'},
                     { id:4, value:'street'}
-                ]
+                ],
+                trigger: true,
+                //preventUp prévient le retour sur la 1ere partie de la page lors d'un event clavier
+                preventUp: true,
+                grid: true
             }
         },
         methods:{
@@ -86,10 +103,133 @@
                         return this.categories[key].value
                     }
                 }
+            },
+            left(el){
+                el.style.opacity = 0
+                el.style.transform = "translateX(-200px)"
+                console.log('before', el)
+            },
+            right(el){
+                el.style.opacity = 0
+                el.style.transform = "translateX(200px)"
+                console.log('before', el)
+            },
+            enter(el, done){
+                let level = el.dataset.level
+                let delay
+
+                level == 1 ? delay = 400 : delay = 600
+
+                setTimeout(_=>{
+                    el.style.opacity = 1
+                    el.style.transform = "translateX(0px)"
+                    el.style.transition = "transform .5s ease-out, opacity 1s ease-in-out"
+                    console.log('enter', el)
+                }, delay)
+                done()
+            },
+            beforeLeave(el){
+                el.style.opacity = 1
+                el.style.transform = "translateX(0px)"
+                el.style.transition = "transform .5s ease-out, opacity 1s ease-in-out"
+                console.log('before-leave',el)
+            },
+            leave(el, done){
+                setTimeout(_=>{
+                    el.style.opacity = 0
+                    el.style.transform = "translateX(200px)"
+                    el.style.transition = "transform .5s ease-out, opacity 1s ease-in-out"
+                    console.log('leave',el)
+                }, 500)
+                done()
+            },
+//            afterLeave(el){
+//                el.style.opacity = 0
+//                el.style.transform = "translateX(0px)"
+//                el.style.transition = "transform 2s ease-out, opacity 1s ease-in-out"
+//                console.log('after-leave',el)
+//            },
+//            getMiddlePosition(){
+////                console.log('scroll', this.middlePage)
+////                console.log(this.$refs.focus)
+//                return this.middlePage = window.innerHeight / 2
+//            },
+//            setTrigger(event, el){
+////                console.log('bottom',el.getBoundingClientRect().bottom)
+////                console.log('middle ', this.middlePage)
+////                return this.trigger = el.getBoundingClientRect().bottom < this.middlePage
+////                this.trigger = !this.trigger
+//            },
+
+            onMove(direction){
+//                console.log('wheel', direction)
+
+                let scrollPosition = window.pageYOffset
+
+                if( direction === 'down' && this.trigger){
+                    this.trigger = false
+                    this.grid = true
+                }
+                if( direction === 'up' && !this.trigger && scrollPosition === 0){
+                    this.trigger = true
+                    this.grid = false
+                }
+            },
+            keyNav(event){
+                //Scroll position
+                let position = window.pageYOffset
+                // page up
+                const pageUp = event.keyCode == 33
+                //page down
+                const pageDown = event.keyCode == 34
+                //up
+                const up = event.keyCode == 38
+                //down
+                const down = event.keyCode == 40
+                //space
+                const space = event.keyCode == 32
+                //shift
+                const shift = event.shiftKey
+                // shift + space
+                const shiftSpace = shift && space
+
+                if(pageUp || pageDown || space || shiftSpace || up || down){
+                    //Detect page up and page down navigation
+                    if((pageUp || shiftSpace || up ) && !this.trigger && position == 0){
+                        event.preventDefault()
+                        this.$nextTick(_=> this.preventUp = true)
+                        this.trigger = true
+                        console.log('pageup', this.preventUp)
+                    }
+                    // tant que la position n'est pas à 0, empêche l'affichage de la partie 1
+                    if((pageUp || shiftSpace || up ) && !this.trigger && position > 0){
+                        this.preventUp = false
+                        console.log('prevent', this.preventUp)
+                    }
+                    // page Down & space navigation, prevent shift event when shift+space is trigger
+                    if((pageDown || space || down) && this.trigger && !shift){
+                        event.preventDefault()
+                        this.trigger = false
+                        console.log('pagedown')
+                    }
+//                    console.log('prevent final', this.preventUp)
+                }
             }
         },
         created () {
             axios.get('/api/preview').then( ({data}) => this.galleries = data)
+        },
+        mounted(){
+            this.$nextTick(_=>{
+
+                document.addEventListener('keydown', this.keyNav)
+                this.keyNav(window.Event)
+
+            })
+        },
+        beforeDestroy() {
+            document.removeEventListener('keydown', this.keyNav)
+            document.removeEventListener('wheel', this.allowUp)
         }
     }
 </script>
@@ -171,6 +311,15 @@
         transition: all 1s;
     }
 
+    .hr{
+        position: fixed;
+        /*top: 50em;*/
+        z-index: 999;
+        width: 100%;
+        height: 5px;
+        background-color: red;
+    }
+
     /** Responsive **/
     /** screen > 320px **/
     @media only screen and (min-width: 320px){
@@ -242,59 +391,4 @@
             flex-direction: row;
         }
     }
-
-    /**
-    * Transition
-    **/
-
-    /** Focus Slide Blur **/
-
-    .focus-slide-enter-active{
-        opacity: 100;
-        /*filter: blur(0px);*/
-        animation: slide-in 1.2s linear;
-        /*transform: scale(1, 1);*/
-        transition: opacity 0.5s ease-out;
-    }
-    .focus-slide-leave-active{
-        transition: all 0.3s ease-in;
-    }
-    .focus-slide-enter{
-        z-index: 33;
-        opacity: 0;
-        /*filter: blur(16px);*/
-        /*transform: scale(0.5, 0.5);*/
-    }
-
-    @keyframes slide-in {
-        0%{
-            transform:  scale(0.9, 0.9);
-            filter: blur(16px);
-        }
-        30%{
-            transform:  scale(0.9, 0.9);
-            filter: blur(20px);
-        }
-        50%{
-            transform: scale(0.85, 0.85);
-            filter: blur(10px);
-        }
-        60%{
-            transform: scale(0.9, 0.9);
-            filter: blur(24px);
-        }
-        80%{
-            transform: scale(1.1, 1.1);
-            filter: blur(6px);
-        }
-        85%{
-            transform:  scale(1, 1);
-            filter: blur(10px);
-        }
-        100%{
-            transform: scale(1, 1);
-            filter: blur(0);
-        }
-    }
-
 </style>
