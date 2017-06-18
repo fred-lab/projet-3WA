@@ -38,6 +38,7 @@ Vue.component('gallery', require('./components/home/Gallery.vue'));
 Vue.component('gallery-category', require('./components/home/IndexCategory.vue'));
 Vue.component('picture', require('./components/home/Picture.vue'));
 Vue.component('home-nav', require('./components/home/HomeNav.vue'));
+Vue.component('category-nav', require('./components/home/CategoryNav.vue'));
 Vue.component('footer-view', require('./components/home/Footer.vue'));
 Vue.component('about-view', require('./components/home/About.vue'));
 Vue.component('contact-view', require('./components/home/Contact.vue'));

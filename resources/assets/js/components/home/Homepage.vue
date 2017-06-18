@@ -14,14 +14,14 @@
 
 
             <div class="grid" key="grid-preview">
-                <div class="row">
-                    <transition appear v-if="!trigger" @before-enter="left" @enter="enter" @before-leave="beforeLeave" @leave="leave" >
+                <div class="row" v-scroll="showNavCat">
+                    <transition appear mode="out-in" v-if="grid" @before-enter="enterLeft" @enter="enter" @leave="leaveLeft" >
                         <div class="item" data-level="1">
                             <gallery-preview :path="galleries[1].pictures[0].path" :filename="galleries[1].pictures[0].thumb_name"
                                              :slug="galleries[1].slug" :category="category(galleries[1].category_id)" :title="galleries[1].title"></gallery-preview>
                         </div>
                     </transition>
-                    <transition appear v-if="!trigger" @before-enter="right" @enter="enter"  @leave="leave">
+                    <transition appear mode="out-in" v-if="grid" @before-enter="enterRight" @enter="enter" @leave="leaveRight">
                         <div class="item" data-level="1">
                             <gallery-preview :path="galleries[2].pictures[0].path" :filename="galleries[2].pictures[0].thumb_name"
                                              :slug="galleries[2].slug" :category="category(galleries[2].category_id)" :title="galleries[2].title"></gallery-preview>
@@ -29,13 +29,13 @@
                     </transition>
                 </div>
                 <div class="row">
-                    <transition appear v-if="!trigger" @before-enter="left" @enter="enter"  @leave="leave">
+                    <transition appear mode="out-in" v-if="grid" @before-enter="enterLeft" @enter="enter" @leave="leaveLeft">
                         <div class="item" data-level="2">
                             <gallery-preview :path="galleries[3].pictures[0].path" :filename="galleries[3].pictures[0].thumb_name"
                                              :slug="galleries[3].slug" :category="category(galleries[3].category_id)" :title="galleries[3].title"></gallery-preview>
                         </div>
                     </transition>
-                    <transition appear v-if="!trigger" @before-enter="right" @enter="enter"  @leave="leave">
+                    <transition appear mode="out-in" v-if="grid" @before-enter="enterRight" @enter="enter" @leave="leaveRight">
                         <div class="item" data-level="2">
                             <gallery-preview :path="galleries[4].pictures[0].path" :filename="galleries[4].pictures[0].thumb_name"
                                              :slug="galleries[4].slug" :category="category(galleries[4].category_id)" :title="galleries[4].title"></gallery-preview>
@@ -44,38 +44,7 @@
                 </div>
             </div>
 
-        <section class="category-nav">
-            <div class="grid">
-                <div class="row-category">
-                    <div class="category-item">
-                        <router-link :to="{name: 'gallery.category', params:{ category: 'portrait'}}" class="category-wrapper">
-                            <img src="/assets/img/desktop/intro_desktop.jpg" alt="Portrait" class="category-picture">
-                            <span class="category-title">Portrait</span>
-                        </router-link>
-                    </div>
-                    <div class="category-item">
-                        <router-link :to="{name: 'gallery.category', params:{ category: 'voyage'}}" class="category-wrapper">
-                            <img src="/assets/img/desktop/footer_desktop.jpg" alt="Voyage" class="category-picture">
-                            <span class="category-title">Voyage</span>
-                        </router-link>
-                    </div>
-                </div>
-                <div class="row-category">
-                    <div class="category-item">
-                        <router-link :to="{name: 'gallery.category', params:{ category: 'street'}}" class="category-wrapper">
-                            <img src="/assets/img/desktop/concert_desktop.jpg" alt="Street" class="category-picture">
-                            <span class="category-title">Street</span>
-                        </router-link>
-                    </div>
-                    <div class="category-item">
-                        <router-link :to="{name: 'gallery.category', params:{ category: 'mariage'}}" class="category-wrapper">
-                            <img src="/assets/img/desktop/mariage_desktop.jpg" alt="Mariage" class="category-picture">
-                            <span class="category-title">Mariage</span>
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <category-nav :show="grid"></category-nav>
     </section>
 </template>
 
@@ -93,7 +62,10 @@
                 trigger: true,
                 //preventUp prévient le retour sur la 1ere partie de la page lors d'un event clavier
                 preventUp: true,
-                grid: true
+                // grid, if true, show the preview section
+                grid:false,
+                // showNavSection, if true, show the category nav section
+                showNavSection: false
             }
         },
         methods:{
@@ -104,51 +76,60 @@
                     }
                 }
             },
-            left(el){
+            setDelay(el, firstStage, secondStage){
+                return el.dataset.level == 1 ? firstStage : secondStage
+            },
+            enterLeft(el){
                 el.style.opacity = 0
                 el.style.transform = "translateX(-200px)"
-                console.log('before', el)
+//                console.log('before', el)
             },
-            right(el){
+            enterRight(el){
                 el.style.opacity = 0
                 el.style.transform = "translateX(200px)"
-                console.log('before', el)
+//                console.log('before', el)
             },
             enter(el, done){
-                let level = el.dataset.level
-                let delay
-
-                level == 1 ? delay = 400 : delay = 600
+                let delay = this.setDelay(el, 400, 600)
 
                 setTimeout(_=>{
                     el.style.opacity = 1
                     el.style.transform = "translateX(0px)"
                     el.style.transition = "transform .5s ease-out, opacity 1s ease-in-out"
-                    console.log('enter', el)
+//                    console.log('enter', el)
                 }, delay)
                 done()
             },
-            beforeLeave(el){
-                el.style.opacity = 1
-                el.style.transform = "translateX(0px)"
-                el.style.transition = "transform .5s ease-out, opacity 1s ease-in-out"
-                console.log('before-leave',el)
-            },
-            leave(el, done){
-                setTimeout(_=>{
+            leaveLeft(el, done){
+                let delay =this.setDelay(el, 0, 400)
+
+                setTimeout(_=> {
                     el.style.opacity = 0
-                    el.style.transform = "translateX(200px)"
-                    el.style.transition = "transform .5s ease-out, opacity 1s ease-in-out"
-                    console.log('leave',el)
-                }, 500)
-                done()
+                    el.style.transform = "translateX(-300px)"
+                    el.style.transition = "transform .5s ease-out, opacity .3s ease-in-out"
+//                    console.log('transition')
+                }, delay)
+
+                setTimeout(_=>{
+//                    console.log('leave-left',el)
+                    done()
+                }, 1000)
             },
-//            afterLeave(el){
-//                el.style.opacity = 0
-//                el.style.transform = "translateX(0px)"
-//                el.style.transition = "transform 2s ease-out, opacity 1s ease-in-out"
-//                console.log('after-leave',el)
-//            },
+            leaveRight(el, done){
+                let delay =this.setDelay(el, 0, 400)
+
+                setTimeout(_=> {
+                    el.style.opacity = 0
+                    el.style.transform = "translateX(300px)"
+                    el.style.transition = "transform .5s ease-out, opacity .3s ease-in-out"
+//                    console.log('transition')
+                }, delay)
+
+                setTimeout(_=>{
+//                    console.log('leave-right',el)
+                    done()
+                }, 1000)
+            },
 //            getMiddlePosition(){
 ////                console.log('scroll', this.middlePage)
 ////                console.log(this.$refs.focus)
@@ -160,19 +141,29 @@
 ////                return this.trigger = el.getBoundingClientRect().bottom < this.middlePage
 ////                this.trigger = !this.trigger
 //            },
+            showFocus(){
+                this.grid = false
+                setTimeout(_=>this.trigger = true, 800)
+            },
+            showPreview(){
+                this.trigger = false
+                this.grid = true
+            },
+            showNavCat(event, el){
+                el.getBoundingClientRect().bottom < 0 && this.grid && !this.trigger ? this.showNavSection = true : this.showNavSection = false
 
+//                console.log('show nav ', el.getBoundingClientRect().bottom, this.showNavSection)
+            },
             onMove(direction){
 //                console.log('wheel', direction)
 
                 let scrollPosition = window.pageYOffset
 
                 if( direction === 'down' && this.trigger){
-                    this.trigger = false
-                    this.grid = true
+                    this.showPreview()
                 }
                 if( direction === 'up' && !this.trigger && scrollPosition === 0){
-                    this.trigger = true
-                    this.grid = false
+                    this.showFocus()
                 }
             },
             keyNav(event){
@@ -198,19 +189,19 @@
                     if((pageUp || shiftSpace || up ) && !this.trigger && position == 0){
                         event.preventDefault()
                         this.$nextTick(_=> this.preventUp = true)
-                        this.trigger = true
-                        console.log('pageup', this.preventUp)
+                        this.showFocus()
+//                        console.log('pageup', this.preventUp)
                     }
                     // tant que la position n'est pas à 0, empêche l'affichage de la partie 1
                     if((pageUp || shiftSpace || up ) && !this.trigger && position > 0){
                         this.preventUp = false
-                        console.log('prevent', this.preventUp)
+//                        console.log('prevent', this.preventUp)
                     }
                     // page Down & space navigation, prevent shift event when shift+space is trigger
                     if((pageDown || space || down) && this.trigger && !shift){
                         event.preventDefault()
-                        this.trigger = false
-                        console.log('pagedown')
+                        this.showPreview()
+//                        console.log('pagedown')
                     }
 //                    console.log('prevent final', this.preventUp)
                 }
@@ -267,50 +258,6 @@
         font-size: 0.5em;
     }
 
-    .category-nav{
-        margin: 1em 0;
-    }
-    .category-item{
-        display: flex;
-        justify-content: center;
-        height: 8rem;
-        margin: 1em;
-        font-size: 0.5em;
-
-        .category-title {
-            position: absolute;
-            z-index: 3;
-            color: $secondary-text-color;
-
-            border-style: solid;
-            font-size: 3em;
-            padding: 0.5em 2em;
-            border-radius: 2em;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-            transition: all 0.7s;
-        }
-
-        &:hover .category-title{
-             color: $info-color;
-             transition: all 0.3s;
-         }
-    }
-    .category-wrapper {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-        text-align: center;
-        box-shadow: #968e95 7px 7px 15px;
-        transition: all 1s;
-    }
-
-    .category-picture {
-        max-width: 100%;
-        transition: all 1s;
-    }
-
     .hr{
         position: fixed;
         /*top: 50em;*/
@@ -326,13 +273,6 @@
         .focus .gallery-title{
             font-size: 1.5rem;
         }
-
-        .category-nav{
-            margin: 2em 0;
-        }
-        .category-title{
-            font-size: 3em;
-        }
     }
 
     /** screen > 460px **/
@@ -342,15 +282,6 @@
         }
         .focus .gallery-title{
             font-size: 1.7rem!important;
-        }
-        .category-nav{
-            margin: 5em 0;
-        }
-        .category-item{
-            height: 16rem;
-        }
-        .category-title{
-            font-size: 5em!important;
         }
     }
     /** screen > 580px **/
@@ -370,18 +301,6 @@
         }
         .preview{
             margin-bottom : 10em;
-        }
-        .row-category{
-            flex-direction: row;
-        }
-        .category-nav{
-            margin: 10em 0;
-        }
-        .category-item{
-            margin: 2em 1em;
-        }
-        .category-title{
-            font-size: 7em!important;
         }
     }
 
