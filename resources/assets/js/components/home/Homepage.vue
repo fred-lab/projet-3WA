@@ -1,5 +1,5 @@
 <template>
-    <section class="preview"  v-if="galleries.length > 0" v-wheel="onMove" v-touch="onMove">
+    <section class="preview"  v-if="galleries.length > 0" v-wheel="onMove" v-touch="onMove" v-scroll="scrollNav">
         <transition name="slide-up" appear mode="out-in">
             <div class="focus" v-if="trigger" key="focus">
                 <gallery-preview :path="galleries[0].pictures[0].path" :filename="galleries[0].pictures[0].title"
@@ -14,7 +14,7 @@
 
 
             <div class="grid" key="grid-preview">
-                <div class="row" v-scroll="showNavCat">
+                <div class="row">
                     <transition appear mode="out-in" v-if="grid" @before-enter="enterLeft" @enter="enter" @leave="leaveLeft" >
                         <div class="item" data-level="1">
                             <gallery-preview :path="galleries[1].pictures[0].path" :filename="galleries[1].pictures[0].thumb_name"
@@ -64,8 +64,7 @@
                 preventUp: true,
                 // grid, if true, show the preview section
                 grid:false,
-                // showNavSection, if true, show the category nav section
-                showNavSection: false
+                mouseX: 0
             }
         },
         methods:{
@@ -149,10 +148,12 @@
                 this.trigger = false
                 this.grid = true
             },
-            showNavCat(event, el){
-                el.getBoundingClientRect().bottom < 0 && this.grid && !this.trigger ? this.showNavSection = true : this.showNavSection = false
-
-//                console.log('show nav ', el.getBoundingClientRect().bottom, this.showNavSection)
+            scrollNav(event, el){
+                console.log('client x ', this.mouseX, document.body.clientWidth)
+                //détecter si la souris est sur la scroll bar
+                if(this.mouseX >= document.body.clientWidth){
+                    console.log('clic sur la scroll bar ', this.mouseX)
+                }
             },
             onMove(direction){
 //                console.log('wheel', direction)
@@ -214,6 +215,7 @@
             this.$nextTick(_=>{
 
                 document.addEventListener('keydown', this.keyNav)
+                document.addEventListener('mousemove', e => this.mouseX = e.screenX)
                 this.keyNav(window.Event)
 
             })

@@ -34,7 +34,7 @@
     @import "../../../sass/_variables.scss";
 
     .footer-view {
-        margin-top: 200em;
+        margin-top: 10em;
         display: flex;
         flex-flow: column;
         align-items: center;
