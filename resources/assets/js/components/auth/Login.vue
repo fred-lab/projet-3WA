@@ -16,6 +16,8 @@
 </template>
 
 <script type="text/babel">
+    import Parameters from '../../../../../parameters.json'
+
     export default{
         data(){
             return{
@@ -27,8 +29,8 @@
         methods: {
             login(){
                 let data ={
-                    client_id: 2,
-                    client_secret: 'f6EHTKqa1wMkx5Rx43HHxU5zkmrooM5BpXGEqxLf',
+                    client_id: Parameters.passport.client_id,
+                    client_secret: Parameters.passport.client_secret,
                     grant_type: 'password',
                     username: this.email,
                     password: this.password
@@ -38,7 +40,7 @@
                         (errors) => this.errors = errors.response.data
                 ).then(
                         _=>{
-                            if(this.$route.name == "studio.login"){
+                            if(this.$route.name === "studio.login"){
                                 this.$router.push({ name: 'studio.gallery.index'})
                             }
                             // A MODIFIER QUAND BOOK SERA DISPO
