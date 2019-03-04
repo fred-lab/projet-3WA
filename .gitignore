@@ -1,6 +1,6 @@
 /public/css/*
 /node_modules
-/public/galeries
+/public/galeries/*
 !/public/galeries/.gitkeep
 /public/storage
 /public/hot
