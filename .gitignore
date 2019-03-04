@@ -1,6 +1,7 @@
 /public/css/*
 /node_modules
-/public/galeries
+/public/galeries/*
+!/public/galeries/.gitkeep
 /public/storage
 /public/hot
 /storage/*.key
@@ -10,3 +11,8 @@
 Homestead.json
 Homestead.yaml
 .env
+
+parameters\.json
+/bootstap
+/storage
+/public/mix-manifest.json
