@@ -16,3 +16,4 @@ parameters\.json
 /bootstap
 /storage
 /public/mix-manifest.json
+/public/manifest.*
